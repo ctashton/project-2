@@ -1,6 +1,6 @@
 --For cocktailDB fifth idea--
 
-USE CocktailDB;
+USE neat_db;
 
 CREATE TABLE cocktail (
   id INT NOT NULL,
@@ -12,6 +12,14 @@ CREATE TABLE cocktail (
   ing VARCHAR(8000) NOT NULL, 
   PRIMARY KEY (id)
 );
+
+CREATE TABLE user (
+  id INT NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
 
 --1--
 INSERT INTO products (name, category, glass, picture, instructions, ing)
