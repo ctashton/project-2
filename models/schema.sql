@@ -1,2 +1,4 @@
+
 DROP DATABASE IF EXISTS neat_db;
 CREATE DATABASE neat_db;
+
