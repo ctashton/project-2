@@ -5,51 +5,70 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 // log in / sign up
-$('#login-form').on('submit', function() {
-  event.preventDefault()
+$("#login-form").on("submit", function() {
+  event.preventDefault();
 
   // get user data from form
   let userData = {
-    email: $('#email-input').val().trim(),
-    password: $('#password-input').val().trim()
-  }
+    email: $("#email-input")
+      .val()
+      .trim(),
+    password: $("#password-input")
+      .val()
+      .trim()
+  };
 
   // check if user is logging in or signing up
-  let method = document.activeElement.getAttribute('id')
-  if (method = 'login') loginUser(userData.email, userData.password)
-  if (method = 'signup') signupUser(userData.email, userData.password)
+  let method = document.activeElement.getAttribute("id");
+  if (method === "login") {
+    loginUser(userData.email, userData.password);
+  }
+  if (method === "signup") {
+    signupUser(userData.email, userData.password);
+  }
 
-  $('#email-input').val('')
-  $('#password-input').val('')
-})
+  // clear input fields
+  $("#email-input").val("");
+  $("#password-input").val("");
+});
 
+// post request for login
 function loginUser(email, password) {
-  $.post('/api/login', {
+  $.post("/api/login", {
     email: email,
     password: password
   })
-  .then(function() {
-    $('#loginModal').hide()
-  })
-  .catch(function(err) {
-    console.log(err);
-  })
+    .then(function(data) {
+      $("#loginModal").toggle();
+      $(".modal-backdrop").remove();
+      location.reload()
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 }
 
+// post request for signup
 function signupUser(email, password) {
-  $.post('/api/signup', {
+  $.post("/api/signup", {
     email: email,
     password: password
   })
-  .then(function() {
-    $('#loginModal').hide()
-  })
-  .catch(function(err) {
-    console.log(err);
-  })
+    .then(function() {
+      $("#loginModal").toggle();
+      $(".modal-backdrop").remove();
+      location.reload()
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 }
 
-
+$(document).on("click", "#logout", function() {
+  $.get("/logout").then(
+    location.reload()
+  );
+});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
