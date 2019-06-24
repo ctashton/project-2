@@ -64,11 +64,27 @@ function signupUser(email, password) {
     });
 }
 
+// log out
 $(document).on("click", "#logout", function() {
   $.get("/logout").then(
     location.reload()
   );
 });
+
+// search for drink by name
+$("#name-search").on("click", function() {
+  let drinkName = $('#drink-name').val().trim()
+
+  $.post("/search", {
+    method: "name",
+    data: drinkName
+  }).then( data => {
+    console.log('hello')
+    console.log(data)
+  })
+})
+
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {

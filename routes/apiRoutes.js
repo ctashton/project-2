@@ -1,14 +1,12 @@
 var db = require("../models");
 var passport = require("../config/passport");
+let axios = require("./axiosCalls.js")
 
 module.exports = function(app) {
   // user login
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.redirect('/')
 
-    // if (req.user) {
-    //   res.send("logged in");
-    // }
     console.log("login successful");
   });
    
@@ -33,6 +31,12 @@ module.exports = function(app) {
     res.redirect("/");
     console.log("logout successful");
   });
+
+  app.post("/search", function(req, res) {
+    if (req.body.method === "name") {
+      axios.searchByName(req.body.data)
+    }
+  })
 
   // Get all examples
   app.get("/api/examples", function(req, res) {
