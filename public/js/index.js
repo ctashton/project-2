@@ -79,7 +79,17 @@ $("#name-search").on("click", function() {
     method: "name",
     data: drinkName
   }).then( data => {
-    console.log('hello')
+    console.log(data)
+  })
+})
+
+$("#ing-search").on("click", function() {
+  let ingName = $("#ing-name").val().trim()
+
+  $.post("/search", {
+    method: "ing",
+    data: ingName
+  }).then( data => {
     console.log(data)
   })
 })

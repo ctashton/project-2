@@ -35,6 +35,11 @@ module.exports = function(app) {
   app.post("/search", function(req, res) {
     if (req.body.method === "name") {
       axios.searchByName(req.body.data)
+        .then( data => res.json(data))
+
+    } else {
+      axios.searchByIng(req.body.data)
+        .then( data => res.json(data))
     }
   })
 
