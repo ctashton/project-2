@@ -129,6 +129,21 @@ $("#cat-search").on("click", function() {
     data: val
   }).then(data => {
     console.log(data)
+    data.forEach(item => {
+      let catResult = $(`<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`)
+      $('#results').append(catResult)
+    })
+  })
+})
+
+$(document).on("click", "#cat-result", function() {
+  let id = $(this).attr('data-id')
+
+  $.post("/search", {
+    method: "id",
+    data: id
+  }).then( data => {
+    console.log(data)
   })
 })
 
