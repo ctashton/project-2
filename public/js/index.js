@@ -79,6 +79,7 @@ $("#name-search").on("click", function() {
   })
 })
 
+// search by ingredient
 $("#ing-search").on("click", function() {
   let ingName = $("#ing-name").val().trim()
 
@@ -87,6 +88,7 @@ $("#ing-search").on("click", function() {
     data: ingName
   }).then( data => {
     console.log(data)
+    $("#results").empty()
     data.forEach(item => {
       let drinkResult = $(`<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`)
       $('#results').append(drinkResult)
@@ -94,6 +96,7 @@ $("#ing-search").on("click", function() {
   })
 })
 
+// clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#ing-result", function() {
   let id = $(this).attr('data-id')
 
@@ -105,6 +108,7 @@ $(document).on("click", "#ing-result", function() {
   })
 })
 
+// search most popular
 $("#most-pop").on("click", function() {
   $.post("/search", {
     method: "popular"
@@ -113,6 +117,7 @@ $("#most-pop").on("click", function() {
   })
 })
 
+// get a random drink
 $("#random").on('click', function() {
   $.post("/search", {
     method: "random"
@@ -121,6 +126,7 @@ $("#random").on('click', function() {
   })
 })
 
+// search by category
 $("#cat-search").on("click", function() {
   let val = $('#cat-dropdown :selected').text()
 
@@ -129,6 +135,7 @@ $("#cat-search").on("click", function() {
     data: val
   }).then(data => {
     console.log(data)
+    $("#results").empty()
     data.forEach(item => {
       let catResult = $(`<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`)
       $('#results').append(catResult)
@@ -136,6 +143,7 @@ $("#cat-search").on("click", function() {
   })
 })
 
+// clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#cat-result", function() {
   let id = $(this).attr('data-id')
 
@@ -147,6 +155,8 @@ $(document).on("click", "#cat-result", function() {
   })
 })
 
+
+// ***** boilerplate code ***** 
 
 
 // The API object contains methods for each kind of request we'll make

@@ -55,7 +55,6 @@ module.exports = {
             let query = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingName}`
 
             axios.get(query).then(response => {
-                console.log(response.data)
 
                 let drinks = []
                 response.data.drinks.forEach(item => {
@@ -78,35 +77,35 @@ module.exports = {
     searchByID: function (id) {
         return new Promise((resolve, reject) => {
 
-                let query = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+            let query = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
 
-                axios.get(query).then(response => {
+            axios.get(query).then(response => {
 
-                    let data = response.data.drinks[0]
-                    let drink = {
-                        name: data.strDrink,
-                        category: data.strCategory,
-                        alcoholic: data.strAlcoholic,
-                        glass: data.strGlass,
-                        instructions: data.strInstructions,
-                        pic: data.strDrinkThumb,
-                        ingredients: [],
-                        measurements: []
-                    }
+                let data = response.data.drinks[0]
+                let drink = {
+                    name: data.strDrink,
+                    category: data.strCategory,
+                    alcoholic: data.strAlcoholic,
+                    glass: data.strGlass,
+                    instructions: data.strInstructions,
+                    pic: data.strDrinkThumb,
+                    ingredients: [],
+                    measurements: []
+                }
 
-                    for (let i = 1; i <= 15; i++) {
-                        if (data[`strIngredient${i}`]) {
-                            drink.ingredients.push(data[`strIngredient${i}`])
+                for (let i = 1; i <= 15; i++) {
+                    if (data[`strIngredient${i}`]) {
+                        drink.ingredients.push(data[`strIngredient${i}`])
 
-                            if (data[`strMeasure${i}`]) {
-                                drink.measurements.push(data[`strMeasure${i}`])
-                            }
+                        if (data[`strMeasure${i}`]) {
+                            drink.measurements.push(data[`strMeasure${i}`])
                         }
                     }
+                }
 
-                    resolve(drink)
-                })
-                .catch(err => console.log(err))
+                resolve(drink)
+            })
+            .catch(err => console.log(err))
         })
     },
 
@@ -190,12 +189,10 @@ module.exports = {
 
     searchByCat: function(cat) {
         return new Promise((resolve, reject) => {
-            console.log(cat)
 
-             let query = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${cat}`
+            let query = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${cat}`
 
-             axios.get(query).then(response => {
-                console.log(response.data)
+            axios.get(query).then(response => {
 
                 let drinks = []
                 response.data.drinks.forEach(item => {
