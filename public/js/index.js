@@ -10,12 +10,8 @@ $("#login-form").on("submit", function() {
 
   // get user data from form
   let userData = {
-    email: $("#email-input")
-      .val()
-      .trim(),
-    password: $("#password-input")
-      .val()
-      .trim()
+    email: $("#email-input").val().trim(),
+    password: $("#password-input").val().trim()
   };
 
   // check if user is logging in or signing up
@@ -54,7 +50,7 @@ function signupUser(email, password) {
     email: email,
     password: password
   })
-    .then(function() {
+    .then(function(data) {
       $("#loginModal").toggle();
       $(".modal-backdrop").remove();
       location.reload()
@@ -90,6 +86,48 @@ $("#ing-search").on("click", function() {
     method: "ing",
     data: ingName
   }).then( data => {
+    console.log(data)
+    data.forEach(item => {
+      let drinkResult = $(`<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`)
+      $('#results').append(drinkResult)
+    })
+  })
+})
+
+$(document).on("click", "#ing-result", function() {
+  let id = $(this).attr('data-id')
+
+  $.post("/search", {
+    method: "id",
+    data: id
+  }).then( data => {
+    console.log(data)
+  })
+})
+
+$("#most-pop").on("click", function() {
+  $.post("/search", {
+    method: "popular"
+  }).then(data => {
+    console.log(data)
+  })
+})
+
+$("#random").on('click', function() {
+  $.post("/search", {
+    method: "random"
+  }).then(data => {
+    console.log(data)
+  })
+})
+
+$("#cat-search").on("click", function() {
+  let val = $('#cat-dropdown :selected').text()
+
+  $.post("/search", {
+    method: "category",
+    data: val
+  }).then(data => {
     console.log(data)
   })
 })
