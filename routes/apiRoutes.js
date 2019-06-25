@@ -32,16 +32,37 @@ module.exports = function(app) {
     console.log("logout successful");
   });
 
+  // search drinks by name or ingredient
   app.post("/search", function(req, res) {
     if (req.body.method === "name") {
       axios.searchByName(req.body.data)
-        .then( data => res.json(data))
+        .then(data => res.json(data))
 
-    } else {
+    } else if (req.body.method === "ing") {
       axios.searchByIng(req.body.data)
-        .then( data => res.json(data))
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "id") {
+      axios.searchByID(req.body.data)
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "popular") {
+      axios.mostPopular()
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "random") {
+      axios.getRandom()
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "category") {
+      axios.searchByCat(req.body.data)
+        .then(data => res.json(data))
     }
   })
+
+
+
+  // ***** boilerplate code ***** 
 
   // Get all examples
   app.get("/api/examples", function(req, res) {

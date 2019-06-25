@@ -6,14 +6,12 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // req.user will determine if user is logged in
     res.render("index", {user: req.user})
-
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.render("index", {
-    //     msg: "Welcome!",
-    //     examples: dbExamples
-    //   });
-    // });
   });
+
+
+  
+  // ***** boilerplate code ***** 
+
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
