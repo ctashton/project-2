@@ -1,12 +1,14 @@
 <nav class="navbar justify-content-end">
   <ul class="nav">
     <li class="nav-item">
+
       {{#unless user}}
-      <button id="login" class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal">Log in / Sign
+        <button id="login" class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal">Log in / Sign
         up</button>
       {{else}}
-      <button id="logout" class="nav-link btn btn-primary">Log out</button>
+        <button id="logout" class="nav-link btn btn-primary">Log out</button>
       {{/unless}}
+
     </li>
   </ul>
 </nav>
@@ -41,4 +43,16 @@
 
     </div>
   </div>
+</div>
+
+<div class="container">
+  Search by drink name: <br>
+  <input id="drink-name" type="text"><br>
+  <button id="name-search" class="btn btn-primary">Go</button><br>
+  
+  <br>
+
+  Search by ingredient: <br>
+  <input id="ing-name" type="text"><br>
+  <button id="ing-search" class="btn btn-primary">Go</button><br>
 </div>
