@@ -1,6 +1,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var moment = require('moment');
+let axios = require("./axiosCalls.js")
 
 module.exports = function(app) {
 
@@ -52,9 +53,6 @@ module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.redirect('/index')
 
-    // if (req.user) {
-    //   res.send("logged in");
-    // }
     console.log("login successful");
   });
    
@@ -79,4 +77,32 @@ module.exports = function(app) {
     res.redirect("/");
     console.log("logout successful");
   });
+  
+  app.post("/search", function(req, res) {  // search drinks by name or ingredient
+    if (req.body.method === "name") {
+      axios.searchByName(req.body.data)
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "ing") {
+      axios.searchByIng(req.body.data)
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "id") {
+      axios.searchByID(req.body.data)
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "popular") {
+      axios.mostPopular()
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "random") {
+      axios.getRandom()
+        .then(data => res.json(data))
+
+    } else if (req.body.method === "category") {
+      axios.searchByCat(req.body.data)
+        .then(data => res.json(data))
+    }
+  })
 };
+
