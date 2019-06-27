@@ -18,6 +18,7 @@ module.exports = {
 
                 data.forEach(item => {
                     let drink = {
+                        id: item.idDrink,
                         name: item.strDrink,
                         category: item.strCategory,
                         alcoholic: item.strAlcoholic,
@@ -83,6 +84,7 @@ module.exports = {
 
                 let data = response.data.drinks[0]
                 let drink = {
+                    id: data.idDrink,
                     name: data.strDrink,
                     category: data.strCategory,
                     alcoholic: data.strAlcoholic,
@@ -123,6 +125,7 @@ module.exports = {
 
                 data.forEach(item => {
                     let drink = {
+                        id: item.idDrink,
                         name: item.strDrink,
                         category: item.strCategory,
                         alcoholic: item.strAlcoholic,
@@ -161,6 +164,7 @@ module.exports = {
 
                 let data = response.data.drinks[0]
                 let drink = {
+                    id: data.idDrink,
                     name: data.strDrink,
                     category: data.strCategory,
                     alcoholic: data.strAlcoholic,

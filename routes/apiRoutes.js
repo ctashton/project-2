@@ -77,8 +77,18 @@ module.exports = function(app) {
     res.redirect("/");
     console.log("logout successful");
   });
+
+  app.post("/test", function(req, res) {
+    if (req.user) {
+      // req.user.id holds their id from the database
+      console.log('req.user.id: ' + req.user.id)
+    } else {
+      res.send(false)
+    }
+  })
   
   app.post("/search", function(req, res) {  // search drinks by name or ingredient
+
     if (req.body.method === "name") {
       axios.searchByName(req.body.data)
         .then(data => res.json(data))
@@ -104,6 +114,32 @@ module.exports = function(app) {
         .then(data => res.json(data))
     }
   })
+
+  app.post("/favorite", function(req, res) {
+    // check if user is logged in
+    if (req.user) {
+      db.user_favorites.create({
+        name: req.body.name,
+        category: req.body.category,
+        alcoholic: req.body.alcoholic,
+        glass: req.body.glass,
+        instructions: req.body.instructions,
+        pic: req.body.pic,
+        ingredients: req.body.ingredients,
+        measurements: req.body.measurements,
+        UserId: req.user.id
+      })
+      .then(user => console.log('success'))
+      .catch(err => console.log(err))
+    } else {
+      // user is not logged in
+      res.send(false)
+    }
+  })
+
+
+
+  // ***** boilerplate code ***** 
 
   // Get all cocktails
   app.get("/api/cocktails", function(req, res) {
