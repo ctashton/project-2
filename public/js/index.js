@@ -1,9 +1,3 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
-
 // log in / sign up
 $("#login-form").on("submit", function() {
   event.preventDefault();
@@ -67,6 +61,32 @@ $(document).on("click", "#logout", function() {
   );
 });
 
+$("#test").on("click", function() {
+  $.post("/test").then(data => {
+    console.log(data)
+    if (!data) $("#loginModal").modal("show")
+  })
+})
+
+// add a drink to favorites
+$(document).on("click", "#fav-button", function() {
+
+  $.post("/favorite", {
+    name: $(this).attr('data-name'),
+    category: $(this).attr('data-category'),
+    alcoholic: $(this).attr('data-alcoholic'),
+    glass: $(this).attr('data-glass'),
+    instructions: $(this).attr('data-instructions'),
+    pic: $(this).attr('data-pic'),
+    ingredients: $(this).attr('data-ingredients'),
+    measurements: $(this).attr('data-measurements')
+
+  }).then(data => {
+    if (!data) $("#loginModal").modal("show")
+    else console.log('favorite added')
+  })
+})
+
 // search for drink by name
 $("#name-search").on("click", function() {
   let drinkName = $('#drink-name').val().trim()
@@ -76,6 +96,12 @@ $("#name-search").on("click", function() {
     data: drinkName
   }).then( data => {
     console.log(data)
+    $("#results").empty()
+    data.forEach(item => {
+      let drinkResult = $(`<a data-id="${item.id}">${item.name}</a><br>`)
+      $('#results').append(drinkResult)
+      let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+    })
   })
 })
 
@@ -92,6 +118,7 @@ $("#ing-search").on("click", function() {
     data.forEach(item => {
       let drinkResult = $(`<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`)
       $('#results').append(drinkResult)
+      let favButton = $(`<button id="fav-button" data-id="${item.id}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
 })
@@ -114,6 +141,12 @@ $("#most-pop").on("click", function() {
     method: "popular"
   }).then(data => {
     console.log(data)
+    $("#results").empty()
+    data.forEach(item => {
+      let drinkResult = $(`<a data-id="${item.id}">${item.name}</a><br>`)
+      $('#results').append(drinkResult)
+      let favButton = $(`<button id="fav-button" data-id="${item.id}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+    })
   })
 })
 
@@ -123,6 +156,10 @@ $("#random").on('click', function() {
     method: "random"
   }).then(data => {
     console.log(data)
+    $("#results").empty()
+    let drinkResult = $(`<a data-id="${data.id}">${data.name}</a><br>`)
+    $('#results').append(drinkResult)
+    let favButton = $(`<button id="fav-button" data-id="${data.id}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
   })
 })
 
@@ -139,6 +176,7 @@ $("#cat-search").on("click", function() {
     data.forEach(item => {
       let catResult = $(`<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`)
       $('#results').append(catResult)
+      let favButton = $(`<button id="fav-button" data-id="${item.id}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
     })
   })
 })
@@ -156,8 +194,17 @@ $(document).on("click", "#cat-result", function() {
 })
 
 
+
 // ***** boilerplate code ***** 
 
+
+
+
+// Get references to page elements
+var $exampleText = $("#example-text");
+var $exampleDescription = $("#example-description");
+var $submitBtn = $("#submit");
+var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
