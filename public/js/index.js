@@ -1,3 +1,12 @@
+//  Boiler Plate
+// Get references to page elements
+var $exampleText = $("#example-text");
+var $exampleDescription = $("#example-description");
+var $submitBtn = $("#submit");
+var $exampleList = $("#example-list");
+
+// Beginning of teams code
+
 // log in / sign up
 $("#login-form").on("submit", function() {
   event.preventDefault();
@@ -193,6 +202,32 @@ $(document).on("click", "#cat-result", function() {
   })
 })
 
+// main page display
+// ajax call to populate main page display from api
+
+// cocktail modal
+$('.drink-card').click(function (event) {
+  var id = $(this).data("id");
+  var pic = $(this).data("pic");
+  var name = $(this).data("name");
+  var category = $(this).data("category");
+  var glass = $(this).data("glass");
+  var instructions = $(this).data("instructions");
+  var ingredients = $(this).data("ingredients");
+  
+  $("#drinkTitle").html(name);
+  $("#drinkImage").attr("src", pic);
+  $('#drinkCategory').html("Category: " + category);
+  $('#drinkGlass').html("Glass: " + glass);
+  $('#drinkInstructions').html("Instructions: " + instructions);
+  $('#drinkIng').html("Ingredients: " + ingredients);
+  $('#cocktailModal').modal('show');
+});
+
+// star for favorites
+$(".star").click(function() {
+  $(this).toggleClass("far fa-star fas fa-star");
+});
 
 
 // ***** boilerplate code ***** 
