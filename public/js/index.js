@@ -223,6 +223,18 @@ $(document).on("click", "#cat-result", function() {
   })
 })
 
+// delete from favorites list
+$("#delete-fav").on("click", function() {
+  let id = $(this).attr('data-id')
+  $.ajax("/api/delete/" + id, {
+    type: "DELETE"
+  })
+  .then(function(data) {
+      console.log(`drink ${id} successfully deleted`)
+      location.reload()
+  })
+})
+
 // cocktail modal
 $('.drink-card').click(function (event) {
   var id = $(this).data("id");
