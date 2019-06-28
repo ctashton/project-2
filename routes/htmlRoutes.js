@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Cocktails.findAll({}).then(function(dbCocktails) {
       res.render("index",{
+        user: req.user,
         msg: "Popular Cocktails!",
         cocktails: dbCocktails
       });
@@ -23,6 +24,7 @@ module.exports = function(app) {
     // get user favorites from database
     if (req.user) {
       let favs = []
+     
 
       db.user_favorites.findAll({
         where: {
@@ -32,8 +34,10 @@ module.exports = function(app) {
       .then(data => {
         data.forEach(item => {
           //item.dataValues contains all drink data
-          console.log(item.dataValues)
           favs.push(item.dataValues)
+          for (let i = 0; i < item.dataValues.ingredients.length; i++) {
+            
+          }
         })
 
         // render profile page with favorites

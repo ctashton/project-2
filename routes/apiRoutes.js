@@ -51,7 +51,7 @@ module.exports = function(app) {
 
   // user login
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.redirect('/index')
+    res.redirect('/')
 
     console.log("login successful");
   });
