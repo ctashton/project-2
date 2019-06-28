@@ -9,14 +9,7 @@ CREATE TABLE cocktail_tab (
   glass VARCHAR(100) NULL,
   instructions VARCHAR(255) NULL,
   picture VARCHAR(100) NULL,
-  ing VARCHAR(8000) NOT NULL, 
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE user_tab(
-  id INT NOT NULL,
-  name VARCHAR(100) NOT NULL,
-  password VARCHAR(100) NOT NULL,
+  ing VARCHAR(8000) NOT NULL,
   PRIMARY KEY (id)
 );
 
