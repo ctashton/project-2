@@ -15,3 +15,21 @@ VALUES ("Whiskey Sour" , "Ordinary Drink" , "Old-fashioned glass" , "https://www
 
 INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
 VALUES ("Dry Martini" , "Cocktail" , "Cocktail glass" , "https://www.thecocktaildb.com/images/media/drink/71t8581504353095.jpg", "Straight: Pour all ingredients into mixing glass with ice cubes. Stir well. Strain in chilled martini cocktail glass. Squeeze oil from lemon peel onto the drink, or garnish with olive.", "Gin, 2/3 oz -Dry Vermouth, 1/3 oz -Olive, 1 ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Daiquiri" , "Ordinary Drink" , "Cocktail glass" , "https://www.thecocktaildb.com/images/media/drink/usuuur1439906797.jpg", "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass.", "Light Rum, 1 1/2 oz -Lime, Juice of 1/2 -Powdered sugar, 1 tsp ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Margarita" , "Ordinary Drink" , "Cocktail glass" , "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg", "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.", "Tequila, 1 1/2 oz -Triple sec, 1/2 oz -Lime juice, 1 oz -Salt,  ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Manhattan" , "Cocktail" , "Cocktail glass" , "https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg", "Stirred over ice, strained into a chilled glass, garnished, and served up.", "Sweet Vermouth, 3/4 oz -Bourbon, 2 1/2 oz Blended -Angostura bitters, dash -Ice, 2 or 3 -Maraschino cherry, 1 -Orange peel, 1 twist of ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Moscow Mule" , "Punch / Party Drink" , "Copper Mug" , "https://www.thecocktaildb.com/images/media/drink/3pylqc1504370988.jpg", "Combine vodka and ginger beer in a highball glass filled with ice. Add lime juice. Stir gently. Garnish.", "Vodka, 2 oz -Lime juice, 2 oz -Ginger ale, 8 oz ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Alabama Slammer" , "Ordinary Drink" , "Highball glass" , "https://https://www.thecocktaildb.com/images/media/drink/qtwxwr1483387647.jpg", "Pour all ingredients (except for lemon juice) over ice in a highball glass. Stir, add a dash of lemon juice, and serve.", "Southern Comfort, 1 oz -Amaretto, 1 oz -Sloe gin, 1/2 oz -Lemon juice, 1 dash ", now(), now());
+
+INSERT INTO Cocktails (name, category, glass, pic, instructions, ing, createdAt, updatedAt)
+VALUES ("Alaska Cocktail" , "Ordinary Drink" , "Cocktail glass" , "https://www.thecocktaildb.com/images/media/drink/wsyryt1483387720.jpg", "Stir all ingredients with ice, strain contents into a cocktail glass. Drop in a twist of lemon and serve.", "Orange bitters, 2 dashes -Gin, 1 1/2 oz -Yellow Chartreuse, 3/4 oz -Lemon peel, Twist of ", now(), now());
