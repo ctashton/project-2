@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         instructions: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(1000)
         },
         pic: {
             type: DataTypes.STRING

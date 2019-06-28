@@ -6,7 +6,7 @@
         <button id="login" class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal">Log in / Sign
         up</button>
       {{else}}
-        <button id="profile" class="nav-link btn btn-success">My Profile</button>
+        <a href="/profile" id="profile" class="nav-link btn btn-success">My Profile</a>
         <button id="logout" class="nav-link btn btn-primary">Log out</button>
       {{/unless}}
 
@@ -30,9 +30,9 @@
 
         <div class="modal-body">
           Email<br>
-          <input id="email-input" type="email" style="width: 100%;" required><br>
+          <input id="email-input" type="email" style="width: 100%;" value="user@gmail.com" required><br>
           Password<br>
-          <input id="password-input" type="password" style="width: 100%;" required><br>
+          <input id="password-input" type="password" style="width: 100%;" value="123456" required><br>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" id="login">Log in</button>
@@ -78,8 +78,6 @@
     <option value="Soft Drink / Soda">Soft Drink / Soda</option>
   </select>
   <button id="cat-search" class="btn btn-primary">Go</button><br>
-
-  <button id="test" class="btn btn-success">Test</button>
 
   <div id="results"></div>
 </div>
