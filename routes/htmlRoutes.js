@@ -20,6 +20,7 @@ module.exports = function(app) {
     });
   });
 
+  // profile page
   app.get("/profile", function(req, res) {
     // get user favorites from database
     if (req.user) {
@@ -34,9 +35,11 @@ module.exports = function(app) {
         data.forEach(item => {
           let dv = item.dataValues
 
+          // remove quotes and brackets from string
           dv.ingredients = (dv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
           dv.measurements = (dv.measurements.replace(/[\[\]"]+/g,'')).split(',')
 
+          // combine ingredients and measurements into one array
           dv.ingr = []
           for (let i = 0; i < dv.ingredients.length; i++) {
             dv.ingr.push(dv.ingredients[i] + ' ' + dv.measurements[i])

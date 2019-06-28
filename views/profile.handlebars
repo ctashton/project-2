@@ -2,16 +2,16 @@
     <h1>Favorites: </h1>
     
     {{#each favorites}}
-        <ul>
+        <ul class="fav-list">
             <h2>{{name}}</h2>
             <img src="{{pic}}" width="25%" height="auto">
-            <li><strong>Category:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{category}}</li>
-            <li><strong>Alcohol Content:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{alcoholic}}</li>
-            <li><strong>Glass:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{glass}}</li>
-            <li><strong>Instructions:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{instructions}}</li>
+            <li><strong>Category:</strong> <br><span>{{category}}</span></li>
+            <li><strong>Alcohol Content:</strong> <br><span>{{alcoholic}}</span></li>
+            <li><strong>Glass:</strong> <br><span>{{glass}}</span></li>
+            <li><strong>Instructions:</strong> <br><span>{{instructions}}</span></li>
             <li><strong> Ingredients:</strong> </li>
             {{#each ingr}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{this}}<br>
+                <span>{{this}}</span></<span><br>
             {{/each}}
         </ul>
         <br><br>
