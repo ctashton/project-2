@@ -8,6 +8,29 @@ module.exports = function(app) {
     res.render("index", {user: req.user})
   });
 
+  app.get("/profile", function(req, res) {
+    // get user favorites from database
+    if (req.user) {
+      let favs = []
+
+      db.user_favorites.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      })
+      .then(data => {
+        data.forEach(item => {
+          //item.dataValues contains all drink data
+          console.log(item.dataValues)
+          favs.push(item.dataValues)
+        })
+
+        // render profile page with favorites
+        res.render("profile", { favorites: favs })
+      })
+    }
+  })
+
 
   
   // ***** boilerplate code ***** 

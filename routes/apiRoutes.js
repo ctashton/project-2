@@ -32,15 +32,6 @@ module.exports = function(app) {
     console.log("logout successful");
   });
 
-  app.post("/test", function(req, res) {
-    if (req.user) {
-      // req.user.id holds their id from the database
-      console.log('req.user.id: ' + req.user.id)
-    } else {
-      res.send(false)
-    }
-  })
-
   // search drinks by name or ingredient
   app.post("/search", function(req, res) {
     if (req.body.method === "name") {
@@ -72,6 +63,7 @@ module.exports = function(app) {
   app.post("/favorite", function(req, res) {
     // check if user is logged in
     if (req.user) {
+      console.log(req.body)
       db.user_favorites.create({
         name: req.body.name,
         category: req.body.category,
