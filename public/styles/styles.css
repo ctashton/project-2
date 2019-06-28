@@ -5,3 +5,7 @@
 #results a:hover {
   cursor: pointer;
 }
+
+.fav-list span {
+  margin-left: 1em;
+}

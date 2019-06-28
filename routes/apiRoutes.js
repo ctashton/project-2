@@ -51,7 +51,7 @@ module.exports = function(app) {
 
   // user login
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.redirect('/index')
+    res.redirect('/')
 
     console.log("login successful");
   });
@@ -77,7 +77,8 @@ module.exports = function(app) {
     res.redirect("/");
     console.log("logout successful");
   });
-  
+
+  // search drinks by name or ingredient  
   app.post("/search", function(req, res) {  // search drinks by name or ingredient
     if (req.body.method === "name") {
       axios.searchByName(req.body.data)
@@ -104,6 +105,33 @@ module.exports = function(app) {
         .then(data => res.json(data))
     }
   })
+
+  app.post("/favorite", function(req, res) {
+    // check if user is logged in
+    if (req.user) {
+      console.log(req.body)
+      db.user_favorites.create({
+        name: req.body.name,
+        category: req.body.category,
+        alcoholic: req.body.alcoholic,
+        glass: req.body.glass,
+        instructions: req.body.instructions,
+        pic: req.body.pic,
+        ingredients: req.body.ingredients,
+        measurements: req.body.measurements,
+        UserId: req.user.id
+      })
+      .then(user => console.log('success'))
+      .catch(err => console.log(err))
+    } else {
+      // user is not logged in
+      res.send(false)
+    }
+  })
+
+
+
+  // ***** boilerplate code ***** 
 
   // Get all cocktails
   app.get("/api/cocktails", function(req, res) {
