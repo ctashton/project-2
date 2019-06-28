@@ -25,7 +25,6 @@ module.exports = function(app) {
     if (req.user) {
       let favs = []
      
-
       db.user_favorites.findAll({
         where: {
           UserId: req.user.id
@@ -33,11 +32,18 @@ module.exports = function(app) {
       })
       .then(data => {
         data.forEach(item => {
+          let dv = item.dataValues
+
+          dv.ingredients = (dv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
+          dv.measurements = (dv.measurements.replace(/[\[\]"]+/g,'')).split(',')
+
+          dv.ingr = []
+          for (let i = 0; i < dv.ingredients.length; i++) {
+            dv.ingr.push(dv.ingredients[i] + ' ' + dv.measurements[i])
+          }
+
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
-          for (let i = 0; i < item.dataValues.ingredients.length; i++) {
-            
-          }
         })
 
         // render profile page with favorites

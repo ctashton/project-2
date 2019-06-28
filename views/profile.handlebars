@@ -5,12 +5,14 @@
         <ul>
             <h2>{{name}}</h2>
             <img src="{{pic}}" width="25%" height="auto">
-            <li>{{category}}</li>
-            <li>{{alcoholic}}</li>
-            <li>{{glass}}</li>
-            <li>{{instructions}}</li>
-            <li>{{ingredients}}</li>
-            <li>{{measurements}}</li>
+            <li><strong>Category:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{category}}</li>
+            <li><strong>Alcohol Content:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{alcoholic}}</li>
+            <li><strong>Glass:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{glass}}</li>
+            <li><strong>Instructions:</strong> <br>&nbsp;&nbsp;&nbsp;&nbsp;{{instructions}}</li>
+            <li><strong> Ingredients:</strong> </li>
+            {{#each ingr}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{this}}<br>
+            {{/each}}
         </ul>
         <br><br>
     {{/each}}
