@@ -224,7 +224,7 @@ $(document).on("click", "#cat-result", function() {
 })
 
 // delete from favorites list
-$("#delete-fav").on("click", function() {
+$(document).on("click", "#delete-fav", function() {
   let id = $(this).attr('data-id')
   $.ajax("/api/delete/" + id, {
     type: "DELETE"
