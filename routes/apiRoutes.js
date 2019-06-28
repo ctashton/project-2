@@ -142,9 +142,9 @@ module.exports = function(app) {
 
   // Written for future use for custom drinks
   // Create a new cocktail
-  app.post("/api/cocktails", function(req, res) {
-    db.Cocktails.create(req.body).then(function(dbCocktails) {
-      res.json(dbCocktails);
+  app.post("/api/customize", function(req, res) {
+    db.Custom_drink.create(req.body).then(function(dbCustomDrink) {
+      res.json(dbCustomDrink);
     });
   });
 

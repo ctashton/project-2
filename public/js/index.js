@@ -1,9 +1,11 @@
-//  Boiler Plate
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+// Get references to custom drink elements
+var $customName = $("#customName");
+var $customPic = $("#customImgFile");
+var $customCat = $("#customDrinkCat");
+var $customGlass = $("#customGlass");
+var $customInstructions = $("#customInstructions");
+var $customIng = $("#customIng");
+var $customSave = $("#customSave")
 
 // Beginning of teams code
 
@@ -221,9 +223,6 @@ $(document).on("click", "#cat-result", function() {
   })
 })
 
-// main page display
-// ajax call to populate main page display from api
-
 // cocktail modal
 $('.drink-card').click(function (event) {
   var id = $(this).data("id");
@@ -242,6 +241,9 @@ $('.drink-card').click(function (event) {
   $('#drinkIng').html("Ingredients: " + ingredients);
   $('#cocktailModal').modal('show');
 });
+
+// on click function from Modal
+
 
 // star for favorites
 $(".star").click(function() {
@@ -262,34 +264,34 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveCustomDrink: function(customDrink) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/custom_drink",
+      data: JSON.stringify(customDrink)
     });
   },
-  getExamples: function() {
+  getCustomDrink: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/custom_drink",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteCustomDrink: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/custom_drink/" + id,
       type: "DELETE"
     });
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+var refreshCustomDrinks = function() {
+  API.getCustomDrink().then(function(data) {
+    var $customDrink = data.map(function(customDrink) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -315,27 +317,36 @@ var refreshExamples = function() {
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new custom drink
+// Save the new custom drink to the db and refresh the users custom drinks
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var customDrink = {
+    name: $customName.val().trim(),
+    category: $customCat.val().trim(),
+    glass: $customGlass.val().trim(),
+    instructions: $customInstructions.val().trim(),
+    pic: $customPic.val().trim(),
+    ingredients: $customIng.val().trim()
   };
+  console.log(customDrink);
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(customDrink.name && customDrink.category && customDrink.instructions)) {
+    alert("You must enter a name, category, and instructions!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveCustomDrink(customDrink).then(function() {
+    refreshCustomDrinks();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $customName.val("");
+  $customCat.val("");
+  $customGlass.val("");
+  $customInstructions.val("");
+  $customPic.val("");
+  $customIng.val("")
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -351,5 +362,5 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$customSave.on("click", handleFormSubmit);
+// $exampleList.on("click", ".delete", handleDeleteBtnClick);
