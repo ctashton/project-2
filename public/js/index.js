@@ -221,7 +221,7 @@ $(document).on("click", "#cheers", function() {
   let dif = moment( age , "MMDDYYYY").fromNow();
   console.log(dif)
     if (parseInt(dif)>=21){
-      let url = "/";
+      let url = "/index";
       $(location).attr('href',url)
       console.log("User passed 21");
 
