@@ -19,8 +19,11 @@ module.exports = function(app) {
       });
     });
   });
-
-
+  app.get("/splash", function(req, res){
+    res.render("splash", {
+      user: req.user,
+    })
+  })
   // A GET Route to /customize which should display the custom drink page.
 
   // Need route that populates users custom drinks to their profile
