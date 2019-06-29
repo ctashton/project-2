@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-#fav-button {
+#fav-button, #fav-button-extra {
   width: 100%;
 }
 
