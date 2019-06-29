@@ -83,6 +83,18 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/customize/:id", function(req, res) {
+    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
+      dbCocktails
+    ) {
+      var Fing=(dbCocktails.ing).split("-");
+      res.render("customize", {
+        cc : dbCocktails ,
+        ccFing : Fing[0]
+      });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

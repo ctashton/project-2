@@ -153,9 +153,28 @@ module.exports = function(app) {
 
   // Written for future use for custom drinks
   // Create a new cocktail
-  app.post("/api/customize", function(req, res) {
+  app.post("/customize", function(req, res) {
     db.Custom_drink.create(req.body).then(function(dbCustomDrink) {
-      res.json(dbCustomDrink);
+      // check if user is logged in
+    if (req.user) {
+      console.log(req.body)
+      db.custom_drink.create({
+        name: req.body.name,
+        category: req.body.category,
+        alcoholic: req.body.alcoholic,
+        glass: req.body.glass,
+        instructions: req.body.instructions,
+        pic: req.body.pic,
+        ingredients: req.body.ingredients,
+        measurements: req.body.measurements,
+        UserId: req.user.id
+      })
+      .then(user => console.log('success'))
+      .catch(err => console.log(err))
+    } else {
+      // user is not logged in
+      res.send(false)
+    }
     });
   });
 
