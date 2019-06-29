@@ -330,6 +330,7 @@ $("#cat-dropdown").on("change", function () {
         // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
+      let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
     })
   })
@@ -461,6 +462,7 @@ function search(data) {
           // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').append(drinkResult)
+        let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
         let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
       })
     })
@@ -485,6 +487,7 @@ function search(data) {
           // `<a data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').prepend(drinkResult)
+        let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
         let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
       })
     })
