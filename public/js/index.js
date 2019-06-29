@@ -128,7 +128,19 @@ $("#name-search").on("click", function () {
     console.log(data)
     $("#results").empty()
     data.forEach(item => {
-      let drinkResult = $(`<a data-id="${item.id}">${item.name}</a><br>`)
+      console.log('item: ' + item)
+      let drinkResult = $(
+        `
+          <div id="result-card" class="card" style="width: 18rem;">
+            <img class="card-img-top" src="${item.pic}">
+            <div class="card-body">
+              <h5 class="card-title text-center">${item.name}</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        `
+        // <a data-id="${item.id}">${item.name}</a><br>
+      )
       $('#results').append(drinkResult)
       let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })

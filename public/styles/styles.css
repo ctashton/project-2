@@ -2,8 +2,17 @@
   line-height: 2.5;
 }
 
+#result-card {
+  display: inline-block;
+  margin: 2.5em;
+}
+
 #results a:hover {
   cursor: pointer;
+}
+
+#fav-button {
+  width: 100%;
 }
 
 .fav-list span {
