@@ -74,6 +74,7 @@ $(document).on("click", "#logout", function () {
 
 // get more info about a drink
 $(document).on("click", "#more-info", function() {
+
   let name = $(this).siblings("#fav-button").attr("data-name")
   let category = $(this).siblings("#fav-button").attr("data-category")
   let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
@@ -82,7 +83,7 @@ $(document).on("click", "#more-info", function() {
   let ingredients = $(this).siblings("#fav-button").attr("data-ingredients")
   let measurements = $(this).siblings("#fav-button").attr("data-measurements")
 
-  $("#info-name").html(`${name}`)
+  $("#info-name").html(`<strong>${name}</strong>`)
   $("#info-category").html(`<strong>Category: </strong>${category}`)
   $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
   $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
@@ -91,6 +92,34 @@ $(document).on("click", "#more-info", function() {
   $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
 
   $("#moreInfoModal").modal("show")
+})
+
+$(document).on("click", "#more-info-extra", function() {
+  let id = $(this).siblings("#fav-button-extra").attr("data-id")
+
+  $.post("/search", {
+    method: "id",
+    data: id
+  })
+  .then(data => {
+    let name = data.name
+    let category = data.category
+    let alcoholic = data.alcoholic
+    let glass = data.glass
+    let instructions = data.instructions
+    let ingredients = data.ingredients
+    let measurements = data.measurements
+
+    $("#info-name").html(`<strong>${name}</strong>`)
+    $("#info-category").html(`<strong>Category: </strong>${category}`)
+    $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
+    $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
+    $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
+    $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
+    $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+
+    $("#moreInfoModal").modal("show")
+  })
 })
 
 // add a drink to favorites
@@ -193,6 +222,7 @@ $("#ing-search").on("click", function () {
         // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
+      let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
@@ -231,6 +261,7 @@ $("#most-pop").on("click", function () {
         // `<a data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
+      let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
       let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
@@ -256,6 +287,7 @@ $("#random").on('click', function () {
       // `<a data-id="${data.id}">${data.name}</a><br>`
     )
     $('#results').append(drinkResult)
+    let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
     let favButton = $(`<button id="fav-button" data-id="${data.id}" data-name="${data.name}" data-category="${data.category}" data-alcoholic="${data.alcoholic}" data-glass="${data.glass}" data-instructions="${data.instructions}" data-pic="${data.pic}" data-ingredients="${data.ingredients}" data-measurements="${data.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
   })
 })
@@ -312,6 +344,7 @@ $("#cat-search").on("click", function () {
         // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
+      let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
     })
   })
