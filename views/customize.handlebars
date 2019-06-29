@@ -3,7 +3,7 @@
         <div class="form-row align-items-center">
           <div class="form-group col-md-6">
             <label for="customName">Choose Thy Name Wisely</label>
-            <input type="text" class="form-control" id="customName" placeholder="Libation Lovers!">
+            <input type="text" class="form-control" id="customName" placeholder="{{cc.name}}">
           </div>
           <div class="form-group col-md-6">
             <label for="customImgFile">Add Your Drinks Selfie Here</label>
@@ -13,7 +13,7 @@
         <div class="form-row align-items-center"> 
           <div class="form-group col-md-6">
             <label for="customDrinkCat">Choose Your Category</label>
-            <select class="form-control" id="customDrinkCat">
+            <select class="form-control" id="customDrinkCat" placeholder={{cc.category}}>
               <option></option>  
               <option>Ordinary Drink</option>
               <option>Cocktail</option>
@@ -30,7 +30,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="customGlass">Choose Your Glassware</label>
-            <select class="form-control" id="customGlass">
+            <select class="form-control" id="customGlass" placeholder="{{cc.glass}}">
               <option></option>  
               <option>Beer Glass</option>
               <option>Beer Mug</option>
@@ -67,15 +67,16 @@
         <div class="form-row align-items-center">
           <div class="form-group col">
             <label for="customInstructions">Drink Instructions</label>
-            <textarea class="form-control" id="customInstructions" rows="3" placeholder="How to make your drink goes here..."></textarea>
+            <textarea class="form-control" id="customInstructions" rows="3" placeholder="{{cc.instructions}}"></textarea>
           </div>
         </div>
         <div class="form-row align-items-center">
           <div class="form-group col">
             <label for="customIng">Ingredients</label>
-            <textarea class="form-control" id="customIng" rows="3" placeholder="What's in your drink goes here..."></textarea>
+            <textarea class="form-control" id="customIng" rows="3" placeholder="{{ccFing}}"></textarea>
           </div>
         </div>
         <button type="submit" class="btn btn-warning btn-block" id="customSave">Save Customized Libation</button>
         </form>
     </div>    
+  

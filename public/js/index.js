@@ -223,26 +223,63 @@ $(document).on("click", "#cat-result", function() {
   })
 })
 
+var chosenDrink;
 // cocktail modal
 $('.drink-card').click(function (event) {
-  var id = $(this).data("id");
-  var pic = $(this).data("pic");
-  var name = $(this).data("name");
-  var category = $(this).data("category");
-  var glass = $(this).data("glass");
-  var instructions = $(this).data("instructions");
-  var ingredients = $(this).data("ingredients");
+    chosenDrink = {
+    id: $(this).data("id"),
+    pic: $(this).data("pic"),
+    name: $(this).data("name"),
+    category: $(this).data("category"),
+    glass: $(this).data("glass"),
+    instructions: $(this).data("instructions"),
+    ingredients: $(this).data("ingredients")
+  }
   
-  $("#drinkTitle").html(name);
-  $("#drinkImage").attr("src", pic);
-  $('#drinkCategory').html("Category: " + category);
-  $('#drinkGlass').html("Glass: " + glass);
-  $('#drinkInstructions').html("Instructions: " + instructions);
-  $('#drinkIng').html("Ingredients: " + ingredients);
+  $("#drinkId").attr("data-id", chosenDrink.id);
+  $("#drinkTitle").html(chosenDrink.name);
+  $("#drinkImage").attr("src", chosenDrink.pic);
+  $('#drinkCategory').html("Category: " + chosenDrink.category);
+  $('#drinkGlass').html("Glass: " + chosenDrink.glass);
+  $('#drinkInstructions').html("Instructions: " + chosenDrink.instructions);
+  $('#drinkIng').html("Ingredients: " + chosenDrink.ingredients);
+  $('#modifyBtn').attr("data-id", chosenDrink.id)
+                 .attr("data-pic", chosenDrink.pic)
+                 .attr("data-name", chosenDrink.name)
+                 .attr("data-category", chosenDrink.category)
+                 .attr("data-glass", chosenDrink.glass)
+                 .attr("data-instructions", chosenDrink.instructions)
+                 .attr("data-ingredients", chosenDrink.ingredients);
   $('#cocktailModal').modal('show');
 });
 
 // on click function from Modal
+$('#modifyBtn').click(function (event) {
+  location.href = "/customize/" + chosenDrink.id;
+  
+  var makeCustomDrink = {
+    newId: $(this).data("id"),
+    pic: $(this).data("pic"),
+    name: $(this).data("name"),
+    category: $(this).data("category"),
+    glass: $(this).data("glass"),
+    instructions: $(this).data("instructions"),
+    ingredients: $(this).data("ingredients")
+  };
+  console.log(makeCustomDrink);
+  
+  // Send the POST request.
+  // $.ajax("/customize", {
+  //   type: "POST",
+  //   data: makeCustomDrink
+  // }).then(
+  //   function() {
+  //     console.log("created new drink!");
+  //     // Reload the page to get the updated list
+  //     location.reload();
+  //   }
+  // );
+});
 
 
 // star for favorites
