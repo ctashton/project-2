@@ -198,6 +198,13 @@ $("#name-search").on("click", function () {
   })
 })
 
+// search by name on enter
+$("#drink-name").keyup(function(event) {
+  if (event.key === "Enter") {
+    $("#name-search").click()
+  }
+})
+
 // search by ingredient
 $("#ing-search").on("click", function () {
   let ingName = $("#ing-name").val().trim()
@@ -226,6 +233,13 @@ $("#ing-search").on("click", function () {
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
+})
+
+// search by ingredient on enter
+$("#ing-name").keyup(function(event) {
+  if (event.key === "Enter") {
+    $("#ing-search").click()
+  }
 })
 
 // clicking a result will search by id and grab more data about that drink
