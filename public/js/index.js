@@ -8,9 +8,9 @@ var $customIng = $("#customIng");
 var $customSave = $("#customSave")
 
 // Beginning of teams code
-
+moment().format();
 // log in / sign up
-$("#login-form").on("submit", function() {
+$("#login-form").on("submit", function () {
   event.preventDefault();
 
   // get user data from form
@@ -39,12 +39,12 @@ function loginUser(email, password) {
     email: email,
     password: password
   })
-    .then(function(data) {
+    .then(function (data) {
       $("#loginModal").toggle();
       $(".modal-backdrop").remove();
       location.reload()
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log(err);
     });
 }
@@ -55,25 +55,25 @@ function signupUser(email, password) {
     email: email,
     password: password
   })
-    .then(function(data) {
+    .then(function (data) {
       $("#loginModal").toggle();
       $(".modal-backdrop").remove();
       location.reload()
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log(err);
     });
 }
 
 // log out
-$(document).on("click", "#logout", function() {
+$(document).on("click", "#logout", function () {
   $.get("/logout").then(
     location.reload()
   );
 });
 
 // add a drink to favorites
-$(document).on("click", "#fav-button", function() {
+$(document).on("click", "#fav-button", function () {
 
   $.post("/favorite", {
     name: $(this).attr('data-name'),
@@ -92,13 +92,13 @@ $(document).on("click", "#fav-button", function() {
 })
 
 // search by ingredient and category do not return full results, so we must search by id
-$(document).on("click", "#fav-button-extra", function() {
+$(document).on("click", "#fav-button-extra", function () {
   let id = $(this).attr('data-id')
 
   $.post("/search", {
     method: "id",
     data: id
-  }).then( data => {
+  }).then(data => {
     console.log('data: ' + JSON.stringify(data, null, 4))
     $.post("/favorite", {
       //data
@@ -118,13 +118,13 @@ $(document).on("click", "#fav-button-extra", function() {
 })
 
 // search for drink by name
-$("#name-search").on("click", function() {
+$("#name-search").on("click", function () {
   let drinkName = $('#drink-name').val().trim()
 
   $.post("/search", {
     method: "name",
     data: drinkName
-  }).then( data => {
+  }).then(data => {
     console.log(data)
     $("#results").empty()
     data.forEach(item => {
@@ -136,13 +136,13 @@ $("#name-search").on("click", function() {
 })
 
 // search by ingredient
-$("#ing-search").on("click", function() {
+$("#ing-search").on("click", function () {
   let ingName = $("#ing-name").val().trim()
 
   $.post("/search", {
     method: "ing",
     data: ingName
-  }).then( data => {
+  }).then(data => {
     console.log(data)
     $("#results").empty()
     data.forEach(item => {
@@ -154,19 +154,19 @@ $("#ing-search").on("click", function() {
 })
 
 // clicking a result will search by id and grab more data about that drink
-$(document).on("click", "#ing-result", function() {
+$(document).on("click", "#ing-result", function () {
   let id = $(this).attr('data-id')
 
   $.post("/search", {
     method: "id",
     data: id
-  }).then( data => {
+  }).then(data => {
     console.log(data)
   })
 })
 
 // search most popular
-$("#most-pop").on("click", function() {
+$("#most-pop").on("click", function () {
   $.post("/search", {
     method: "popular"
   }).then(data => {
@@ -181,7 +181,7 @@ $("#most-pop").on("click", function() {
 })
 
 // get a random drink
-$("#random").on('click', function() {
+$("#random").on('click', function () {
   $.post("/search", {
     method: "random"
   }).then(data => {
@@ -194,7 +194,7 @@ $("#random").on('click', function() {
 })
 
 // search by category
-$("#cat-search").on("click", function() {
+$("#cat-dropdown").on("change", function () {
   let val = $('#cat-dropdown :selected').text()
 
   $.post("/search", {
@@ -212,18 +212,51 @@ $("#cat-search").on("click", function() {
 })
 
 // clicking a result will search by id and grab more data about that drink
-$(document).on("click", "#cat-result", function() {
+$(document).on("click", "#cheers", function() {
+  let m = $('#monthInp').val().trim() 
+  let d = $('#dateInp').val().trim() 
+  let y = $('#yearInp').val().trim()
+  let age = m+d+y
+  console.log(age)
+  let dif = moment( age , "MMDDYYYY").fromNow();
+  console.log(dif)
+    if (parseInt(dif)>=21){
+      let url = "/index";
+      $(location).attr('href',url)
+      console.log("User passed 21");
+
+    }
+    else {
+      let url = 'https://www.cdc.gov/alcohol/fact-sheets/minimum-legal-drinking-age.htm';
+      $(location).attr('href',url)
+      console.log("User is under 21");
+    }
+})
+
+$(document).on("click", "#cat-result", function () {
   let id = $(this).attr('data-id')
 
   $.post("/search", {
     method: "id",
     data: id
-  }).then( data => {
+  }).then(data => {
     console.log(data)
   })
 })
 
-var chosenDrink;
+// delete from favorites list
+$(document).on("click", "#delete-fav", function() {
+  let id = $(this).attr('data-id')
+  $.ajax("/api/delete/" + id, {
+    type: "DELETE"
+  })
+  .then(function(data) {
+      console.log(`drink ${id} successfully deleted`)
+      location.reload()
+  })
+})
+
+  var chosenDrink;
 // cocktail modal
 $('.drink-card').click(function (event) {
     chosenDrink = {
@@ -283,10 +316,43 @@ $('#modifyBtn').click(function (event) {
 
 
 // star for favorites
-$(".star").click(function() {
+$(".star").click(function () {
   $(this).toggleClass("far fa-star fas fa-star");
 });
 
+// Multi-Search
+function search(data) {
+  if (event.keyCode == 13) {
+    $("#results").empty()
+    let ingName = data.value
+
+    $.post("/search", {
+      method: "ing",
+      data: ingName
+    }).then(data => {
+      console.log(data)
+      data.forEach(item => {
+        let drinkResult = $(`<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`)
+        $('#results').append(drinkResult)
+        let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+      })
+    })
+    let drinkName = data.value
+
+    $.post("/search", {
+      method: "name",
+      data: drinkName
+    }).then(data => {
+      console.log(data)
+      data.forEach(item => {
+        let drinkResult = $(`<a data-id="${item.id}">${item.name}</a><br>`)
+        $('#results').prepend(drinkResult)
+        let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+      })
+    })
+    
+  }
+}
 
 // ***** boilerplate code ***** 
 
@@ -301,7 +367,7 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveCustomDrink: function(customDrink) {
+  saveCustomDrink: function (customDrink) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -311,13 +377,13 @@ var API = {
       data: JSON.stringify(customDrink)
     });
   },
-  getCustomDrink: function() {
+  getCustomDrink: function () {
     return $.ajax({
       url: "api/custom_drink",
       type: "GET"
     });
   },
-  deleteCustomDrink: function(id) {
+  deleteCustomDrink: function (id) {
     return $.ajax({
       url: "api/custom_drink/" + id,
       type: "DELETE"
@@ -326,9 +392,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshCustomDrinks = function() {
-  API.getCustomDrink().then(function(data) {
-    var $customDrink = data.map(function(customDrink) {
+var refreshCustomDrinks = function () {
+  API.getCustomDrink().then(function (data) {
+    var $customDrink = data.map(function (customDrink) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -356,7 +422,7 @@ var refreshCustomDrinks = function() {
 
 // handleFormSubmit is called whenever we submit a new custom drink
 // Save the new custom drink to the db and refresh the users custom drinks
-var handleFormSubmit = function(event) {
+var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var customDrink = {
@@ -374,7 +440,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveCustomDrink(customDrink).then(function() {
+  API.saveCustomDrink(customDrink).then(function () {
     refreshCustomDrinks();
   });
 
@@ -388,12 +454,12 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
 };

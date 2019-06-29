@@ -1,18 +1,3 @@
-<nav class="navbar justify-content-end">
-  <ul class="nav">
-    <li class="nav-item">
-
-      {{#unless user}}
-        <button id="login" class="nav-link btn btn-primary" data-toggle="modal" data-target="#loginModal">Log in / Sign
-        up</button>
-      {{else}}
-        <a href="/profile" id="profile" class="nav-link btn btn-success">My Profile</a>
-        <button id="logout" class="nav-link btn btn-primary">Log out</button>
-      {{/unless}}
-
-    </li>
-  </ul>
-</nav>
 
 <!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
@@ -47,38 +32,6 @@
 </div>
 
 <div class="container">
-  Search by drink name: <br>
-  <input id="drink-name" type="text">
-  <button id="name-search" class="btn btn-primary">Go</button><br>
-  
-  <br>
-
-  Search by ingredient: <br>
-  <input id="ing-name" type="text">
-  <button id="ing-search" class="btn btn-primary">Go</button><br>
-
-  Most popular cocktails: 
-  <button id="most-pop" class="btn btn-primary">Go</button><br>
-
-  Random cocktail: 
-  <button id="random" class="btn btn-primary">Go</button><br>
-
-  Search by category: 
-  <select id="cat-dropdown">
-    <option value="Ordinary Drink">Ordinary Drink</option>
-    <option value="Cocktail">Cocktail</option>
-    <option value="Milk / Float / Shake">Milk / Float / Shake</option>
-    <option value="Other / Unknown">Other / Unknown</option>
-    <option value="Cocoa">Cocoa</option>
-    <option value="Shot">Shot</option>
-    <option value="Coffee / Tea">Coffee / Tea</option>
-    <option value="Homemade Liqueur">Homemade Liqueur</option>
-    <option value="Punch / Party Drink">Punch / Party Drink</option>
-    <option value="Beer">Beer</option>
-    <option value="Soft Drink / Soda">Soft Drink / Soda</option>
-  </select>
-  <button id="cat-search" class="btn btn-primary">Go</button><br>
-
   <div id="results"></div>
 </div>
 
@@ -127,6 +80,7 @@
                 <p id="drinkGlass"></p>
                 <p id="drinkInstructions"></p>
                 <p id="drinkIng"></p>
+            </div>
             <div class="modal-footer">
                 <a href="/customize"><button type="button" id="modifyBtn" class="btn btn-warning" data-dismiss="modal">Customize/Save</button></a>
                 <a href="/">← Back To Home</a>

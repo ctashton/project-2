@@ -29,7 +29,7 @@ module.exports = function(app) {
   });
 };*/
 
-  // app.get("/", function(req,res){ // "age" is the input from age page.
+  // app.get("/verify", function(req,res){ // "age" is the input from age page.
   //   let age = req.body.age;       // format is MMDDYYYY, for exp: 07101990
                             
   //   let dif = moment( age , "MMDDYYY").fromNow();
@@ -127,6 +127,17 @@ module.exports = function(app) {
       // user is not logged in
       res.send(false)
     }
+  })
+
+  app.delete("/api/delete/:id", function(req, res) {
+    db.user_favorites.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => {
+      res.status(200).end()
+    })
   })
 
 

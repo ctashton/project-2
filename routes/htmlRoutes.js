@@ -3,14 +3,14 @@ var path = require("path");
 
 module.exports = function(app) {
   // Load index page
-  // app.get("/", function(req, res) {
-  //   // req.user will determine if user is logged in
-  //   res.render("index", {user: req.user})
-  // });
+  app.get("/", function(req, res) {
+    // req.user will determine if user is logged in
+    res.render("splash", {user: req.user})
+  });
 
   // Load index page pull from db to populate 
   // Main page display
-  app.get("/", function(req, res) {
+  app.get("/index", function(req, res) {
     db.Cocktails.findAll({}).then(function(dbCocktails) {
       res.render("index",{
         user: req.user,
@@ -19,8 +19,11 @@ module.exports = function(app) {
       });
     });
   });
-
-
+  app.get("/splash", function(req, res){
+    res.render("splash", {
+      user: req.user,
+    })
+  })
   // A GET Route to /customize which should display the custom drink page.
 
   // Need route that populates users custom drinks to their profile

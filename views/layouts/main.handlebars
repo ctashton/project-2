@@ -3,28 +3,154 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--moment-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   {{!-- Font Awesome --}}
   <script src="https://kit.fontawesome.com/eda450702a.js"></script>
   <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <title>Neat</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse">
+      <div class="navbar-nav input-group-btn search-panel">
+        <input type="hidden" name="search_param" value="" id="search_param">
+        <input type="text" class="search form-control mr-sm-2 col-5" onkeydown="search(this)" name="x"
+          placeholder="Search">
+        <select id="cat-dropdown">
+          <option disabled selected value>Filter Categories</option>
+          <option value="Ordinary Drink">Ordinary Drink</option>
+          <option value="Cocktail">Cocktail</option>
+          <option value="Milk / Float / Shake">Milk / Float / Shake</option>
+          <option value="Other / Unknown">Other / Unknown</option>
+          <option value="Cocoa">Cocoa</option>
+          <option value="Shot">Shot</option>
+          <option value="Coffee / Tea">Coffee / Tea</option>
+          <option value="Homemade Liqueur">Homemade Liqueur</option>
+          <option value="Punch / Party Drink">Punch / Party Drink</option>
+          <option value="Beer">Beer</option>
+          <option value="Soft Drink / Soda">Soft Drink / Soda</option>
+        </select>
+      </div>
+    </div>
+
+    <a class="navbar-brand text-center" href="/">NeatUp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto">
+        {{#unless user}}
+        {{else}}
+        <li class="nav-item">
+          <a href="/profile" id="profile" class="nav-link">My Recipes</a>
+        </li>
+        {{/unless}}
+        <li class="nav-item">
+          {{#unless user}}
+          <button id="login" class="nav-link btn btn-dark" data-toggle="modal" data-target="#loginModal">Log in /
+            Sign
+            up</button>
+          {{else}}
+          <button id="logout" class="nav-dark">Log out</button>
+          {{/unless}}
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   {{{body}}}
 
+      <footer class="page-footer font-small pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">About Neat</h5>
+          <p>Neat is an application developed as a project for the University of Central Florida's Coding Bootcamp
+            through Trilogy Education. With this application you can check out alcholoholic drink recipes, save & modify
+            them, and eventually share those drink creations with friends! </p>
+
+        </div>
+        <!-- Grid column -->
+        <hr class="clearfix w-100 d-md-none pb-3">
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+          <!-- Links -->
+          <h5 class="text-uppercase">Team</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://github.com/clearplaid">Shannon</a>
+            </li>
+            <li>
+              <a href="https://github.com/SCbaris">Can</a>
+            </li>
+            <li>
+              <a href="https://github.com/RyanBirch">Ryan</a>
+            </li>
+            <li>
+              <a href="https://github.com/ctashton">Corey</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+          <!-- Links -->
+          <h5 class="text-uppercase">Repo Info</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://github.com/clearplaid/project-2">Github Repository</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright
+    </div>
+    <!-- Copyright -->
+  </footer>
+<scrit>
+      moment().format();
+</scrit>
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <!-- javascript -->
   <script src="/js/index.js"></script>
   <!-- bootstrap js -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
