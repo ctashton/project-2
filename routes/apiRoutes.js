@@ -129,6 +129,17 @@ module.exports = function(app) {
     }
   })
 
+  app.delete("/api/delete/:id", function(req, res) {
+    db.user_favorites.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => {
+      res.status(200).end()
+    })
+  })
+
 
 
   // ***** boilerplate code ***** 
