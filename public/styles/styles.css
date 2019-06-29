@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+#more-info, #more-info-extra {
+  width: 100%;
+}
+
 .fav-list span {
   margin-left: 1em;
 }
