@@ -9,3 +9,12 @@
 .fav-list span {
   margin-left: 1em;
 }
+
+.search-banner {
+  padding: 3em 0em;
+}
+
+.search-item {
+  display: inline-block;
+  margin: 1em 3em;
+}

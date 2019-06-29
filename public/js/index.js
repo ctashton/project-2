@@ -211,6 +211,23 @@ $("#cat-dropdown").on("change", function () {
   })
 })
 
+$("#cat-search").on("click", function () {
+  let val = $('#cat-dropdown-banner :selected').text()
+
+  $.post("/search", {
+    method: "category",
+    data: val
+  }).then(data => {
+    console.log(data)
+    $("#results").empty()
+    data.forEach(item => {
+      let catResult = $(`<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`)
+      $('#results').append(catResult)
+      let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
+    })
+  })
+})
+
 // clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#cheers", function() {
   let m = $('#monthInp').val().trim() 
