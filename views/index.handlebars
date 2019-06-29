@@ -31,7 +31,48 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container search-banner">
+
+  <div class="search-item">
+    Search by drink name: 
+    <input id="drink-name" type="text">
+    <button id="name-search" class="btn btn-primary">Go</button>
+  </div>
+  
+  <div class="search-item">
+    Search by ingredient: 
+    <input id="ing-name" type="text">
+    <button id="ing-search" class="btn btn-primary">Go</button><br>
+  </div>  
+
+  <div class="search-item">
+    Search by category: 
+    <select id="cat-dropdown-banner">
+      <option value="Ordinary Drink">Ordinary Drink</option>
+      <option value="Cocktail">Cocktail</option>
+      <option value="Milk / Float / Shake">Milk / Float / Shake</option>
+      <option value="Other / Unknown">Other / Unknown</option>
+      <option value="Cocoa">Cocoa</option>
+      <option value="Shot">Shot</option>
+      <option value="Coffee / Tea">Coffee / Tea</option>
+      <option value="Homemade Liqueur">Homemade Liqueur</option>
+      <option value="Punch / Party Drink">Punch / Party Drink</option>
+      <option value="Beer">Beer</option>
+      <option value="Soft Drink / Soda">Soft Drink / Soda</option>
+    </select>
+    <button id="cat-search" class="btn btn-primary">Go</button>
+  </div>
+
+  <div class="search-item">
+    Most popular cocktails: 
+    <button id="most-pop" class="btn btn-primary">Go</button>
+  </div>
+
+  <div class="search-item">
+    Random cocktail: 
+    <button id="random" class="btn btn-primary">Go</button>
+  </div>
+
   <div id="results"></div>
 </div>
 

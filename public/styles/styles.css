@@ -2,10 +2,28 @@
   line-height: 2.5;
 }
 
+#result-card {
+  display: inline-block;
+  margin: 2.5em;
+}
+
 #results a:hover {
   cursor: pointer;
 }
 
+#fav-button, #fav-button-extra {
+  width: 100%;
+}
+
 .fav-list span {
   margin-left: 1em;
+}
+
+.search-banner {
+  padding: 3em 0em;
+}
+
+.search-item {
+  display: inline-block;
+  margin: 1em 3em;
 }
