@@ -72,6 +72,27 @@ $(document).on("click", "#logout", function () {
   );
 });
 
+// get more info about a drink
+$(document).on("click", "#more-info", function() {
+  let name = $(this).siblings("#fav-button").attr("data-name")
+  let category = $(this).siblings("#fav-button").attr("data-category")
+  let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
+  let glass = $(this).siblings("#fav-button").attr("data-glass")
+  let instructions = $(this).siblings("#fav-button").attr("data-instructions")
+  let ingredients = $(this).siblings("#fav-button").attr("data-ingredients")
+  let measurements = $(this).siblings("#fav-button").attr("data-measurements")
+
+  $("#info-name").html(`${name}`)
+  $("#info-category").html(`<strong>Category: </strong>${category}`)
+  $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
+  $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
+  $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
+  $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
+  $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+
+  $("#moreInfoModal").modal("show")
+})
+
 // add a drink to favorites
 $(document).on("click", "#fav-button", function () {
 
@@ -142,6 +163,7 @@ $("#name-search").on("click", function () {
         // <a data-id="${item.id}">${item.name}</a><br>
       )
       $('#results').append(drinkResult)
+      let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
       let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
