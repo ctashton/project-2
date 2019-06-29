@@ -366,14 +366,14 @@ $("#cat-search").on("click", function () {
 
 // clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#cheers", function() {
-  let m = $('#monthInp').val().trim() 
-  let d = $('#dateInp').val().trim() 
-  let y = $('#yearInp').val().trim()
+  let m = $('#monthInp').val().trim().toString()
+  let d = $('#dateInp').val().trim().toString()
+  let y = $('#yearInp').val().trim().toString()
   let age = m+d+y
   console.log(age)
   let dif = moment( age , "MMDDYYYY").fromNow();
   console.log(dif)
-    if (parseInt(dif)>=21){
+    if (parseFloat(dif)>=21){
       let url = "/index";
       $(location).attr('href',url)
       console.log("User passed 21");
