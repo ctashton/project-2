@@ -79,7 +79,7 @@ module.exports = function(app) {
             //     custom.push(item.dataValues)
             //   })
 
-          // render profile page with favorites
+          // render profile page with favorites and custom drinks
           res.render("profile", { 
             favorites: favs,
             // custom: custom
