@@ -5,7 +5,8 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     // req.user will determine if user is logged in
-    res.render("splash", {user: req.user})
+    // res.render("splash", {user: req.user})
+    res.render('splash', { user: req.user })
   });
 
   // Load index page pull from db to populate 
@@ -78,7 +79,7 @@ module.exports = function(app) {
                 custom.push(item.dataValues)
               })
 
-          // render profile page with favorites
+          // render profile page with favorites and custom drinks
           res.render("profile", { 
             favorites: favs,
             custom: custom

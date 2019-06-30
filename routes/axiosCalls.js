@@ -151,6 +151,7 @@ module.exports = {
 
                 resolve(drinks)
             })
+            .catch(err => console.log(err))
         })
     },
 
@@ -187,6 +188,7 @@ module.exports = {
 
                 resolve(drink)
             })
+            .catch(err => console.log(err))
         })
     },
 
@@ -210,6 +212,7 @@ module.exports = {
 
                 resolve(drinks)
             })
+            .catch(err => console.log(err))
         })
     }
 }
