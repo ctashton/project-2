@@ -123,12 +123,12 @@ module.exports = function(app) {
   });
 
   // Create a custom cocktail
-  app.post("/custom_drink", function(req, res) {
-    db.Custom_drinks.create(req.body).then(function(dbCustomDrink) {
+  app.post("/custom_drinks", function(req, res) {
+    console.log(JSON.stringify(req.body))
       // check if user is logged in
     if (req.user) {
       console.log(req.body)
-      db.custom_drink.create({
+      db.Custom_drinks.create({
         name: req.body.name,
         category: req.body.category,
         alcoholic: req.body.alcoholic,
@@ -145,7 +145,6 @@ module.exports = function(app) {
       // user is not logged in
       res.send(false)
     }
-    });
   });
 
   // Delete a cocktail by id

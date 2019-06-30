@@ -2,47 +2,29 @@ module.exports = function(sequelize, DataTypes) {
   var Custom_drinks = sequelize.define("Custom_drinks", {
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3]
-      }
+      allowNull: false
     },
     category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3]
-      }
+        type: DataTypes.STRING
     },
     alcoholic: {
-      type: DataTypes.STRING
+        type: DataTypes.STRING
     },
     glass: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [3]
-      }
+        type: DataTypes.STRING
     },
     instructions: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+        type: DataTypes.STRING(1000)
     },
-    picture: {
-      type: DataTypes.STRING,
-      defaultValue: "https://images.cdn4.stockunlimited.net/clipart/can-drink-cartoon-waving_1424382.jpg"
+    pic: {
+        type: DataTypes.STRING
     },
-    ingredient: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [10]
-      }
+    ingredients: {
+        type: DataTypes.STRING
     },
     measurements: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [10]
-      }
-  }
+        type: DataTypes.STRING
+    }
   })
   Custom_drinks.associate = models => {
     Custom_drinks.belongsTo(models.User, {
