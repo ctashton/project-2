@@ -198,6 +198,13 @@ $("#name-search").on("click", function () {
   })
 })
 
+// search by name on enter
+$("#drink-name").keyup(function(event) {
+  if (event.key === "Enter") {
+    $("#name-search").click()
+  }
+})
+
 // search by ingredient
 $("#ing-search").on("click", function () {
   let ingName = $("#ing-name").val().trim()
@@ -226,6 +233,13 @@ $("#ing-search").on("click", function () {
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
+})
+
+// search by ingredient on enter
+$("#ing-name").keyup(function(event) {
+  if (event.key === "Enter") {
+    $("#ing-search").click()
+  }
 })
 
 // clicking a result will search by id and grab more data about that drink
@@ -316,6 +330,7 @@ $("#cat-dropdown").on("change", function () {
         // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
+      let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
       let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
     })
   })
@@ -352,14 +367,14 @@ $("#cat-search").on("click", function () {
 
 // clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#cheers", function() {
-  let m = $('#monthInp').val().trim() 
-  let d = $('#dateInp').val().trim() 
-  let y = $('#yearInp').val().trim()
+  let m = $('#monthInp').val().trim().toString()
+  let d = $('#dateInp').val().trim().toString()
+  let y = $('#yearInp').val().trim().toString()
   let age = m+d+y
   console.log(age)
   let dif = moment( age , "MMDDYYYY").fromNow();
   console.log(dif)
-    if (parseInt(dif)>=21){
+    if (parseFloat(dif)>=21){
       let url = "/index";
       $(location).attr('href',url)
       console.log("User passed 21");
@@ -484,6 +499,7 @@ function search(data) {
           // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').append(drinkResult)
+        let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
         let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
       })
     })
@@ -508,6 +524,7 @@ function search(data) {
           // `<a data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').prepend(drinkResult)
+        let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
         let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
       })
     })
