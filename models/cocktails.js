@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     ingredients: {
         type: DataTypes.STRING(1000)
-    },
+    }
   });
   return Cocktails;
 };

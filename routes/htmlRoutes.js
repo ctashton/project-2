@@ -5,7 +5,8 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     // req.user will determine if user is logged in
-    res.render("splash", {user: req.user})
+    // res.render("splash", {user: req.user})
+    res.render('splash', { user: req.user })
   });
 
   // Load index page pull from db to populate 
@@ -53,39 +54,39 @@ module.exports = function(app) {
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
               // get user custom made drinks from database
-            let custom = []
+            // let custom = []
       
-            db.Custom_drinks.findAll({
-              where: {
-                UserId: req.user.id
-              }
-            })
-            .then(data => {
-              data.forEach(item => {
-                let cv = item.dataValues
+            // db.Custom_drinks.findAll({
+            //   where: {
+            //     UserId: req.user.id
+            //   }
+            // })
+            // .then(data => {
+            //   data.forEach(item => {
+            //     let cv = item.dataValues
 
-                // remove quotes and brackets from string
-                cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
-                cv.measurements = (cv.measurements.replace(/[\[\]"]+/g,'')).split(',')
+            //     // remove quotes and brackets from string
+            //     // cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
+            //     // cv.measurements = (cv.measurements.replace(/[\[\]"]+/g,'')).split(',')
 
-                // combine ingredients and measurements into one array
-                cv.ingr = []
-                for (let i = 0; i < cv.ingredients.length; i++) {
-                  cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
-                }
+            //     // combine ingredients and measurements into one array
+            //     // cv.ingr = []
+            //     // for (let i = 0; i < cv.ingredients.length; i++) {
+            //     //   cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
+            //     // }
 
-                //item.dataValues contains all drink data
-                custom.push(item.dataValues)
-              })
+            //     //item.dataValues contains all drink data
+            //     custom.push(item.dataValues)
+            //   })
 
           // render profile page with favorites
           res.render("profile", { 
             favorites: favs,
-            custom: custom
+            // custom: custom
           })
         })
       })
-    })
+    // })
   }
 })
 
@@ -94,10 +95,8 @@ module.exports = function(app) {
     db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
       dbCocktails
     ) {
-      var Fing=(dbCocktails.ing).split("-");
       res.render("customize", {
-        cc : dbCocktails ,
-        ccFing : Fing[0]
+        cc : dbCocktails 
       });
     });
   });

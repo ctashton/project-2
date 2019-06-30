@@ -123,8 +123,8 @@ module.exports = function(app) {
   });
 
   // Create a custom cocktail
-  app.post("/customize", function(req, res) {
-    db.Custom_drink.create(req.body).then(function(dbCustomDrink) {
+  app.post("/custom_drink", function(req, res) {
+    db.Custom_drinks.create(req.body).then(function(dbCustomDrink) {
       // check if user is logged in
     if (req.user) {
       console.log(req.body)

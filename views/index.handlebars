@@ -1,5 +1,5 @@
 
-<!-- Modal -->
+<!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -31,7 +31,74 @@
   </div>
 </div>
 
-<div class="container">
+<!-- More Info Modal -->
+<div class="modal fade" id="moreInfoModal" tabindex="-1" role="dialog" aria-labelledby="moreInfoModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="info-name"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="info-category"></p>
+        <p id="info-alcoholic"></p>
+        <p id="info-glass"></p>
+        <p id="info-instructions"></p>
+        <p id="info-ingredients"></p>
+        <p id="info-measurements"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container search-banner">
+
+  <div class="search-item">
+    Search by drink name: 
+    <input id="drink-name" type="text">
+    <button id="name-search" class="btn btn-primary">Go</button>
+  </div>
+  
+  <div class="search-item">
+    Search by ingredient: 
+    <input id="ing-name" type="text">
+    <button id="ing-search" class="btn btn-primary">Go</button><br>
+  </div>  
+
+  <div class="search-item">
+    Search by category: 
+    <select id="cat-dropdown-banner">
+      <option value="Ordinary Drink">Ordinary Drink</option>
+      <option value="Cocktail">Cocktail</option>
+      <option value="Milk / Float / Shake">Milk / Float / Shake</option>
+      <option value="Other / Unknown">Other / Unknown</option>
+      <option value="Cocoa">Cocoa</option>
+      <option value="Shot">Shot</option>
+      <option value="Coffee / Tea">Coffee / Tea</option>
+      <option value="Homemade Liqueur">Homemade Liqueur</option>
+      <option value="Punch / Party Drink">Punch / Party Drink</option>
+      <option value="Beer">Beer</option>
+      <option value="Soft Drink / Soda">Soft Drink / Soda</option>
+    </select>
+    <button id="cat-search" class="btn btn-primary">Go</button>
+  </div>
+
+  <div class="search-item">
+    Most popular cocktails: 
+    <button id="most-pop" class="btn btn-primary">Go</button>
+  </div>
+
+  <div class="search-item">
+    Random cocktail: 
+    <button id="random" class="btn btn-primary">Go</button>
+  </div>
+
   <div id="results"></div>
 </div>
 
@@ -44,8 +111,15 @@
     <div class="row">
       {{#each cocktails}}
         <div class="col-md-3" data-id="{{this.id}}">
-          <div class="drink-card card mb-4 shadow-sm" data-pic="{{this.pic}}" data-id="{{this.id}}" data-name="{{this.name}}" data-category="{{this.category}}" data-glass="{{this.glass}}" data-instructions="{{this.instructions}}" data-ingredients="{{this.ing}}">
-                  <img src="{{this.pic}}" class="card-img-top thumbnail" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
+          <div class="drink-card card mb-4 shadow-sm" 
+               data-pic="{{this.pic}}" 
+               data-id="{{this.id}}" 
+               data-name="{{this.name}}" 
+               data-category="{{this.category}}" 
+               data-glass="{{this.glass}}" 
+               data-instructions="{{this.instructions}}" 
+               data-ingredients="{{this.ing}}">
+            <img src="{{this.pic}}" class="card-img-top thumbnail" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
               <div class="card-body">
                 <p class="drinkName card-text">{{this.name}}</p>
       {{!-- need to figure out how to capture liked drink --}}
@@ -78,7 +152,7 @@
                 <p id="drinkIng"></p>
             </div>
             <div class="modal-footer">
-                <a href="/customize"><button type="button" id="modifyBtn" class="btn btn-warning" data-dismiss="modal">Customize/Save</button></a>
+                <button type="button" id="modifyBtn" class="btn btn-warning" data-dismiss="modal">Customize/Save</button>
                 <a href="/">← Back To Home</a>
             </div>
         </div>
