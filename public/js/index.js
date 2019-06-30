@@ -459,17 +459,31 @@ $('#modifyBtn').click(function (event) {
 });
 
 $(document).on("click", "#customSave", function () {
-  console.log(makeCustomDrink);
-  $.post("/custom_drink", {
+  
+  var userInput = {
       name: $("#customName").val().trim(),
-      category: $("#customDrinkCat").val('option:selected'),
-      alcoholic: $("#customAlc").val('option:selected'),
-      glass: $("#customGlass").val('option:selected'),
+      category: $("#customDrinkCat :selected").text(),
+      alcoholic: $("#customAlc :selected").text(),
+      glass: $("#customGlass :selected").text(),
       instructions: $("#customInstructions").val().trim(),
       pic: $("#customImgUrl").val().trim(),
-      ingredients: $("#customIng").val().trim(),
-      measurements: $("#customMeasure").val().trim()
-  }).then(data => {
+      ingredients: [],
+      measurements: []
+  }
+  $.each($(".customIng"), function() {
+    userInput.ingredients.push($(this).val().trim())
+  })
+  $.each($(".customMeas"), function() {
+    userInput.measurements.push($(this).val().trim())
+  })
+  if (!(userInput.name)) {
+        alert("You must enter a name, category, and instructions!");
+        return;
+      }
+  console.log("userInput: " + JSON.stringify(userInput))                  
+
+  $.post("/custom_drinks", userInput).then(data => {
+    console.log("Data: " + JSON.stringify(data))
     if (!data) $("#loginModal").modal("show")
     else console.log('custom added')
   })
