@@ -2,9 +2,14 @@
   line-height: 2.5;
 }
 
+#results {
+  text-align: center;
+}
+
 #result-card {
   display: inline-block;
   margin: 2.5em;
+
 }
 
 #results a:hover {

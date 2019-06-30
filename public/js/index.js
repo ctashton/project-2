@@ -9,6 +9,7 @@ var $customSave = $("#customSave")
 
 // Beginning of teams code
 moment().format();
+
 // log in / sign up
 $("#login-form").on("submit", function () {
   event.preventDefault();
@@ -80,16 +81,20 @@ $(document).on("click", "#more-info", function() {
   let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
   let glass = $(this).siblings("#fav-button").attr("data-glass")
   let instructions = $(this).siblings("#fav-button").attr("data-instructions")
-  let ingredients = $(this).siblings("#fav-button").attr("data-ingredients")
-  let measurements = $(this).siblings("#fav-button").attr("data-measurements")
+  let ingredients = ($(this).siblings("#fav-button").attr("data-ingredients")).split(',')
+  let measurements = ($(this).siblings("#fav-button").attr("data-measurements")).split(',')
 
   $("#info-name").html(`<strong>${name}</strong>`)
   $("#info-category").html(`<strong>Category: </strong>${category}`)
   $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
   $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
   $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-  $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
-  $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+
+  // format ingredients and measurements
+  $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+  for (let i = 0; i < ingredients.length; i++) {
+    document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+  }
 
   $("#moreInfoModal").modal("show")
 })
@@ -115,8 +120,12 @@ $(document).on("click", "#more-info-extra", function() {
     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
     $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
     $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-    $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
-    $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+    
+    // format ingredients and measurements
+    $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+    for (let i = 0; i < ingredients.length; i++) {
+      document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+    }
 
     $("#moreInfoModal").modal("show")
   })
@@ -226,7 +235,6 @@ $("#ing-search").on("click", function () {
             </div>
           </div>
         `
-        // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
       let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -272,7 +280,6 @@ $("#most-pop").on("click", function () {
             </div>
           </div>
         `
-        // `<a data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
       let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -298,7 +305,6 @@ $("#random").on('click', function () {
           </div>
         </div>
       `
-      // `<a data-id="${data.id}">${data.name}</a><br>`
     )
     $('#results').append(drinkResult)
     let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -327,7 +333,6 @@ $("#cat-dropdown").on("change", function () {
             </div>
           </div>
         `
-        // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
       let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
@@ -356,7 +361,6 @@ $("#cat-search").on("click", function () {
             </div>
           </div>
         `
-        // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
       let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
@@ -459,7 +463,6 @@ function search(data) {
               </div>
             </div>
           `
-          // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').append(drinkResult)
         let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -484,7 +487,6 @@ function search(data) {
               </div>
             </div>
           `
-          // `<a data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').prepend(drinkResult)
         let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
