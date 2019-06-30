@@ -25,15 +25,6 @@ module.exports = function(app) {
       user: req.user,
     })
   })
-  // A GET Route to /customize which should display the custom drink page.
-
-  // Need route that populates users custom drinks to their profile
-
-  // Need route that populates users favorite drinks to profile
-
-  // ***** boilerplate code ***** 
-
-  // loads cocktails page  by id
   
   // profile page
   app.get("/profile", function(req, res) {
@@ -62,36 +53,61 @@ module.exports = function(app) {
 
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
+              // get user custom made drinks from database
+            // let custom = []
+      
+            // db.Custom_drinks.findAll({
+            //   where: {
+            //     UserId: req.user.id
+            //   }
+            // })
+            // .then(data => {
+            //   data.forEach(item => {
+            //     let cv = item.dataValues
+
+            //     // remove quotes and brackets from string
+            //     // cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
+            //     // cv.measurements = (cv.measurements.replace(/[\[\]"]+/g,'')).split(',')
+
+            //     // combine ingredients and measurements into one array
+            //     // cv.ingr = []
+            //     // for (let i = 0; i < cv.ingredients.length; i++) {
+            //     //   cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
+            //     // }
+
+            //     //item.dataValues contains all drink data
+            //     custom.push(item.dataValues)
+            //   })
+
+          // render profile page with favorites and custom drinks
+          res.render("profile", { 
+            favorites: favs,
+            // custom: custom
+          })
         })
-
-        // render profile page with favorites
-        res.render("profile", { favorites: favs, user: req.user })
       })
-    }
-  })
+    // })
+  }
+})
 
+// populate custom drink form to custumize user drinks
+  app.get("/customize/:id", function(req, res) {
+    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
+      dbCocktails
+    ) {
+      res.render("customize", {
+        cc : dbCocktails 
+      });
+    });
+  });
 
- 
-  // currently loads individual drink through link on index page with corresponding drink
-
+  // currently unused
   app.get("/cocktails/:id", function(req, res) {
     db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
       dbCocktails
     ) {
       res.render("cocktails", {
         cocktails: dbCocktails
-      });
-    });
-  });
-
-  app.get("/customize/:id", function(req, res) {
-    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
-      dbCocktails
-    ) {
-      var Fing=(dbCocktails.ing).split("-");
-      res.render("customize", {
-        cc : dbCocktails ,
-        ccFing : Fing[0]
       });
     });
   });

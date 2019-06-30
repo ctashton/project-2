@@ -1,16 +1,28 @@
-// testing db cocktails to populate main page
-// this does create a table at the moment
-
+// main display table
 module.exports = function(sequelize, DataTypes) {
   var Cocktails = sequelize.define("Cocktails", {
-    // eslint-disable-next-line camelcase
-    name: DataTypes.STRING,
-    category: DataTypes.STRING,
-    glass: DataTypes.STRING,
-    pic: DataTypes.STRING,
-    instructions: DataTypes.STRING,
-    ing: DataTypes.STRING,
-    favorite: DataTypes.BOOLEAN
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    category: {
+        type: DataTypes.STRING
+    },
+    alcoholic: {
+        type: DataTypes.STRING
+    },
+    glass: {
+        type: DataTypes.STRING
+    },
+    instructions: {
+        type: DataTypes.STRING(1000)
+    },
+    pic: {
+        type: DataTypes.STRING
+    },
+    ingredients: {
+        type: DataTypes.STRING(1000)
+    }
   });
   return Cocktails;
 };
