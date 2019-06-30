@@ -4,31 +4,6 @@ var moment = require('moment');
 let axios = require("./axiosCalls.js")
 
 module.exports = function(app) {
-
-  /*// Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
-};*/
-
   // app.get("/verify", function(req,res){ // "age" is the input from age page.
   //   let age = req.body.age;       // format is MMDDYYYY, for exp: 07101990
                             
@@ -140,19 +115,14 @@ module.exports = function(app) {
     })
   })
 
-
-
-  // ***** boilerplate code ***** 
-
-  // Get all cocktails
+  // Get all cocktails for main display
   app.get("/api/cocktails", function(req, res) {
     db.Cocktails.findAll({}).then(function(dbCocktails) {
       res.json(dbCocktails);
     });
   });
 
-  // Written for future use for custom drinks
-  // Create a new cocktail
+  // Create a custom cocktail
   app.post("/customize", function(req, res) {
     db.Custom_drink.create(req.body).then(function(dbCustomDrink) {
       // check if user is logged in
