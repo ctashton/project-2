@@ -54,50 +54,51 @@ module.exports = function(app) {
 
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
-            
-          // render profile page with favorites and custom drinks
-          res.render("profile", { 
-            favorites: favs,
-          })
-        })
+
       })
+
+      res.render("profile", { 
+        favorites: favs,
+        // custom: custom
+      })
+    })
   }
 })
 
-// profile page with custom drinks
-app.get("/profile", function(req, res) {
-  // get user custom drinks from database
+app.get("/custom_page", function (req, res) {
   if (req.user) {
-
+    // get user custom made drinks from database
     let custom = []
-      
+
     db.Custom_drinks.findAll({
-      where: {
-        UserId: req.user.id
-      }
-    })
-    .then(data => {
-      data.forEach(item => {
-        let cv = item.dataValues
-
-        // remove quotes and brackets from string
-        cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g,'')).split(',')
-        cv.measurements = (cv.measurements.replace(/[\[\]"]+/g,'')).split(',')
-
-        // combine ingredients and measurements into one array
-        cv.ingr = []
-        for (let i = 0; i < cv.ingredients.length; i++) {
-          cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
+        where: {
+          UserId: req.user.id
         }
+      })
+      .then(data => {
+        data.forEach(item => {
+          let cv = item.dataValues
 
-        //item.dataValues contains all drink data
-        custom.push(item.dataValues)
-      })
-      // render profile page with favorites and custom drinks
-      res.render("profile", { 
-        custom: custom,
-      })
-    })
+          // remove quotes and brackets from string
+          cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g, '')).split(',')
+          cv.measurements = (cv.measurements.replace(/[\[\]"]+/g, '')).split(',')
+
+          // combine ingredients and measurements into one array
+          cv.ingr = []
+          for (let i = 0; i < cv.ingredients.length; i++) {
+            cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
+          }
+
+          //item.dataValues contains all drink data
+          custom.push(item.dataValues)
+        })
+
+        // render profile page with favorites and custom drinks
+        res.render("custom_drinks", {
+          custom: custom
+        })
+      })            
+        
   }
 })
 
