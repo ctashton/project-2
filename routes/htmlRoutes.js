@@ -59,6 +59,7 @@ module.exports = function(app) {
 
       res.render("profile", { 
         favorites: favs,
+        user: req.user
         // custom: custom
       })
     })
@@ -88,6 +89,7 @@ app.get("/custom_page", function (req, res) {
           if (cv.measurements) {
             cv.measurements = (cv.measurements.replace(/[\[\]"]+/g, '')).split(',')
           }
+
           // combine ingredients and measurements into one array
           cv.ingr = []
           for (let i = 0; i < cv.ingredients.length; i++) {
@@ -100,7 +102,8 @@ app.get("/custom_page", function (req, res) {
 
         // render profile page with favorites and custom drinks
         res.render("custom_drinks", {
-          custom: custom
+          custom: custom,
+          user: req.user
         })
       })           
      }  
