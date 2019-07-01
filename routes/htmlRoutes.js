@@ -54,6 +54,7 @@ module.exports = function(app) {
 
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
+
       })
 
       res.render("profile", { 
@@ -96,7 +97,8 @@ app.get("/custom_page", function (req, res) {
         res.render("custom_drinks", {
           custom: custom
         })
-      })
+      })            
+        
   }
 })
 
