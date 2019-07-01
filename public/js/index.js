@@ -182,8 +182,8 @@ $("#name-search").on("click", function () {
       let drinkResult = $(
         `
           <div id="result-card" class="card" style="width: 18rem;">
-            <img class="card-img-top" src="${item.pic}">
-            <div class="card-body">
+            <img class="card-img" src="${item.pic}">
+            <div class="card-img-overlay">
               <h5 class="card-title text-center">${item.name}</h5>
               <p class="card-text"></p>
             </div>
@@ -201,7 +201,34 @@ $("#name-search").on("click", function () {
 // search by name on enter
 $("#drink-name").keyup(function(event) {
   if (event.key === "Enter") {
-    $("#name-search").click()
+    let drinkName = $('#drink-name').val().trim()
+
+    $.post("/search", {
+      method: "name",
+      data: drinkName
+    }).then(data => {
+      console.log(data)
+      $("#results").empty()
+      data.forEach(item => {
+        console.log('item: ' + item)
+        let drinkResult = $(
+          `
+            <div id="result-card" class="card bg-dark" style="width: 18rem;">
+              <img class="card-img" src="${item.pic}">
+              <div class="card-img-overlay" id="more-info">
+                <h5 class="card-title text-left">${item.name}</h5>
+                <p class="card-text"></p>
+              </div>
+              <button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn"> &#9733;</button>
+            </div>
+          `
+          // <a data-id="${item.id}">${item.name}</a><br>
+        )
+        $('#results').append(drinkResult)
+        // let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
+        // let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+      })
+    })
   }
 })
 
@@ -221,7 +248,7 @@ $("#ing-search").on("click", function () {
           <div id="result-card" class="card" style="width: 18rem;">
             <img class="card-img-top" src="${item.pic}">
             <div class="card-body">
-              <h5 class="card-title text-center">${item.name}</h5>
+              <h5 class="card-title text-left">${item.name}</h5>
               <p class="card-text"></p>
             </div>
           </div>
@@ -238,7 +265,33 @@ $("#ing-search").on("click", function () {
 // search by ingredient on enter
 $("#ing-name").keyup(function(event) {
   if (event.key === "Enter") {
-    $("#ing-search").click()
+    let ingName = $("#ing-name").val().trim()
+
+    $.post("/search", {
+      method: "ing",
+      data: ingName
+    }).then(data => {
+      console.log(data)
+      $("#results").empty()
+      data.forEach(item => {
+        let drinkResult = $(
+          `
+            <div id="result-card" class="card" style="width: 18rem;">
+              <img class="card-img" src="${item.pic}">
+              <div class="card-img-overlay" id="more-info-extra">
+                <h5 class="card-title text-left">${item.name}</h5>
+                <p class="card-text"></p>
+              </div>
+              <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn"> &#9733;</button>
+            </div>
+          `
+          // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
+        )
+        $('#results').append(drinkResult)
+        // let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
+        // let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+      })
+    })
   }
 })
 
@@ -307,8 +360,8 @@ $("#random").on('click', function () {
 })
 
 // search by category
-$("#cat-dropdown").on("change", function () {
-  let val = $('#cat-dropdown :selected').text()
+$("#cat-dropdown-banner").on("change", function () {
+  let val = $('#cat-dropdown-banner :selected').text()
 
   $.post("/search", {
     method: "category",
@@ -319,19 +372,20 @@ $("#cat-dropdown").on("change", function () {
     data.forEach(item => {
       let catResult = $(
         `
-          <div id="result-card" class="card" style="width: 18rem;">
-            <img class="card-img-top" src="${item.pic}">
-            <div class="card-body">
-              <h5 class="card-title text-center">${item.name}</h5>
-              <p class="card-text"></p>
-            </div>
-          </div>
+        <div id="result-card" class="card" style="width: 18rem;">
+        <img class="card-img" src="${item.pic}">
+        <div class="card-img-overlay" id="more-info-extra">
+          <h5 class="card-title text-left">${item.name}</h5>
+          <p class="card-text"></p>
+        </div>
+        <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn"> &#9733;</button>
+      </div>
         `
         // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
-      let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
-      let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
+      // let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
+      // let favButton = $(`<button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(catResult)
     })
   })
 })

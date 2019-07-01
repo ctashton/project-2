@@ -90,6 +90,7 @@ module.exports = function(app) {
     ) {
       var Fing=(dbCocktails.ing).split("-");
       res.render("customize", {
+        user: req.user,
         cc : dbCocktails ,
         ccFing : Fing[0]
       });

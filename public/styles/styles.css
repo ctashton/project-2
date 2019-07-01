@@ -1,23 +1,164 @@
+body{
+  font-family: 'Roboto Slab', serif;
+}
+
+h5{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+h5.splashmsg{
+  font-weight: 700;
+  color: 191919;
+}
+nav{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  background-color: #191919
+}
+footer{
+  padding-top: 20px;
+  background-color: #191919;
+}
+.footer-copyright{
+  color: white;
+}
+#footercontent{
+  padding-top: 20px;
+}
 .list-group-item {
   line-height: 2.5;
 }
 
+p{
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: .025em;
+}
+/* .search-banner{
+  margin: 20px;
+} */
+.cheers{
+  color: white;
+}
+#about, #team, #repoinfo, .abouttext{
+  color: white;
+}
+#id{
+  color: white;
+}
+a{
+  color: white;
+}
+.title{
+  float: left;
+  margin-right: 0;
+}
 #result-card {
   display: inline-block;
   margin: 2.5em;
 }
+.msgtitle{
+  color: white;
+  padding-bottom: 20px;
+}
+div.search-banner{
+  line-height: 40px;
+  background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
+  text-align: center;
+  align-content: center; 
+  padding: 60px;
+  height: 200px; 
 
+  /* Create the parallax scrolling effect */
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+input#drink-name{
+  background: none;
+  color: white;
+  border: none;
+  border-bottom: 1px solid;
+}
+input#ing-name{
+  background: none;
+  color: white;
+  border: none;
+  border-bottom: 1px solid;
+}
+.card-title{
+  color: white;
+  position: absolute;
+  bottom: 0;
+}
+.card{
+  border: white;
+}
+/* #more-info, #more-info-extra{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+} */
+#fav-button, #fav-button-extra{
+  position: absolute;
+  top: 5%;
+  width: 20%;
+  left: 75%;
+  color: white;
+}
+.star{
+  position: absolute;
+  top: 5%;
+  width: 20%;
+  right: 0;
+  color: white;
+}
+
+/* .drink-card{
+  position: relative;
+} */
+.card-img{
+  position: relative;
+}
+.card-img-overlay{
+  box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.3)
+}
+.card-img-overlay:hover{
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0)
+}
+
+#results{
+  align-content: center
+}
+input:focus{
+  outline: none;
+}
+::placeholder{
+  color: whitesmoke;
+  opacity: .9;
+}
+p.searchtext {
+  color: white;
+}
+h1.searchtext{
+  color: white;
+}
 #results a:hover {
   cursor: pointer;
 }
 
-#fav-button, #fav-button-extra {
-  width: 100%;
+div.respop{
+padding: 60px;
+background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
 }
 
-#more-info, #more-info-extra {
-  width: 100%;
-}
+
 
 .fav-list span {
   margin-left: 1em;
