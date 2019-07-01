@@ -180,7 +180,7 @@ background-size: cover;
   text-align: center;
 }
 
-#delete-fav {
+#delete-fav, #delete-custom {
   width: 90%;
   margin: 1em 1em;
 }
