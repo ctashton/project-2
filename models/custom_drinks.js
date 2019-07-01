@@ -1,6 +1,5 @@
-// main display table
 module.exports = function(sequelize, DataTypes) {
-  var Cocktails = sequelize.define("Cocktails", {
+  var Custom_drinks = sequelize.define("Custom_drinks", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,8 +20,18 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
     },
     ingredients: {
-        type: DataTypes.STRING(1000)
+        type: DataTypes.STRING
+    },
+    measurements: {
+        type: DataTypes.STRING
     }
-  });
-  return Cocktails;
+  })
+  Custom_drinks.associate = models => {
+    Custom_drinks.belongsTo(models.User, {
+        foreignKey: {
+            allowNull: false
+        }
+    })
+}
+  return Custom_drinks;
 };

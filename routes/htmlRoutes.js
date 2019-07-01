@@ -15,25 +15,17 @@ module.exports = function(app) {
     db.Cocktails.findAll({}).then(function(dbCocktails) {
       res.render("index",{
         user: req.user,
-        msg: "Popular Cocktails!",
+        msg: "Shaken or Stirred",
         cocktails: dbCocktails
       });
     });
   });
+  
   app.get("/splash", function(req, res){
     res.render("splash", {
       user: req.user,
     })
   })
-  // A GET Route to /customize which should display the custom drink page.
-
-  // Need route that populates users custom drinks to their profile
-
-  // Need route that populates users favorite drinks to profile
-
-  // ***** boilerplate code ***** 
-
-  // loads cocktails page  by id
   
   // profile page
   app.get("/profile", function(req, res) {
@@ -62,37 +54,79 @@ module.exports = function(app) {
 
           //item.dataValues contains all drink data
           favs.push(item.dataValues)
+
+      })
+
+      res.render("profile", { 
+        favorites: favs,
+        user: req.user
+        // custom: custom
+      })
+    })
+  }
+})
+
+app.get("/custom_page", function (req, res) {
+  if (req.user) {
+    // get user custom made drinks from database
+    let custom = []
+
+    db.Custom_drinks.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      })
+      .then(data => {
+        console.log("data: " + JSON.stringify(data, null, 2))
+        data.forEach(item => {
+          console.log("item: " + JSON.stringify(item))
+          let cv = item.dataValues
+          console.log("cv: " + JSON.stringify(cv, null, 2))
+          // remove quotes and brackets from string
+          if (cv.ingredients) {
+            cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g, '')).split(',')
+          }
+          if (cv.measurements) {
+            cv.measurements = (cv.measurements.replace(/[\[\]"]+/g, '')).split(',')
+          }
+
+          // combine ingredients and measurements into one array
+          cv.ingr = []
+          for (let i = 0; i < cv.ingredients.length; i++) {
+            cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
+          }
+          //item.dataValues contains all drink data
+          custom.push(item.dataValues)
+
         })
 
-        // render profile page with favorites
-        res.render("profile", { favorites: favs, user: req.user })
-      })
-    }
+        // render profile page with favorites and custom drinks
+        res.render("custom_drinks", {
+          custom: custom,
+          user: req.user
+        })
+      })           
+     }  
   })
 
+// populate custom drink form to custumize user drinks
+  app.get("/customize/:id", function(req, res) {
+    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
+      dbCocktails
+    ) {
+      res.render("customize", {
+        cc : dbCocktails 
+      });
+    });
+  });
 
- 
-  // currently loads individual drink through link on index page with corresponding drink
-
+  // currently unused
   app.get("/cocktails/:id", function(req, res) {
     db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
       dbCocktails
     ) {
       res.render("cocktails", {
         cocktails: dbCocktails
-      });
-    });
-  });
-
-  app.get("/customize/:id", function(req, res) {
-    db.Cocktails.findOne({ where: { id: req.params.id } }).then(function(
-      dbCocktails
-    ) {
-      var Fing=(dbCocktails.ing).split("-");
-      res.render("customize", {
-        user: req.user,
-        cc : dbCocktails ,
-        ccFing : Fing[0]
       });
     });
   });

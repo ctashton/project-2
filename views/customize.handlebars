@@ -6,15 +6,23 @@
             <input type="text" class="form-control" id="customName" placeholder="{{cc.name}}">
           </div>
           <div class="form-group col-md-6">
-            <label for="customImgFile">Add Your Drinks Selfie Here</label>
-            <input type="file" class="form-control-file" id="customImgFile">
+            <label for="customImgUrl">Add Your Drinks Selfie Here</label>
+            <input type="text" class="form-control" id="customImgUrl">
           </div>
         </div>
-        <div class="form-row align-items-center"> 
-          <div class="form-group col-md-6">
+        <div class="form-row align-items-center">
+          <div class="form-group col-md-4">
+            <label for="customAlc">Alcohol?</label>
+            <select class="form-control" id="customAlc">
+              <option></option>   
+              <option>Alcoholic</option>
+              <option>Non-Alcoholic</option>
+            </select>
+          </div> 
+          <div class="form-group col-md-4">
             <label for="customDrinkCat">Choose Your Category</label>
-            <select class="form-control" id="customDrinkCat" placeholder={{cc.category}}>
-              <option></option>  
+            <select class="form-control" id="customDrinkCat">
+              <option>"{{cc.category}}"</option>  
               <option>Ordinary Drink</option>
               <option>Cocktail</option>
               <option>Milk/Float/Shake</option>
@@ -28,10 +36,10 @@
               <option>Soft Drink/Soda</option>
             </select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="customGlass">Choose Your Glassware</label>
-            <select class="form-control" id="customGlass" placeholder="{{cc.glass}}">
-              <option></option>  
+            <select class="form-control" id="customGlass">
+              <option>"{{cc.glass}}"</option>  
               <option>Beer Glass</option>
               <option>Beer Mug</option>
               <option>Beer Pilsner</option>
@@ -71,9 +79,21 @@
           </div>
         </div>
         <div class="form-row align-items-center">
-          <div class="form-group col">
+          <div class="form-group col-6">
+            <label for="customIng">Measurements</label>
+            <input type="text" class="form-control customMeas" placeholder="How much?">
+            <input type="text" class="form-control customMeas">
+            <input type="text" class="form-control customMeas">
+            <input type="text" class="form-control customMeas">
+            <input type="text" class="form-control customMeas">
+          </div>
+          <div class="form-group col-6">
             <label for="customIng">Ingredients</label>
-            <textarea class="form-control" id="customIng" rows="3" placeholder="{{ccFing}}"></textarea>
+            <input type="text" class="form-control customIng" placeholder="What is it?">
+            <input type="text" class="form-control customIng">
+            <input type="text" class="form-control customIng">
+            <input type="text" class="form-control customIng">
+            <input type="text" class="form-control customIng">
           </div>
         </div>
         <button type="submit" class="btn btn-warning btn-block" id="customSave">Save Customized Libation</button>

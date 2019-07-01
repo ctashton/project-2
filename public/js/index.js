@@ -1,14 +1,6 @@
-// Get references to custom drink elements
-var $customName = $("#customName");
-var $customPic = $("#customImgFile");
-var $customCat = $("#customDrinkCat");
-var $customGlass = $("#customGlass");
-var $customInstructions = $("#customInstructions");
-var $customIng = $("#customIng");
-var $customSave = $("#customSave")
-
 // Beginning of teams code
 moment().format();
+
 // log in / sign up
 $("#login-form").on("submit", function () {
   event.preventDefault();
@@ -80,16 +72,20 @@ $(document).on("click", "#more-info", function() {
   let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
   let glass = $(this).siblings("#fav-button").attr("data-glass")
   let instructions = $(this).siblings("#fav-button").attr("data-instructions")
-  let ingredients = $(this).siblings("#fav-button").attr("data-ingredients")
-  let measurements = $(this).siblings("#fav-button").attr("data-measurements")
+  let ingredients = ($(this).siblings("#fav-button").attr("data-ingredients")).split(',')
+  let measurements = ($(this).siblings("#fav-button").attr("data-measurements")).split(',')
 
   $("#info-name").html(`<strong>${name}</strong>`)
   $("#info-category").html(`<strong>Category: </strong>${category}`)
   $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
   $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
   $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-  $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
-  $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+
+  // format ingredients and measurements
+  $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+  for (let i = 0; i < ingredients.length; i++) {
+    document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+  }
 
   $("#moreInfoModal").modal("show")
 })
@@ -115,8 +111,12 @@ $(document).on("click", "#more-info-extra", function() {
     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
     $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
     $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-    $("#info-ingredients").html(`<strong>Ingredients: </strong>${ingredients}`)
-    $("#info-measurements").html(`<strong>Measurements: </strong>${measurements}`)
+    
+    // format ingredients and measurements
+    $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+    for (let i = 0; i < ingredients.length; i++) {
+      document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+    }
 
     $("#moreInfoModal").modal("show")
   })
@@ -253,7 +253,6 @@ $("#ing-search").on("click", function () {
             </div>
           </div>
         `
-        // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
       let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -325,7 +324,6 @@ $("#most-pop").on("click", function () {
             </div>
           </div>
         `
-        // `<a data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(drinkResult)
       let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -351,7 +349,6 @@ $("#random").on('click', function () {
           </div>
         </div>
       `
-      // `<a data-id="${data.id}">${data.name}</a><br>`
     )
     $('#results').append(drinkResult)
     let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -381,7 +378,6 @@ $("#cat-dropdown-banner").on("change", function () {
         <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn"> &#9733;</button>
       </div>
         `
-        // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
       // let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
@@ -410,7 +406,6 @@ $("#cat-search").on("click", function () {
             </div>
           </div>
         `
-        // `<a id="cat-result" data-id="${item.id}">${item.name}</a><br>`
       )
       $('#results').append(catResult)
       let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(catResult)
@@ -494,39 +489,69 @@ $('.drink-card').click(function (event) {
   $('#cocktailModal').modal('show');
 });
 
+var makeCustomDrink;
 // on click function from Modal
 $('#modifyBtn').click(function (event) {
   location.href = "/customize/" + chosenDrink.id;
   
-  var makeCustomDrink = {
+  makeCustomDrink = {
     newId: $(this).data("id"),
     pic: $(this).data("pic"),
     name: $(this).data("name"),
     category: $(this).data("category"),
+    alcoholic: $(this).data("alcoholic"),
     glass: $(this).data("glass"),
     instructions: $(this).data("instructions"),
     ingredients: $(this).data("ingredients")
   };
   console.log(makeCustomDrink);
+});
+
+$(document).on("click", "#customSave", function () {
   
-  // Send the POST request.
-  // $.ajax("/customize", {
-  //   type: "POST",
-  //   data: makeCustomDrink
-  // }).then(
-  //   function() {
-  //     console.log("created new drink!");
-  //     // Reload the page to get the updated list
-  //     location.reload();
-  //   }
-  // );
-});
-
-
-// star for favorites
-$(".star").click(function () {
-  $(this).toggleClass("far fa-star fas fa-star");
-});
+  var userInput = {
+      name: $("#customName").val().trim(),
+      category: $("#customDrinkCat :selected").text(),
+      alcoholic: $("#customAlc :selected").text(),
+      glass: $("#customGlass :selected").text(),
+      instructions: $("#customInstructions").val().trim(),
+      pic: $("#customImgUrl").val().trim(),
+      ingredients: [],
+      measurements: []
+  }
+ 
+  $.each($(".customIng"), function() {
+    console.log($(this).val().trim());
+    userInput.ingredients.push($(this).val().trim())
+  })
+  $.each($(".customMeas"), function() {
+    console.log($(this).val().trim())
+    userInput.measurements.push($(this).val().trim())
+  })
+  if (!(userInput.name)) {
+        alert("You must enter a name!");
+        return;
+      }
+  console.log("userInput: " + JSON.stringify(userInput))                  
+  userInput.ingredients = JSON.stringify(userInput.ingredients)
+  userInput.measurements = JSON.stringify(userInput.measurements)
+  $.post("/custom_drinks", userInput).then(data => {
+    console.log("Data: " + JSON.stringify(data))
+    // if (!data) $("#loginModal").modal("show")
+    console.log('custom added')
+  })
+})
+// delete from favorites list
+$(document).on("click", "#delete-custom", function() {
+  let id = $(this).attr('data-id')
+  $.ajax("/api/delete/custom_page/" + id, {
+    type: "DELETE"
+  })
+  .then(function(data) {
+      console.log(`drink ${id} successfully deleted`)
+      location.reload()
+  })
+})
 
 // Multi-Search
 function search(data) {
@@ -550,7 +575,6 @@ function search(data) {
               </div>
             </div>
           `
-          // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').append(drinkResult)
         let moreInfo = $(`<button id="more-info-extra" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -575,7 +599,6 @@ function search(data) {
               </div>
             </div>
           `
-          // `<a data-id="${item.id}">${item.name}</a><br>`
         )
         $('#results').prepend(drinkResult)
         let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
@@ -586,116 +609,3 @@ function search(data) {
   }
 }
 
-// ***** boilerplate code ***** 
-
-
-
-
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
-
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveCustomDrink: function (customDrink) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/custom_drink",
-      data: JSON.stringify(customDrink)
-    });
-  },
-  getCustomDrink: function () {
-    return $.ajax({
-      url: "api/custom_drink",
-      type: "GET"
-    });
-  },
-  deleteCustomDrink: function (id) {
-    return $.ajax({
-      url: "api/custom_drink/" + id,
-      type: "DELETE"
-    });
-  }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshCustomDrinks = function () {
-  API.getCustomDrink().then(function (data) {
-    var $customDrink = data.map(function (customDrink) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new custom drink
-// Save the new custom drink to the db and refresh the users custom drinks
-var handleFormSubmit = function (event) {
-  event.preventDefault();
-
-  var customDrink = {
-    name: $customName.val().trim(),
-    category: $customCat.val().trim(),
-    glass: $customGlass.val().trim(),
-    instructions: $customInstructions.val().trim(),
-    pic: $customPic.val().trim(),
-    ingredients: $customIng.val().trim()
-  };
-  console.log(customDrink);
-
-  if (!(customDrink.name && customDrink.category && customDrink.instructions)) {
-    alert("You must enter a name, category, and instructions!");
-    return;
-  }
-
-  API.saveCustomDrink(customDrink).then(function () {
-    refreshCustomDrinks();
-  });
-
-  $customName.val("");
-  $customCat.val("");
-  $customGlass.val("");
-  $customInstructions.val("");
-  $customPic.val("");
-  $customIng.val("")
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$customSave.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);

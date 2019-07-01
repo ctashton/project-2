@@ -29,6 +29,7 @@ footer{
   line-height: 2.5;
 }
 
+
 p{
   font-family: 'Roboto Slab', serif;
   letter-spacing: .025em;
@@ -52,6 +53,11 @@ a{
   float: left;
   margin-right: 0;
 }
+
+#results {
+  text-align: center;
+}
+
 #result-card {
   display: inline-block;
   margin: 2.5em;
@@ -171,9 +177,18 @@ background-size: cover;
 .search-item {
   display: inline-block;
   margin: 1em 3em;
+  text-align: center;
 }
 
 #delete-fav {
   width: 90%;
   margin: 1em 1em;
+}
+
+#cheers {
+  color: white;
+}
+
+#cheers:hover {
+  cursor: pointer;
 }
