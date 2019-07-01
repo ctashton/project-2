@@ -59,6 +59,7 @@ module.exports = function(app) {
 
       res.render("profile", { 
         favorites: favs,
+        user: req.user
         // custom: custom
       })
     })
@@ -80,8 +81,12 @@ app.get("/custom_page", function (req, res) {
           let cv = item.dataValues
 
           // remove quotes and brackets from string
-          cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g, '')).split(',')
-          cv.measurements = (cv.measurements.replace(/[\[\]"]+/g, '')).split(',')
+          if (cv.ingredients) {
+            cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g, '')).split(',')
+          }
+          if (cv.measurements) {
+            cv.measurements = (cv.measurements.replace(/[\[\]"]+/g, '')).split(',')
+          }
 
           // combine ingredients and measurements into one array
           cv.ingr = []
@@ -95,7 +100,8 @@ app.get("/custom_page", function (req, res) {
 
         // render profile page with favorites and custom drinks
         res.render("custom_drinks", {
-          custom: custom
+          custom: custom,
+          user: req.user
         })
       })            
         
