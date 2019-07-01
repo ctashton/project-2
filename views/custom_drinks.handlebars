@@ -1,0 +1,38 @@
+{{!-- custom_drinks for profile --}}
+<div class="container">
+
+    <h1 class="text-center mt-5 mb-5">Custom Drinks: </h1>
+    
+    {{#each custom}}
+    <div class="card mb-3" style="max-width: 100%;">
+          <div class="row no-gutters">
+              <div class="col-md-4">
+                  <img src="{{pic}}" class="card-img">
+                  <button id="delete-fav" class="btn btn-danger" data-name="{{name}}" data-id="{{id}}">Delete</button>
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <h1 class="card-title">{{name}}</h5>
+                      <div class="row mt-3 mb-3">
+                          <div class="col-md-4">
+                              <p class="card-text"><strong>Category:</strong> <br><span>{{category}}</span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p class="card-text"><strong>Alcohol Content:</strong> <br><span>{{alcoholic}}</span></p>
+                          </div>
+                          <div class="col-md-4">
+                              <p class="card-text"><strong>Glass:</strong> <br><span>{{glass}}</span></p>
+                          </div>
+                      </div>
+                      <p class="card-text"><strong>Instructions:</strong> <br><span>{{instructions}}</span></p>
+                      <p class="card-text"><strong> Ingredients:</strong></p>
+                      {{#each ingr}}
+                          <p class="card-text"> <span>{{this}}</span></p>
+                      {{/each}}
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    {{/each}}
+</div>
