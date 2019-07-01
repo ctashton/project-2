@@ -466,10 +466,14 @@ $(document).on("click", "#customSave", function () {
       measurements: []
   }
   $.each($(".customIng"), function() {
-    userInput.ingredients.push($(this).val().trim())
+    if ($(this).val()) {
+      userInput.ingredients.push($(this).val().trim())
+    } 
   })
   $.each($(".customMeas"), function() {
-    userInput.measurements.push($(this).val().trim())
+    if ($(this).val()) {
+      userInput.measurements.push($(this).val().trim())
+    }
   })
   if (!(userInput.name)) {
         alert("You must enter a name!");
@@ -477,11 +481,11 @@ $(document).on("click", "#customSave", function () {
       }
   console.log("userInput: " + JSON.stringify(userInput))                  
 
-  $.post("/custom_drinks", userInput).then(data => {
-    console.log("Data: " + JSON.stringify(data))
-    // if (!data) $("#loginModal").modal("show")
-    console.log('custom added')
-  })
+  // $.post("/custom_drinks", userInput).then(data => {
+  //   console.log("Data: " + JSON.stringify(data))
+  //   // if (!data) $("#loginModal").modal("show")
+  //   console.log('custom added')
+  // })
 })
 // star for favorites
 $(".star").click(function () {
