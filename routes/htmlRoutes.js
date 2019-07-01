@@ -77,9 +77,11 @@ app.get("/custom_page", function (req, res) {
         }
       })
       .then(data => {
+        console.log("data: " + JSON.stringify(data, null, 2))
         data.forEach(item => {
+          console.log("item: " + JSON.stringify(item))
           let cv = item.dataValues
-
+          console.log("cv: " + JSON.stringify(cv, null, 2))
           // remove quotes and brackets from string
           if (cv.ingredients) {
             cv.ingredients = (cv.ingredients.replace(/[\[\]"]+/g, '')).split(',')
@@ -93,9 +95,9 @@ app.get("/custom_page", function (req, res) {
           for (let i = 0; i < cv.ingredients.length; i++) {
             cv.ingr.push(cv.ingredients[i] + ' ' + cv.measurements[i])
           }
-
           //item.dataValues contains all drink data
           custom.push(item.dataValues)
+
         })
 
         // render profile page with favorites and custom drinks
@@ -103,10 +105,9 @@ app.get("/custom_page", function (req, res) {
           custom: custom,
           user: req.user
         })
-      })            
-        
-  }
-})
+      })           
+     }  
+  })
 
 // populate custom drink form to custumize user drinks
   app.get("/customize/:id", function(req, res) {

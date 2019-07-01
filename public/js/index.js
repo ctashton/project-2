@@ -487,10 +487,17 @@ $(document).on("click", "#customSave", function () {
     console.log('custom added')
   })
 })
-// star for favorites
-$(".star").click(function () {
-  $(this).toggleClass("far fa-star fas fa-star");
-});
+// delete from favorites list
+$(document).on("click", "#delete-custom", function() {
+  let id = $(this).attr('data-id')
+  $.ajax("/api/delete/custom_page/" + id, {
+    type: "DELETE"
+  })
+  .then(function(data) {
+      console.log(`drink ${id} successfully deleted`)
+      location.reload()
+  })
+})
 
 // Multi-Search
 function search(data) {
