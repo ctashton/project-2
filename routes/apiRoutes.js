@@ -148,13 +148,16 @@ module.exports = function(app) {
   });
 
   // Delete a cocktail by id
-  app.delete("/api/cocktails/:id", function(req, res) {
-    db.Cocktails.destroy({ where: { id: req.params.id } }).then(function(
-      dbCocktails
-    ) {
-      res.json(dbCocktails);
-    });
-  });
+  app.delete("/api/delete/custom_page/:id", function(req, res) {
+    db.Custom_drinks.destroy({ 
+      where: { 
+        id: req.params.id 
+      } 
+    })
+    .then(() => {
+      res.status(200).end()
+    })
+  })
 
 
 
