@@ -20,6 +20,7 @@ module.exports = function(app) {
       });
     });
   });
+  
   app.get("/splash", function(req, res){
     res.render("splash", {
       user: req.user,
