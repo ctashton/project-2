@@ -10,8 +10,9 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   {{!-- Font Awesome --}}
   <script src="https://kit.fontawesome.com/eda450702a.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title" charset="utf-8">
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -26,30 +27,12 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-collapse collapse">
-      <div class="navbar-nav input-group-btn search-panel">
-        <input type="hidden" name="search_param" value="" id="search_param">
-        <input type="text" class="search form-control mr-sm-2 col-5" onkeydown="search(this)" name="x"
-          placeholder="Search">
-        <select id="cat-dropdown">
-          <option disabled selected value>Filter Categories</option>
-          <option value="Ordinary Drink">Ordinary Drink</option>
-          <option value="Cocktail">Cocktail</option>
-          <option value="Milk / Float / Shake">Milk / Float / Shake</option>
-          <option value="Other / Unknown">Other / Unknown</option>
-          <option value="Cocoa">Cocoa</option>
-          <option value="Shot">Shot</option>
-          <option value="Coffee / Tea">Coffee / Tea</option>
-          <option value="Homemade Liqueur">Homemade Liqueur</option>
-          <option value="Punch / Party Drink">Punch / Party Drink</option>
-          <option value="Beer">Beer</option>
-          <option value="Soft Drink / Soda">Soft Drink / Soda</option>
-        </select>
-      </div>
-    </div>
+  <nav class="navbar navbar-expand-lg">
 
-    <a class="navbar-brand text-center" href="/index">Neat</a>
+    <a class="navbar-brand" href="/index">
+    <img src="../assets/neat_logo-01.png" height="60" class="d-inline-block align-top" alt="">
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse"
       aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -78,20 +61,20 @@
 
   {{{body}}}
 
-      <footer class="page-footer font-small pt-4">
+    <footer class="page-footer font-small pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
 
       <!-- Grid row -->
-      <div class="row">
+      <div class="row" id="footercontent">
 
         <!-- Grid column -->
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          <h5 class="text-uppercase">About Neat</h5>
-          <p>Neat is an application developed as a project for the University of Central Florida's Coding Bootcamp
+          <h5 class="text-uppercase" id="about">About Neat</h5>
+          <p class="abouttext">Neat is an application developed as a project for the University of Central Florida's Coding Bootcamp
             through Trilogy Education. With this application you can check out alcoholic drink recipes, save & modify
             them, and eventually share those drink creations with friends! </p>
 
@@ -101,7 +84,7 @@
         <!-- Grid column -->
         <div class="col-md-3 mb-md-0 mb-3">
           <!-- Links -->
-          <h5 class="text-uppercase">Team</h5>
+          <h5 class="text-uppercase" id="team">Team</h5>
           <ul class="list-unstyled">
             <li>
               <a href="https://github.com/clearplaid">Shannon</a>
@@ -122,7 +105,7 @@
         <!-- Grid column -->
         <div class="col-md-3 mb-md-0 mb-3">
           <!-- Links -->
-          <h5 class="text-uppercase">Repo Info</h5>
+          <h5 class="text-uppercase" id="repoinfo">Repo Info</h5>
           <ul class="list-unstyled">
             <li>
               <a href="https://github.com/clearplaid/project-2">Github Repository</a>
@@ -139,6 +122,38 @@
     </div>
     <!-- Copyright -->
   </footer>
+
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="login-form">
+
+        <div class="modal-body">
+          Email<br>
+          <input id="email-input" type="email" style="width: 100%;" value="user@gmail.com" required><br>
+          Password<br>
+          <input id="password-input" type="password" style="width: 100%;" value="123456" required><br>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="login">Log in</button>
+          <button type="submit" class="btn btn-primary" id="signup">Sign up</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
 <script>
       moment().format();
 </script>
