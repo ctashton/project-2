@@ -461,10 +461,13 @@ $(document).on("click", "#customSave", function () {
       ingredients: [],
       measurements: []
   }
+ 
   $.each($(".customIng"), function() {
+    console.log($(this).val().trim());
     userInput.ingredients.push($(this).val().trim())
   })
   $.each($(".customMeas"), function() {
+    console.log($(this).val().trim())
     userInput.measurements.push($(this).val().trim())
   })
   if (!(userInput.name)) {
@@ -472,7 +475,8 @@ $(document).on("click", "#customSave", function () {
         return;
       }
   console.log("userInput: " + JSON.stringify(userInput))                  
-
+  userInput.ingredients = JSON.stringify(userInput.ingredients)
+  userInput.measurements = JSON.stringify(userInput.measurements)
   $.post("/custom_drinks", userInput).then(data => {
     console.log("Data: " + JSON.stringify(data))
     // if (!data) $("#loginModal").modal("show")
