@@ -107,7 +107,7 @@
 <div id="main py-5 bg-light">
   <div class="container">
     {{!-- when loading index page pushes msg here from htmlroutes--}}
-    <h1>{{msg}}</h1>
+    <h1 class="text-center">{{msg}}</h1>
     <div class="row">
       {{#each cocktails}}
         <div class="col-md-3" data-id="{{this.id}}">
@@ -118,12 +118,20 @@
                data-category="{{this.category}}" 
                data-glass="{{this.glass}}" 
                data-instructions="{{this.instructions}}" 
-               data-ingredients="{{this.ing}}">
+               data-ingredients="{{this.ingredients}}">
             <img src="{{this.pic}}" class="card-img-top thumbnail" width="100%" height="300" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
               <div class="card-body">
-                <p class="drinkName card-text">{{this.name}}</p>
+                <h5 class="drinkName card-text text-center">{{this.name}}</h5>
       {{!-- need to figure out how to capture liked drink --}}
-                <i class="star far fa-star"></i>
+                <button id="fav-button-extra" class="btn btn-warning btn-block"
+                        data-pic="{{this.pic}}" 
+                        data-id="{{this.id}}" 
+                        data-name="{{this.name}}"
+                        data-alc="{{this.alcoholic}}"
+                        data-category="{{this.category}}" 
+                        data-glass="{{this.glass}}" 
+                        data-instructions="{{this.instructions}}" 
+                        data-ingredients="{{this.ingredients}}">&#9733;</button>
               </div>
             </div>
           </div>
@@ -153,7 +161,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="modifyBtn" class="btn btn-warning" data-dismiss="modal">Customize/Save</button>
-                <a href="/">← Back To Home</a>
+                <a href="/index">← Back To Home</a>
             </div>
         </div>
     </div>

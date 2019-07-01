@@ -15,7 +15,7 @@ module.exports = function(app) {
     db.Cocktails.findAll({}).then(function(dbCocktails) {
       res.render("index",{
         user: req.user,
-        msg: "Popular Cocktails!",
+        msg: "Shaken or Stirred",
         cocktails: dbCocktails
       });
     });

@@ -4,19 +4,19 @@ var moment = require('moment');
 let axios = require("./axiosCalls.js")
 
 module.exports = function(app) {
-  // app.get("/verify", function(req,res){ // "age" is the input from age page.
-  //   let age = req.body.age;       // format is MMDDYYYY, for exp: 07101990
+  app.get("/verify", function(req,res){ // "age" is the input from age page.
+    let age = req.body.age;       // format is MMDDYYYY, for exp: 07101990
                             
-  //   let dif = moment( age , "MMDDYYY").fromNow();
-  //   if (parseInt(dif)>=21){
-  //     res.redirect('/index');
-  //     console.log("User passed 21");
-  //   }
-  //   else {
-  //     res.redirect('https://www.cdc.gov/alcohol/fact-sheets/minimum-legal-drinking-age.htm');
-  //     console.log("User is under 21");
-  //   }
-  // });
+    let dif = moment( age , "MMDDYYY").fromNow();
+    if (parseInt(dif)>=21){
+      res.redirect('/index');
+      console.log("User passed 21");
+    }
+    else {
+      res.redirect('https://www.cdc.gov/alcohol/fact-sheets/minimum-legal-drinking-age.htm');
+      console.log("User is under 21");
+    }
+  });
 
   app.get("/api/api_cocktail", function(req, res) { // bottom api show button
     db.Custom_drink.findAll({}).then(function(db) {
@@ -26,7 +26,7 @@ module.exports = function(app) {
 
   // user login
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.redirect('/')
+    res.redirect('/index')
 
     console.log("login successful");
   });
@@ -49,7 +49,7 @@ module.exports = function(app) {
   // log out
   app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect("/index");
     console.log("logout successful");
   });
 
