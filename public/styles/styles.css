@@ -9,7 +9,6 @@
 #result-card {
   display: inline-block;
   margin: 2.5em;
-
 }
 
 #results a:hover {
@@ -35,9 +34,18 @@
 .search-item {
   display: inline-block;
   margin: 1em 3em;
+  text-align: center;
 }
 
 #delete-fav {
   width: 90%;
   margin: 1em 1em;
+}
+
+#cheers {
+  color: white;
+}
+
+#cheers:hover {
+  cursor: pointer;
 }
