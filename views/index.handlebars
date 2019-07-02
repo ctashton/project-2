@@ -53,7 +53,7 @@
         <p id="info-measurements"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="apimodifyBtn" class="btn btn-dark" data-dismiss="modal"
+        <button onclick="location.href ='/customize';" type="button" id="apimodifyBtn" class="btn btn-dark" data-dismiss="modal"
           data-name="">Customize/Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
@@ -63,50 +63,50 @@
 
 
 <div class="search-banner full-width">
-  <div class="row searchme">
-    <div class="col-sm col1">
-      <div class="title">
-        <h1 class="searchtext">Search:</h1>
-      </div>
-    </div>
-    <div class="col-sm col2">
-      {{!-- <p class="searchtext">Search by drink name:</p> --}}
-      <input id="drink-name" type="text" placeholder="Search by drink name:">
-      {{!-- <button id="name-search" class="btn btn-primary">Go</button> --}}
-    </div>
-    <div class="col-sm col3">
-      {{!-- <p class="searchtext">Search by ingredient:</p>  --}}
-      <input id="ing-name" type="text" placeholder="Search by ingredient:">
-      {{!-- <button id="ing-search" class="btn btn-primary">Go</button><br> --}}
-    </div>
-    <div class="col-sm col4">
-      {{!-- <p class="searchtext">Search by category: </p> --}}
+   <div class="row searchme fluid">
+       <div class="col-sm col1">  
+         <div class="title">
+          <h1 class="searchtext">Search:</h1>
+          </div>
+        </div>
+       <div class="col-sm col2">
+          {{!-- <p class="searchtext">Search by drink name:</p> --}}
+          <input id="drink-name" type="text" placeholder="Search by drink name:">
+          {{!-- <button id="name-search" class="btn btn-primary">Go</button> --}}
+       </div>
+       <div class="col-sm col3">
+             {{!-- <p class="searchtext">Search by ingredient:</p>  --}}
+              <input id="ing-name" type="text" placeholder="Search by ingredient:">
+              {{!-- <button id="ing-search" class="btn btn-primary">Go</button><br> --}}
+       </div>
+       <div class="col-sm col4">
+         {{!-- <p class="searchtext">Search by category: </p> --}}
 
-      <select class="selectpicker" id="cat-dropdown-banner">
-        <option disabled selected value>Search By Category</option>
-        <option value="Ordinary Drink">Ordinary Drink</option>
-        <option value="Cocktail">Cocktail</option>
-        <option value="Milk / Float / Shake">Milk / Float / Shake</option>
-        <option value="Other / Unknown">Other / Unknown</option>
-        <option value="Cocoa">Cocoa</option>
-        <option value="Shot">Shot</option>
-        <option value="Coffee / Tea">Coffee / Tea</option>
-        <option value="Homemade Liqueur">Homemade Liqueur</option>
-        <option value="Punch / Party Drink">Punch / Party Drink</option>
-        <option value="Beer">Beer</option>
-        <option value="Soft Drink / Soda">Soft Drink / Soda</option>
-      </select>
-    </div>
-
-    <div class="col-sm col5">
-      {{!-- <p>Most popular cocktails:</p>  --}}
-      <button id="most-pop" class="btn btn-dark">View Most Popular</button>
-    </div>
-    <div class="col-sm col6">
-      {{!-- <p>Random cocktail: </p> --}}
-      <button id="random" class="btn btn-dark">Random Cocktail</button>
-    </div>
-  </div>
+    <select class="selectpicker" id="cat-dropdown-banner">
+      <option disabled selected value>Search By Category</option>
+      <option value="Ordinary Drink">Ordinary Drink</option>
+      <option value="Cocktail">Cocktail</option>
+      <option value="Milk / Float / Shake">Milk / Float / Shake</option>
+      <option value="Other / Unknown">Other / Unknown</option>
+      <option value="Cocoa">Cocoa</option>
+      <option value="Shot">Shot</option>
+      <option value="Coffee / Tea">Coffee / Tea</option>
+      <option value="Homemade Liqueur">Homemade Liqueur</option>
+      <option value="Punch / Party Drink">Punch / Party Drink</option>
+      <option value="Beer">Beer</option>
+      <option value="Soft Drink / Soda">Soft Drink / Soda</option>
+    </select>
+       </div>
+       
+       <div class="col-sm col5">
+             {{!-- <p>Most popular cocktails:</p>  --}}
+    <button id="most-pop" class="btn btn-dark">View Most Popular</button>
+       </div>
+       <div class="col-sm col6">
+             {{!-- <p>Random cocktail: </p> --}}
+    <button id="random" class="btn btn-dark">Random Cocktail</button>
+       </div>
+   </div>
 </div>
 
 {{!-- <div id="results"></div> --}}
@@ -116,7 +116,7 @@
 {{!-- main page display--}}
 
 {{!-- This will populate using the models and DB --}}
-<div id="main py-5">
+<div id="main">
   <div class="respop" id="results">
     {{!-- when loading index page pushes msg here from htmlroutes--}}
 
@@ -136,10 +136,10 @@
             <div class="card-img-overlay">
               <h5 class="drinkName card-title text-left">{{this.name}}</h5>
               {{!-- need to figure out how to capture liked drink --}}
-              <button id="fav-button-main" class="btn btn-dark btn-block" data-pic="{{this.pic}}" data-id="{{this.id}}"
+              {{!-- <button id="fav-button-main" class="btn btn-dark btn-block" data-pic="{{this.pic}}" data-id="{{this.id}}"
                 data-name="{{this.name}}" data-alcoholic="{{this.alcoholic}}" data-category="{{this.category}}"
                 data-glass="{{this.glass}}" data-instructions="{{this.instructions}}"
-                data-ingredients="{{this.ingredients}}">&#9733;</button>
+                data-ingredients="{{this.ingredients}}">&#9733;</button> --}}
 
             </div>
           </div>
@@ -147,7 +147,6 @@
       {{/each}}
     </div>
   </div>
-</div>
 </div>
 {{!-- End of main page container --}}
 
@@ -173,7 +172,7 @@
         <p id="drinkIng"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="modifyBtn" class="btn btn-dark" data-dismiss="modal">Customize/Save</button>
+        <button onclick="location.href ='/customize';" type="button" id="modifyBtn" class="btn btn-dark" data-dismiss="modal">Customize/Save</button>
         <a href="/index">← Back To Home</a>
       </div>
     </div>

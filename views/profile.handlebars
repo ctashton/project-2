@@ -1,8 +1,12 @@
+<div class="row">
+    <div class="container-fluid text-center titlehero" style="padding: 0px;">
+        <div class="col-md-12">
+            <h1 class="herotext">Favorites:</h1>
+        </div>
+    </div>
+</div>
+
 <div class="container" id="profpage">
-
-    <a href="/custom_page" class="btn btn-info float-right">My Custom Drinks</a>
-
-    <h1 class="text-center mt-5 mb-5">Favorites: </h1>
 
     {{#each favorites}}
 
@@ -19,9 +23,9 @@
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        {{!-- <h1 class="card-title">{{name}}</h1> --}}
-                        <h1>{{name}}</h1>
-
+                        <h3 class="card-title profile">{{name}}</h3>
+                    </div>
+                    <div class="card-body">
                         <div class="row mt-3 mb-3">
                             <div class="col-md-4">
                                 <p class="card-text"><strong>Category:</strong> <br><span>{{category}}</span></p>
@@ -47,6 +51,7 @@
             </div>
 
         </div>
-
+        <br>
+        <br>
     {{/each}}
 </div>
