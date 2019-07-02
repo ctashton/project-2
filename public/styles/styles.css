@@ -150,14 +150,14 @@ input#ing-name:focus {
   position: absolute;
   top: 0;
 }
-.card-title{
+/* .card-title{
   color: white;
   position: absolute;
   bottom: 0;
-}
-.card{
+} */
+/* .card{
   border: white;
-}
+} */
 /* #more-info, #more-info-extra{
   position: absolute;
   bottom: 0;
