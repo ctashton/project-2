@@ -1,6 +1,7 @@
 # NEAT UP!
 ![Image of NeatUp](./public/assets/neat_logo-03-01.png)
 
+<a href="https://project-neat.herokuapp.com/">NEAT</a>
 
 Are you tirsty? Can't you decide what you drink? Want to know new cocktail recipies? 
 
