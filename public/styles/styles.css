@@ -1,9 +1,12 @@
 body{
   font-family: 'Roboto Slab', serif;
   min-height: 100vh;
-  max-height: 100%;
   position: relative;
-  padding-bottom: 220px;
+  clear: both;
+}
+
+#main{
+  padding-bottom: 200px;
 }
 
 h5{
@@ -15,6 +18,7 @@ h5.splashmsg{
   color: 191919;
 }
 nav{
+  color: white;
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
   background-color: #191919
@@ -22,8 +26,9 @@ nav{
 footer{
   position: absolute;
   bottom: 0;
-  margin-top: 80px;
+  margin-top: -200px;
   background-color: #191919;
+  padding-top: 100px;
 }
 #customDrink{
   padding-top: 80px;
@@ -59,7 +64,9 @@ p{
 a{
   color: white;
 }
-
+#customDrink{
+  margin-bottom: 60px;
+}
 a#cheers{
   color: #191919;
 }
@@ -70,6 +77,8 @@ a#cheers{
 
 #results {
   text-align: center;
+  margin-bottom: 20px;
+  clear: both;
 }
 
 #result-card {
@@ -79,6 +88,13 @@ a#cheers{
 #login{
   background-color: rgb(255, 197, 5);
   border: none;
+  color: #191919;
+}
+#logout {
+  color: #191919;
+}
+#logout:hover {
+  color: white;
 }
 #signup{
   background-color: rgb(255, 197, 5);
@@ -91,6 +107,33 @@ a#cheers{
 #profpage{
   padding-top: 40px;
 }
+div.titlehero{
+  background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35);
+  align-content: center; 
+  text-align: center;
+  padding: 60px;
+  height: 200px; 
+  overflow: auto;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+#profpage{
+  padding-bottom: 600px;
+}
+#customdrinks{
+  padding-bottom: 600px;
+}
+.herotext{
+  color: white;
+  padding-top: 70px;
+}
 div.search-banner{
   line-height: 40px;
   background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
@@ -98,6 +141,7 @@ div.search-banner{
   align-content: center; 
   padding: 60px;
   height: 200px; 
+  overflow: auto;
 
   /* Create the parallax scrolling effect */
   /* background-attachment: fixed; */
@@ -205,7 +249,9 @@ input#ing-name:focus {
 }
 
 #results{
-  align-content: center
+  align-content: center;
+  padding-bottom: 20em;
+  margin-bottom: 2em;
 }
 input:focus{
   outline: none;
@@ -230,15 +276,23 @@ h1.card-title{
 #results a:hover {
   cursor: pointer;
 }
-
+.wrapper{
+  padding-bottom: 100px;
+}
+#customform{
+  padding-bottom: 360px;
+}
 div.respop{
-padding: 60px;
-background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
-box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
+  text-align: center;
+  padding: 40px;
+  margin-bottom: 10px;
+  /* padding: 1em; */
+  background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -266,11 +320,18 @@ a:hover{
 }
 
 #cheers {
-  color: 191919;
+  color: #191919;
   font-weight: 700;
   padding: 10px;
 }
 
 #cheers:hover {
   cursor: pointer;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+  color: rgb(255, 197, 5)
 }
