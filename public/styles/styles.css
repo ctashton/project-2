@@ -157,7 +157,7 @@ input#ing-name:focus {
   width: 100%;
   left: 0;
 } */
-#fav-button, #fav-button-extra{
+#fav-button, #fav-button-extra, #fav-button-main{
   position: absolute;
   top: 5%;
   width: 20%;

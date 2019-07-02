@@ -39,7 +39,7 @@
       <div class="modal-header">
           <img id="info-pic" class="modal-image" src="" width="80%" height="350" preserveAspectRatio="xMidYMid slice" focusable="false">
           <br>
-                  <h5 class="modal-title" id="info-name"></h5>
+          <h5 class="modal-title" id="info-name"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -53,7 +53,7 @@
         <p id="info-measurements"></p>
       </div>
       <div class="modal-footer">
-                        <button type="button" id="apimodifyBtn" class="btn btn-dark" data-dismiss="modal" data-name="">Customize/Save</button>
+          <button type="button" id="apimodifyBtn" class="btn btn-dark" data-dismiss="modal" data-name="">Customize/Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -127,6 +127,7 @@
                data-pic="{{this.pic}}" 
                data-id="{{this.id}}" 
                data-name="{{this.name}}" 
+               data-alcoholic="{{this.alcoholic}}"
                data-category="{{this.category}}" 
                data-glass="{{this.glass}}" 
                data-instructions="{{this.instructions}}" 
@@ -136,11 +137,11 @@
               <div class="card-img-overlay">
                 <h5 class="drinkName card-title text-left">{{this.name}}</h5>
       {{!-- need to figure out how to capture liked drink --}}
-                <button id="fav-button-extra" class="btn btn-dark btn-block"
+                <button id="fav-button-main" class="btn btn-dark btn-block"
                         data-pic="{{this.pic}}" 
                         data-id="{{this.id}}" 
                         data-name="{{this.name}}"
-                        data-alc="{{this.alcoholic}}"
+                        data-alcoholic="{{this.alcoholic}}"
                         data-category="{{this.category}}" 
                         data-glass="{{this.glass}}" 
                         data-instructions="{{this.instructions}}" 
@@ -162,13 +163,15 @@
         <div class="modal-content" id="drinkId">
             <div class="modal-header">
                 <img id="drinkImage" class="modal-image" src="" width="100%" height="auto" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <br>
+                <h5 id="drinkTitle" class="modal-title "></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h5 id="drinkTitle" class="card-title "><strong></strong></h5>
                 <p id="drinkCategory"></p>
+                <p id="drinkAlc"></p>
                 <p id="drinkGlass"></p>
                 <p id="drinkInstructions"></p>
                 <p id="drinkIng"></p>

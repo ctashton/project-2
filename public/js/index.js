@@ -490,6 +490,7 @@ $('.drink-card').click(function (event) {
     id: $(this).data("id"),
     pic: $(this).data("pic"),
     name: $(this).data("name"),
+    alcoholic: $(this).data("alcoholic"),
     category: $(this).data("category"),
     glass: $(this).data("glass"),
     instructions: $(this).data("instructions"),
@@ -500,12 +501,14 @@ $('.drink-card').click(function (event) {
   $("#drinkTitle").html(chosenDrink.name);
   $("#drinkImage").attr("src", chosenDrink.pic);
   $('#drinkCategory').html("Category: " + chosenDrink.category);
+  $('#drinkAlc').html("Alcohol Content: " + chosenDrink.alcoholic);
   $('#drinkGlass').html("Glass: " + chosenDrink.glass);
   $('#drinkInstructions').html("Instructions: " + chosenDrink.instructions);
   $('#drinkIng').html("Ingredients: " + chosenDrink.ingredients);
   $('#modifyBtn').attr("data-id", chosenDrink.id)
                  .attr("data-pic", chosenDrink.pic)
                  .attr("data-name", chosenDrink.name)
+                 .attr("data-alcoholic", chosenDrink.alcoholic)
                  .attr("data-category", chosenDrink.category)
                  .attr("data-glass", chosenDrink.glass)
                  .attr("data-instructions", chosenDrink.instructions)
@@ -563,6 +566,7 @@ $(document).on("click", "#customSave", function () {
 
     if (!data) $("#loginModal").modal("show")
     console.log('custom added')
+    
   })
 })
 // delete from favorites list
