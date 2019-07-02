@@ -3,7 +3,8 @@ body{
   min-height: 100vh;
   max-height: 100%;
   position: relative;
-  padding-bottom: 220px;
+  /* padding-bottom: 220px; */
+  
 }
 
 h5{
