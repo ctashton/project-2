@@ -1,5 +1,9 @@
 body{
   font-family: 'Roboto Slab', serif;
+  min-height: 100vh;
+  max-height: 100%;
+  position: relative;
+  padding-bottom: 220px;
 }
 
 h5{
@@ -16,7 +20,9 @@ nav{
   background-color: #191919
 }
 footer{
-  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  margin-top: 80px;
   background-color: #191919;
 }
 #customDrink{
