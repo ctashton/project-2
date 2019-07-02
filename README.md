@@ -1,5 +1,7 @@
 # NEAT UP!
 ![Image of NeatUp](./public/assets/neat_logo-03-01.png)
+
+
 Are you tirsty? Can't you decide what you drink? Want to know new cocktail recipies? 
 
 Be ready to **Neat your mind up!**
