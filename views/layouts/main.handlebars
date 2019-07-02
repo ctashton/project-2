@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--moment-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -27,7 +29,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark">
 
     <a class="navbar-brand" href="/index">
     <img src="../assets/neat_logo-03-01.png" height="60" class="d-inline-block align-top" alt="">
@@ -59,7 +61,7 @@
             Sign
             up</button>
           {{else}}
-          <button id="logout" class=" nav-link butn btn-dark">Log out</button>
+          <button id="logout" class=" nav-link btn btn-dark">Log out</button>
           {{/unless}}
         </li>
       </ul>
@@ -68,7 +70,7 @@
 
   {{{body}}}
 
-    <footer class="page-footer font-small pt-4">
+    {{!-- <footer class="page-footer font-small pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -128,7 +130,7 @@
     <div class="footer-copyright text-center py-3">© 2019 Copyright
     </div>
     <!-- Copyright -->
-  </footer>
+  </footer> --}}
 
 </div>
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
