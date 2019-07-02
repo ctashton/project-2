@@ -75,6 +75,10 @@ a{
 #login{
   background-color: rgb(255, 197, 5);
   border: none;
+  color: #fff;
+}
+#logout {
+  color: #fff;
 }
 #signup{
   background-color: rgb(255, 197, 5);
@@ -150,14 +154,14 @@ input#ing-name:focus {
   position: absolute;
   top: 0;
 }
-/* .card-title{
+.card-title{
   color: white;
   position: absolute;
   bottom: 0;
-} */
-/* .card{
+}
+.card{
   border: white;
-} */
+}
 /* #more-info, #more-info-extra{
   position: absolute;
   bottom: 0;
