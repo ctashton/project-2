@@ -161,6 +161,36 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="login-form">
+
+        <div class="modal-body">
+          Email<br>
+          <input id="email-input" type="email" style="width: 100%;" required><br>
+          Password<br>
+          <input id="password-input" type="password" style="width: 100%;" required><br>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="login">Log in</button>
+          <button type="submit" class="btn btn-primary" id="signup">Sign up</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
 <script>
       moment().format();
 </script>
