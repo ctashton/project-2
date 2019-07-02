@@ -124,7 +124,6 @@ module.exports = function(app) {
 
   // Create a custom cocktail
   app.post("/custom_drinks", function(req, res) {
-    console.log(JSON.stringify(req.body))
       // check if user is logged in
     if (req.user) {
       console.log(req.body)

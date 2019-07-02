@@ -170,6 +170,25 @@ $(document).on("click", "#fav-button-extra", function () {
   })
 })
 
+// add a drink to favorites from main display
+$(document).on("click", "#fav-button-main", function () {
+
+  $.post("/favorite", {
+    name: $(this).attr('data-name'),
+    category: $(this).attr('data-category'),
+    alcoholic: $(this).attr('data-alcoholic'),
+    glass: $(this).attr('data-glass'),
+    instructions: $(this).attr('data-instructions'),
+    pic: $(this).attr('data-pic'),
+    ingredients: JSON.stringify($(this).attr('data-ingredients')),
+    measurements: JSON.stringify($(this).attr('data-measurements'))
+
+  }).then(data => {
+    if (!data) $("#loginModal").modal("show")
+    else console.log('favorite added')
+  })
+})
+
 // search for drink by name
 $("#name-search").on("click", function () {
   let drinkName = $('#drink-name').val().trim()
@@ -536,13 +555,13 @@ $(document).on("click", "#customSave", function () {
   if (!(userInput.name)) {
         alert("You must enter a name!");
         return;
-      }
-  console.log("userInput: " + JSON.stringify(userInput))                  
+      }                 
   userInput.ingredients = JSON.stringify(userInput.ingredients)
   userInput.measurements = JSON.stringify(userInput.measurements)
+  
   $.post("/custom_drinks", userInput).then(data => {
-    console.log("Data: " + JSON.stringify(data))
-    // if (!data) $("#loginModal").modal("show")
+
+    if (!data) $("#loginModal").modal("show")
     console.log('custom added')
   })
 })
