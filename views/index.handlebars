@@ -1,6 +1,6 @@
 
 <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
+{{!-- <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -15,9 +15,9 @@
 
         <div class="modal-body">
           Email<br>
-          <input id="email-input" type="email" style="width: 100%;" value="user@gmail.com" required><br>
+          <input id="email-input" type="email" style="width: 100%;" required><br>
           Password<br>
-          <input id="password-input" type="password" style="width: 100%;" value="123456" required><br>
+          <input id="password-input" type="password" style="width: 100%;" required><br>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" id="login">Log in</button>
@@ -29,7 +29,7 @@
 
     </div>
   </div>
-</div>
+</div> --}}
 
 <!-- More Info Modal -->
 <div class="modal fade" id="moreInfoModal" tabindex="-1" role="dialog" aria-labelledby="moreInfoModalTitle"
@@ -131,20 +131,9 @@
             <img src="{{this.pic}}" class="card-img-top thumbnail" width="100%" height="auto" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
               <div class="card-body">
                 <h5 class="drinkName card-text text-center">{{this.name}}</h5>
-      {{!-- need to figure out how to capture liked drink --}}
-                <button id="fav-button-extra" class="btn btn-warning btn-block"
-                        data-pic="{{this.pic}}" 
-                        data-id="{{this.id}}" 
-                        data-name="{{this.name}}"
-                        data-alc="{{this.alcoholic}}"
-                        data-category="{{this.category}}" 
-                        data-glass="{{this.glass}}" 
-                        data-instructions="{{this.instructions}}" 
-                        data-ingredients="{{this.ingredients}}">&#9733;</button>
-
-              </div>
-                             <button id="fav-button-extra" data-id="{{this.id}}" data-name="{{item.name}}" data-category="{{item.category}}" data-alcoholic="{{item.alcoholic}}" data-glass="{{item.glass}}" data-instructions="{{item.instructions}}" data-pic="{{item.pic}}" data-ingredients="{{item.ingredients}}" data-measurements="{{item.measurements}}" class="btn btn"> &#9733;</button>
+                <button id="fav-button-extra" data-id="{{this.id}}" data-name="{{item.name}}" data-category="{{item.category}}" data-alcoholic="{{item.alcoholic}}" data-glass="{{item.glass}}" data-instructions="{{item.instructions}}" data-pic="{{item.pic}}" data-ingredients="{{item.ingredients}}" data-measurements="{{item.measurements}}" class="btn btn"> &#9733;</button>
             </div>
+          </div>
           </div>
       {{/each}}
     </div>
@@ -158,7 +147,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="drinkId">
             <div class="modal-header">
-                <img id="drinkImage" class="modal-image" src="" width="100%" height="350" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img id="drinkImage" class="modal-image" src="" width="100%" height="auto" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
