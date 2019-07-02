@@ -30,7 +30,7 @@
   <nav class="navbar navbar-expand-lg">
 
     <a class="navbar-brand" href="/index">
-    <img src="../assets/neat_logo-01.png" height="60" class="d-inline-block align-top" alt="">
+    <img src="../assets/neat_logo-03-01.png" height="60" class="d-inline-block align-top" alt="">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse"
@@ -43,7 +43,14 @@
         {{#unless user}}
         {{else}}
         <li class="nav-item">
-          <a href="/profile" id="profile" class="nav-link">My Recipes</a>
+          <a href="/profile" id="profile" class="nav-link">My Favorites</a>
+        </li>
+                  <li class="nav-item">
+          <a href="/custom_page" id="profile" class="nav-link">My Custom Drinks</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/customize" id="customizelink" class="nav-link">Create A Drink</a>
         </li>
         {{/unless}}
         <li class="nav-item">
@@ -52,7 +59,7 @@
             Sign
             up</button>
           {{else}}
-          <button id="logout" class="nav-dark">Log out</button>
+          <button id="logout" class=" nav-link butn btn-dark">Log out</button>
           {{/unless}}
         </li>
       </ul>
@@ -144,8 +151,8 @@
           <input id="password-input" type="password" style="width: 100%;" required><br>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="login">Log in</button>
-          <button type="submit" class="btn btn-primary" id="signup">Sign up</button>
+          <button type="button" class="btn btn-dark" id="login">Log in</button>
+          <button type="button" class="btn btn-dark" id="signup">Sign up</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
 

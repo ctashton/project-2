@@ -68,13 +68,14 @@ $(document).on("click", "#logout", function () {
 $(document).on("click", "#more-info", function() {
 
   let name = $(this).siblings("#fav-button").attr("data-name")
+  let pic = $(this).siblings("#fav-button").attr("data-pic")
   let category = $(this).siblings("#fav-button").attr("data-category")
   let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
   let glass = $(this).siblings("#fav-button").attr("data-glass")
   let instructions = $(this).siblings("#fav-button").attr("data-instructions")
   let ingredients = ($(this).siblings("#fav-button").attr("data-ingredients")).split(',')
   let measurements = ($(this).siblings("#fav-button").attr("data-measurements")).split(',')
-
+  $("#info-pic").attr("src", pic)
   $("#info-name").html(`<strong>${name}</strong>`)
   $("#info-category").html(`<strong>Category: </strong>${category}`)
   $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
@@ -99,6 +100,7 @@ $(document).on("click", "#more-info-extra", function() {
   })
   .then(data => {
     let name = data.name
+    let pic = data.pic
     let category = data.category
     let alcoholic = data.alcoholic
     let glass = data.glass
@@ -108,6 +110,7 @@ $(document).on("click", "#more-info-extra", function() {
 
     $("#info-name").html(`<strong>${name}</strong>`)
     $("#info-category").html(`<strong>Category: </strong>${category}`)
+    $("#info-pic").attr("src", pic)
     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
     $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
     $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
@@ -238,7 +241,7 @@ $("#drink-name").keyup(function(event) {
                 <h5 class="card-title text-left">${item.name}</h5>
                 <p class="card-text"></p>
               </div>
-              <button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn"> &#9733;</button>
+              <button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-dark"> &#9733;</button>
             </div>
           `
           // <a data-id="${item.id}">${item.name}</a><br>
@@ -300,7 +303,7 @@ $("#ing-name").keyup(function(event) {
                 <h5 class="card-title text-left">${item.name}</h5>
                 <p class="card-text"></p>
               </div>
-              <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn"> &#9733;</button>
+              <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-dark"> &#9733;</button>
             </div>
           `
           // `<a id="ing-result" data-id="${item.id}">${item.name}</a><br>`
@@ -336,17 +339,18 @@ $("#most-pop").on("click", function () {
       let drinkResult = $(
         `
           <div id="result-card" class="card" style="width: 18rem;">
-            <img class="card-img-top" src="${item.pic}">
-            <div class="card-body">
-              <h5 class="card-title text-center">${item.name}</h5>
+            <img class="card-img" src="${item.pic}">
+            <div class="card-img-overlay" id="more-info">
+              <h5 class="card-title text-left">${item.name}</h5>
               <p class="card-text"></p>
             </div>
+            <button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-dark"> &#9733;</button>
           </div>
         `
       )
       $('#results').append(drinkResult)
-      let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
-      let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+      // let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
+      // let favButton = $(`<button id="fav-button" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
     })
   })
 })
@@ -361,17 +365,18 @@ $("#random").on('click', function () {
     let drinkResult = $(
       `
         <div id="result-card" class="card" style="width: 18rem;">
-          <img class="card-img-top" src="${data.pic}">
-          <div class="card-body">
-            <h5 class="card-title text-center">${data.name}</h5>
+          <img class="card-img"src="${data.pic}">
+          <div class="card-img-overlay"  id="more-info" >
+            <h5 class="card-title text-left">${data.name}</h5>
             <p class="card-text"></p>
           </div>
+          <button id="fav-button" data-id="${data.id}" data-name="${data.name}" data-category="${data.category}" data-alcoholic="${data.alcoholic}" data-glass="${data.glass}" data-instructions="${data.instructions}" data-pic="${data.pic}" data-ingredients="${data.ingredients}" data-measurements="${data.measurements}" class="btn btn-dark"> &#9733;</button>
         </div>
       `
     )
     $('#results').append(drinkResult)
-    let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
-    let favButton = $(`<button id="fav-button" data-id="${data.id}" data-name="${data.name}" data-category="${data.category}" data-alcoholic="${data.alcoholic}" data-glass="${data.glass}" data-instructions="${data.instructions}" data-pic="${data.pic}" data-ingredients="${data.ingredients}" data-measurements="${data.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
+    // let moreInfo = $(`<button id="more-info" class="btn btn-primary">More Info</button>`).appendTo(drinkResult)
+    // let favButton = $(`<button id="fav-button" data-id="${data.id}" data-name="${data.name}" data-category="${data.category}" data-alcoholic="${data.alcoholic}" data-glass="${data.glass}" data-instructions="${data.instructions}" data-pic="${data.pic}" data-ingredients="${data.ingredients}" data-measurements="${data.measurements}" class="btn btn-warning"> &#9733;</button>`).appendTo(drinkResult)
   })
 })
 
@@ -394,7 +399,7 @@ $("#cat-dropdown-banner").on("change", function () {
           <h5 class="card-title text-left">${item.name}</h5>
           <p class="card-text"></p>
         </div>
-        <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn"> &#9733;</button>
+        <button id="fav-button-extra" data-id="${item.id}" data-name="${item.name}" data-category="${item.category}" data-alcoholic="${item.alcoholic}" data-glass="${item.glass}" data-instructions="${item.instructions}" data-pic="${item.pic}" data-ingredients="${item.ingredients}" data-measurements="${item.measurements}" class="btn btn-dark"> &#9733;</button>
       </div>
         `
       )

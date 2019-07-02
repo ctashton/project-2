@@ -37,7 +37,9 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="info-name"></h5>
+          <img id="info-pic" class="modal-image" src="" width="80%" height="350" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <br>
+                  <h5 class="modal-title" id="info-name"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -51,6 +53,7 @@
         <p id="info-measurements"></p>
       </div>
       <div class="modal-footer">
+                        <button type="button" id="apimodifyBtn" class="btn btn-dark" data-dismiss="modal" data-name="">Customize/Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -78,7 +81,7 @@
        <div class="col-sm col4">
          {{!-- <p class="searchtext">Search by category: </p> --}}
 
-    <select id="cat-dropdown-banner">
+    <select class="selectpicker" id="cat-dropdown-banner">
       <option disabled selected value>Search By Category</option>
       <option value="Ordinary Drink">Ordinary Drink</option>
       <option value="Cocktail">Cocktail</option>
@@ -128,10 +131,21 @@
                data-glass="{{this.glass}}" 
                data-instructions="{{this.instructions}}" 
                data-ingredients="{{this.ingredients}}">
-            <img src="{{this.pic}}" class="card-img-top thumbnail" width="100%" height="auto" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
-              <div class="card-body">
-                <h5 class="drinkName card-text text-center">{{this.name}}</h5>
-                <button id="fav-button-extra" data-id="{{this.id}}" data-name="{{item.name}}" data-category="{{item.category}}" data-alcoholic="{{item.alcoholic}}" data-glass="{{item.glass}}" data-instructions="{{item.instructions}}" data-pic="{{item.pic}}" data-ingredients="{{item.ingredients}}" data-measurements="{{item.measurements}}" class="btn btn"> &#9733;</button>
+
+            <img src="{{this.pic}}" class="card-img" width="100%" height="auto" preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="{{this.name}}"><title>{{this.name}}</title><rect width="100%" height="100%" fill="#55595c"></rect></img>
+              <div class="card-img-overlay">
+                <h5 class="drinkName card-title text-left">{{this.name}}</h5>
+      {{!-- need to figure out how to capture liked drink --}}
+                <button id="fav-button-extra" class="btn btn-dark btn-block"
+                        data-pic="{{this.pic}}" 
+                        data-id="{{this.id}}" 
+                        data-name="{{this.name}}"
+                        data-alc="{{this.alcoholic}}"
+                        data-category="{{this.category}}" 
+                        data-glass="{{this.glass}}" 
+                        data-instructions="{{this.instructions}}" 
+                        data-ingredients="{{this.ingredients}}">&#9733;</button>
+
             </div>
           </div>
           </div>
@@ -160,7 +174,7 @@
                 <p id="drinkIng"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="modifyBtn" class="btn btn-warning" data-dismiss="modal">Customize/Save</button>
+                <button type="button" id="modifyBtn" class="btn btn-dark" data-dismiss="modal">Customize/Save</button>
                 <a href="/index">← Back To Home</a>
             </div>
         </div>

@@ -131,6 +131,11 @@ app.get("/custom_page", function (req, res) {
     });
   });
 
+  app.get("/customize", function(req, res){
+    res.render("customize", {
+      user: req.user
+    })
+  })
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

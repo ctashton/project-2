@@ -19,6 +19,10 @@ footer{
   padding-top: 20px;
   background-color: #191919;
 }
+#customDrink{
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 .footer-copyright{
   color: white;
 }
@@ -62,9 +66,20 @@ a{
   display: inline-block;
   margin: 2.5em;
 }
+#login{
+  background-color: rgb(255, 197, 5);
+  border: none;
+}
+#signup{
+  background-color: rgb(255, 197, 5);
+  border: none;
+}
 .msgtitle{
   color: white;
   padding-bottom: 20px;
+}
+#profpage{
+  padding-top: 40px;
 }
 div.search-banner{
   line-height: 40px;
@@ -80,17 +95,53 @@ div.search-banner{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+select{
+  background: none;
+  color: white;
+  border: none;
+}
+select:focus{
+  outline: none;
+}
+.btn-dark{
+  background-color: rgb(255, 197, 5);
+  border: none;
+}
+.btn-dark:hover{
+  background-color: rgb(212, 170, 29);
+  border: none;
+}
+.btn-dark:focus{
+  outline: none;
+  border: none;
+}
 input#drink-name{
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
 }
+input#drink-name:focus{
+outline: none;
+}
+
 input#ing-name{
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
+}
+input#ing-name:focus {
+ outline: none;
+}
+.modal-image{
+  padding-top: 20px;
+  position: relative;
+}
+.modal-title{
+  position: absolute;
+  top: 0;
 }
 .card-title{
   color: white;
@@ -120,7 +171,6 @@ input#ing-name{
   right: 0;
   color: white;
 }
-
 /* .drink-card{
   position: relative;
 } */
@@ -158,6 +208,7 @@ h1.searchtext{
 div.respop{
 padding: 60px;
 background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
+box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
