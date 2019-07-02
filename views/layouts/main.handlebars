@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--moment-->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  {{!-- Font Awesome --}}
-  <script src="https://kit.fontawesome.com/eda450702a.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,500,700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
   <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title" charset="utf-8">
 
@@ -32,7 +32,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
 
     <a class="navbar-brand" href="/index">
-    <img src="../assets/neat_logo-03-01.png" height="60" class="d-inline-block align-top" alt="">
+      <img src="../assets/neat_logo-03-01.png" height="60" class="d-inline-block align-top" alt="">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse"
@@ -44,24 +44,24 @@
       <ul class="navbar-nav ml-auto">
         {{#unless user}}
         {{else}}
-        <li class="nav-item">
-          <a href="/profile" id="profile" class="nav-link">My Favorites</a>
-        </li>
-                  <li class="nav-item">
-          <a href="/custom_page" id="profile" class="nav-link">My Custom Drinks</a>
-        </li>
+          <li class="nav-item">
+            <a href="/profile" id="profile" class="nav-link">My Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a href="/custom_page" id="profile" class="nav-link">My Custom Drinks</a>
+          </li>
 
-        <li class="nav-item">
-          <a href="/customize" id="customizelink" class="nav-link">Create A Drink</a>
-        </li>
+          <li class="nav-item">
+            <a href="/customize" id="customizelink" class="nav-link">Create A Drink</a>
+          </li>
         {{/unless}}
         <li class="nav-item">
           {{#unless user}}
-          <button id="login" class="nav-link btn btn-dark" data-toggle="modal" data-target="#loginModal">Log in /
-            Sign
-            up</button>
+            <button id="login" class="nav-link btn btn-dark" data-toggle="modal" data-target="#loginModal">Log in /
+              Sign
+              up</button>
           {{else}}
-          <button id="logout" class=" nav-link btn btn-dark">Log out</button>
+            <button id="logout" class=" nav-link btn btn-dark">Log out</button>
           {{/unless}}
         </li>
       </ul>
@@ -70,8 +70,7 @@
 
   {{{body}}}
 
-
-    <footer class="page-footer font-small pt-4">
+  <footer class="page-footer font-small pt-4">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -84,7 +83,8 @@
 
           <!-- Content -->
           <h5 class="text-uppercase" id="about">About Neat</h5>
-          <p class="abouttext">Neat is an application developed as a project for the University of Central Florida's Coding Bootcamp
+          <p class="abouttext">Neat is an application developed as a project for the University of Central Florida's
+            Coding Bootcamp
             through Trilogy Education. With this application you can check out alcoholic drink recipes, save & modify
             them, and eventually share those drink creations with friends! </p>
 
@@ -133,69 +133,69 @@
     <!-- Copyright -->
   </footer>
 
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form id="login-form">
+
+          <div class="modal-body">
+            Email<br>
+            <input id="email-input" type="email" style="width: 100%;" required><br>
+            Password<br>
+            <input id="password-input" type="password" style="width: 100%;" required><br>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-dark" id="login">Log in</button>
+            <button type="submit" class="btn btn-dark" id="signup">Sign up</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+
       </div>
-
-      <form id="login-form">
-
-        <div class="modal-body">
-          Email<br>
-          <input id="email-input" type="email" style="width: 100%;" required><br>
-          Password<br>
-          <input id="password-input" type="password" style="width: 100%;" required><br>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-dark" id="login">Log in</button>
-          <button type="submit" class="btn btn-dark" id="signup">Sign up</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </form>
-
     </div>
   </div>
-</div>
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalTitle">Log in / Sign up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form id="login-form">
+
+          <div class="modal-body">
+            Email<br>
+            <input id="email-input" type="email" style="width: 100%;" required><br>
+            Password<br>
+            <input id="password-input" type="password" style="width: 100%;" required><br>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="login">Log in</button>
+            <button type="submit" class="btn btn-primary" id="signup">Sign up</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+
       </div>
-
-      <form id="login-form">
-
-        <div class="modal-body">
-          Email<br>
-          <input id="email-input" type="email" style="width: 100%;" required><br>
-          Password<br>
-          <input id="password-input" type="password" style="width: 100%;" required><br>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" id="login">Log in</button>
-          <button type="submit" class="btn btn-primary" id="signup">Sign up</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </form>
-
     </div>
   </div>
-</div>
-<script>
-      moment().format();
-</script>
+  <script>
+    moment().format();
+  </script>
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

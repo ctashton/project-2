@@ -452,7 +452,6 @@ $("#cat-search").on("click", function () {
   })
 })
 
-// clicking a result will search by id and grab more data about that drink
 $(document).on("click", "#cheers", function() {
   let m = $('#monthInp').val().trim().toString()
   let d = $('#dateInp').val().trim().toString()
@@ -504,6 +503,7 @@ $('.drink-card').click(function (event) {
     id: $(this).data("id"),
     pic: $(this).data("pic"),
     name: $(this).data("name"),
+    alcoholic: $(this).data("alcoholic"),
     category: $(this).data("category"),
     glass: $(this).data("glass"),
     instructions: $(this).data("instructions"),
@@ -514,12 +514,14 @@ $('.drink-card').click(function (event) {
   $("#drinkTitle").html(chosenDrink.name);
   $("#drinkImage").attr("src", chosenDrink.pic);
   $('#drinkCategory').html("Category: " + chosenDrink.category);
+  $('#drinkAlc').html("Alcohol Content: " + chosenDrink.alcoholic);
   $('#drinkGlass').html("Glass: " + chosenDrink.glass);
   $('#drinkInstructions').html("Instructions: " + chosenDrink.instructions);
   $('#drinkIng').html("Ingredients: " + chosenDrink.ingredients);
   $('#modifyBtn').attr("data-id", chosenDrink.id)
                  .attr("data-pic", chosenDrink.pic)
                  .attr("data-name", chosenDrink.name)
+                 .attr("data-alcoholic", chosenDrink.alcoholic)
                  .attr("data-category", chosenDrink.category)
                  .attr("data-glass", chosenDrink.glass)
                  .attr("data-instructions", chosenDrink.instructions)
@@ -527,23 +529,23 @@ $('.drink-card').click(function (event) {
   $('#cocktailModal').modal('show');
 });
 
-var makeCustomDrink;
+// var makeCustomDrink;
 // on click function from Modal
-$('#modifyBtn').click(function (event) {
-  location.href = "/customize/" + chosenDrink.id;
+// $('#modifyBtn').click(function (event) {
+//   location.href = "/customize/" + chosenDrink.id;
   
-  makeCustomDrink = {
-    newId: $(this).data("id"),
-    pic: $(this).data("pic"),
-    name: $(this).data("name"),
-    category: $(this).data("category"),
-    alcoholic: $(this).data("alcoholic"),
-    glass: $(this).data("glass"),
-    instructions: $(this).data("instructions"),
-    ingredients: $(this).data("ingredients")
-  };
-  console.log(makeCustomDrink);
-});
+//   makeCustomDrink = {
+//     newId: $(this).data("id"),
+//     pic: $(this).data("pic"),
+//     name: $(this).data("name"),
+//     category: $(this).data("category"),
+//     alcoholic: $(this).data("alcoholic"),
+//     glass: $(this).data("glass"),
+//     instructions: $(this).data("instructions"),
+//     ingredients: $(this).data("ingredients")
+//   };
+//   console.log(makeCustomDrink);
+// });
 
 $(document).on("click", "#customSave", function () {
   
@@ -577,6 +579,7 @@ $(document).on("click", "#customSave", function () {
 
     if (!data) $("#loginModal").modal("show")
     console.log('custom added')
+    
   })
 })
 // delete from favorites list

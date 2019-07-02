@@ -1,4 +1,4 @@
-body{
+body {
   font-family: 'Roboto Slab', serif;
   min-height: 100vh;
   position: relative;
@@ -33,7 +33,8 @@ h5{
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
 }
-h5.splashmsg{
+
+h5.splashmsg {
   font-weight: 700;
   color: 191919;
 }
@@ -50,38 +51,46 @@ footer{
   background-color: #191919;
   /* padding-top: 100px; */
 }
-#customDrink{
+
+#customDrink {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-.footer-copyright{
+
+.footer-copyright {
   color: white;
 }
-#footercontent{
+
+#footercontent {
   padding-top: 20px;
 }
+
 .list-group-item {
   line-height: 2.5;
 }
 
-
-p{
+p {
   font-family: 'Roboto Slab', serif;
   letter-spacing: .025em;
 }
+
 /* .search-banner{
   margin: 20px;
 } */
-.cheers{
+
+.cheers {
   color: white;
 }
-#about, #team, #repoinfo, .abouttext{
+
+#about, #team, #repoinfo, .abouttext {
   color: white;
 }
-#id{
+
+#id {
   color: white;
 }
-a{
+
+a {
   color: white;
 }
 #customDrink{
@@ -105,28 +114,34 @@ a#cheers{
   display: inline-block;
   margin: 2.5em;
 }
-#login{
+
+#login {
   background-color: rgb(255, 197, 5);
   border: none;
   color: #191919;
 }
+
 #logout {
   color: #191919;
 }
 #logout:hover {
   color: white;
 }
-#signup{
+
+#signup {
   background-color: rgb(255, 197, 5);
   border: none;
 }
-.msgtitle{
+
+.msgtitle {
   color: white;
   padding-bottom: 20px;
 }
-#profpage{
+
+#profpage, #customdrinks {
   padding-top: 40px;
 }
+
 div.titlehero{
   background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35);
@@ -147,7 +162,7 @@ div.titlehero{
   padding-bottom: 300px;
 }
 #customdrinks{
-  padding-bottom: 600px;
+  padding-bottom: 300px;
 }
 .herotext{
   color: white;
@@ -157,11 +172,10 @@ div.search-banner{
   line-height: 40px;
   background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
   text-align: center;
-  align-content: center; 
+  align-content: center;
   padding: 60px;
-  height: 200px; 
+  height: 200px;
   overflow: auto;
-
   /* Create the parallax scrolling effect */
   /* background-attachment: fixed; */
   background-position: center;
@@ -169,60 +183,70 @@ div.search-banner{
   background-size: cover;
 }
 
-select{
+select {
   background: none;
   color: white;
   border: none;
 }
-select:focus{
+
+select:focus {
   outline: none;
 }
-.btn-dark{
+
+.btn-dark {
   background-color: rgb(255, 197, 5);
   border: none;
   color: #191919
 }
-.btn-dark:hover{
+
+.btn-dark:hover {
   background-color: rgb(212, 170, 29);
   border: none;
 }
-.btn-dark:focus{
+
+.btn-dark:focus {
   outline: none;
   border: none;
 }
-input#drink-name{
+
+input#drink-name {
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
-}
-input#drink-name:focus{
-outline: none;
 }
 
-input#ing-name{
+input#drink-name:focus {
+  outline: none;
+}
+
+input#ing-name {
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
 }
+
 input#ing-name:focus {
- outline: none;
+  outline: none;
 }
-.modal-image{
+
+.modal-image {
   padding-top: 20px;
   position: relative;
 }
-.modal-title{
+
+.modal-title {
   position: absolute;
   top: 0;
 }
-.card-title{
+
+.card-title {
   color: white;
   position: absolute;
   bottom: 0;
 }
-.card-title.profile{
+.card-title.profile, .card-title.custom{
   color: #191919;
   top: 0;
   padding-bottom: 10px;
@@ -230,13 +254,15 @@ input#ing-name:focus {
 .card{
   border: white;
 }
+
 /* #more-info, #more-info-extra{
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
 } */
-#fav-button, #fav-button-extra{
+
+#fav-button, #fav-button-extra, #fav-button-main {
   position: absolute;
   bottom: 3%;
   width: 18%;
@@ -246,23 +272,27 @@ input#ing-name:focus {
 #fav-button:focus{
   color: white;
 }
-.star{
+
+.star {
   position: absolute;
   top: 5%;
   width: 20%;
   right: 0;
   color: white;
 }
+
 /* .drink-card{
   position: relative;
 } */
-.card-img{
+
+.card-img {
   position: relative;
 }
 .card-img-overlay{
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35)
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0)
 }
@@ -272,17 +302,21 @@ input#ing-name:focus {
   /* padding-bottom: 20em; */
   margin-bottom: 2em;
 }
-input:focus{
+
+input:focus {
   outline: none;
 }
-::placeholder{
+
+::placeholder {
   color: whitesmoke;
   opacity: .9;
 }
+
 p.searchtext {
   color: white;
 }
-h1.searchtext{
+
+h1.searchtext {
   color: white;
 }
 h1.card-title{

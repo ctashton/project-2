@@ -1,113 +1,112 @@
- <div class="row">
-    <div class="container-fluid text-center titlehero" style="padding: 0px;">
-      <div class="col-md-12">
-        <h1 class="herotext">Create A Drink!</h1>
-      </div>
+<div class="row">
+  <div class="container-fluid text-center titlehero" style="padding: 0px;">
+    <div class="col-md-12">
+      <h1 class="herotext">Create A Drink!</h1>
     </div>
   </div>
+</div>
 
 <div class="container" id="customform">
   <div class="wrapper">
-        <form id="customDrink">
-        <div class="form-row align-items-center">
-          <div class="form-group col-md-6">
-            <label for="customName">Choose Thy Name Wisely</label>
-            <input type="text" class="form-control" id="customName" placeholder="{{cc.name}}">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="customImgUrl">Add Your Drinks Selfie Here</label>
-            <input type="text" class="form-control" id="customImgUrl">
-          </div>
+    <form id="customDrink" action="/custom_page" method="GET">
+      <div class="form-row align-items-center">
+        <div class="form-group col-md-6">
+          <label for="customName">Choose Thy Name Wisely</label>
+          <input type="text" class="form-control" id="customName" placeholder="{{cc.name}}">
         </div>
-        <div class="form-row align-items-center">
-          <div class="form-group col-md-4">
-            <label for="customAlc">Alcohol?</label>
-            <select class="form-control" id="customAlc">
-              <option></option>   
-              <option>Alcoholic</option>
-              <option>Non-Alcoholic</option>
-            </select>
-          </div> 
-          <div class="form-group col-md-4">
-            <label for="customDrinkCat">Choose Your Category</label>
-            <select class="form-control" id="customDrinkCat">
-              <option>"{{cc.category}}"</option>  
-              <option>Ordinary Drink</option>
-              <option>Cocktail</option>
-              <option>Milk/Float/Shake</option>
-              <option>Other/Unknown</option>
-              <option>Cocoa</option>
-              <option>Shot</option>
-              <option>Coffee/Tea</option>
-              <option>Homemade Liquer</option>
-              <option>Punch/Party Drink</option>
-              <option>Beer</option>
-              <option>Soft Drink/Soda</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="customGlass">Choose Your Glassware</label>
-            <select class="form-control" id="customGlass">
-              <option>"{{cc.glass}}"</option>  
-              <option>Beer Glass</option>
-              <option>Beer Mug</option>
-              <option>Beer Pilsner</option>
-              <option>Brandy Snifter</option>
-              <option>Champagne Flute</option>
-              <option>Cocktail Glass</option>
-              <option>Coffee Mug</option>
-              <option>Collins Glass</option>
-              <option>Copper Mug</option>
-              <option>Cordial Glass</option>
-              <option>Highball Glass</option>
-              <option>Hurricane Glass</option>
-              <option>Irish Coffee Cup</option>
-              <option>Margarita/Coupette Glass</option>
-              <option>Martini Glass</option>
-              <option>Mason Jar</option>
-              <option>Nick and Nora Glass</option>
-              <option>Old-fashioned Glass</option>
-              <option>Parfait Glass</option>
-              <option>Pint Glass</option>
-              <option>Pitcher</option>
-              <option>Pousse Cafe Glass</option>
-              <option>Punch Bowl</option>
-              <option>Shot Glass</option>
-              <option>Solo Cup</option>
-              <option>Whiskey Sour Glass</option>
-              <option>White Wine Glass</option>
-              <option>Wine Glass</option>
-              <option>Other/Unknown</option>
-            </select>
-          </div>
-        </div> 
-        <div class="form-row align-items-center">
-          <div class="form-group col">
-            <label for="customInstructions">Drink Instructions</label>
-            <textarea class="form-control" id="customInstructions" rows="3" placeholder="{{cc.instructions}}"></textarea>
-          </div>
+        <div class="form-group col-md-6">
+          <label for="customImgUrl">Add Your Drinks Selfie Here</label>
+          <input type="text" class="form-control" id="customImgUrl">
         </div>
-        <div class="form-row align-items-center">
-          <div class="form-group col-6">
-            <label for="customIng">Measurements</label>
-            <input type="text" class="form-control customMeas" placeholder="How much?">
-            <input type="text" class="form-control customMeas">
-            <input type="text" class="form-control customMeas">
-            <input type="text" class="form-control customMeas">
-            <input type="text" class="form-control customMeas">
-          </div>
-          <div class="form-group col-6">
-            <label for="customIng">Ingredients</label>
-            <input type="text" class="form-control customIng" placeholder="What is it?">
-            <input type="text" class="form-control customIng">
-            <input type="text" class="form-control customIng">
-            <input type="text" class="form-control customIng">
-            <input type="text" class="form-control customIng">
-          </div>
+      </div>
+      <div class="form-row align-items-center">
+        <div class="form-group col-md-4">
+          <label for="customAlc">Alcohol?</label>
+          <select class="form-control" id="customAlc">
+            <option></option>
+            <option>Alcoholic</option>
+            <option>Non-Alcoholic</option>
+          </select>
         </div>
-        <button type="submit" class="btn btn-warning btn-block" id="customSave">Save Customized Libation</button>
-        </form>
+        <div class="form-group col-md-4">
+          <label for="customDrinkCat">Choose Your Category</label>
+          <select class="form-control" id="customDrinkCat">
+            <option></option>
+            <option>Ordinary Drink</option>
+            <option>Cocktail</option>
+            <option>Milk/Float/Shake</option>
+            <option>Other/Unknown</option>
+            <option>Cocoa</option>
+            <option>Shot</option>
+            <option>Coffee/Tea</option>
+            <option>Homemade Liquer</option>
+            <option>Punch/Party Drink</option>
+            <option>Beer</option>
+            <option>Soft Drink/Soda</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="customGlass">Choose Your Glassware</label>
+          <select class="form-control" id="customGlass">
+            <option></option>
+            <option>Beer Glass</option>
+            <option>Beer Mug</option>
+            <option>Beer Pilsner</option>
+            <option>Brandy Snifter</option>
+            <option>Champagne Flute</option>
+            <option>Cocktail Glass</option>
+            <option>Coffee Mug</option>
+            <option>Collins Glass</option>
+            <option>Copper Mug</option>
+            <option>Cordial Glass</option>
+            <option>Highball Glass</option>
+            <option>Hurricane Glass</option>
+            <option>Irish Coffee Cup</option>
+            <option>Margarita/Coupette Glass</option>
+            <option>Martini Glass</option>
+            <option>Mason Jar</option>
+            <option>Nick and Nora Glass</option>
+            <option>Old-fashioned Glass</option>
+            <option>Parfait Glass</option>
+            <option>Pint Glass</option>
+            <option>Pitcher</option>
+            <option>Pousse Cafe Glass</option>
+            <option>Punch Bowl</option>
+            <option>Shot Glass</option>
+            <option>Solo Cup</option>
+            <option>Whiskey Sour Glass</option>
+            <option>White Wine Glass</option>
+            <option>Wine Glass</option>
+            <option>Other/Unknown</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row align-items-center">
+        <div class="form-group col">
+          <label for="customInstructions">Drink Instructions</label>
+          <textarea class="form-control" id="customInstructions" rows="3" placeholder="{{cc.instructions}}"></textarea>
+        </div>
+      </div>
+      <div class="form-row align-items-center">
+        <div class="form-group col-6">
+          <label for="customIng">Measurements</label>
+          <input type="text" class="form-control customMeas" placeholder="How much?">
+          <input type="text" class="form-control customMeas">
+          <input type="text" class="form-control customMeas">
+          <input type="text" class="form-control customMeas">
+          <input type="text" class="form-control customMeas">
+        </div>
+        <div class="form-group col-6">
+          <label for="customIng">Ingredients</label>
+          <input type="text" class="form-control customIng" placeholder="What is it?">
+          <input type="text" class="form-control customIng">
+          <input type="text" class="form-control customIng">
+          <input type="text" class="form-control customIng">
+          <input type="text" class="form-control customIng">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-warning btn-block" id="customSave">Save Customized Libation</button>
+    </form>
 
   </div>
-</div>    
-  
+</div>
