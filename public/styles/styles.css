@@ -49,9 +49,14 @@ footer{
   bottom: 0;
   margin-top: -200px;
   background-color: #191919;
+  z-index: 1;
   /* padding-top: 100px; */
 }
 
+.splash-card{
+  position: relative;
+  z-index: 2;
+}
 #customDrink {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -342,7 +347,7 @@ h1.card-title{
 }
 div.respop{
   text-align: center;
-  padding: 40px;
+  padding: 40px, 0, 0, 0;
   /* margin-bottom: 10px; */
   /* padding: 1em; */
   background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
