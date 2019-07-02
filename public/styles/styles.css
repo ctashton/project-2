@@ -189,6 +189,10 @@ select {
   border: none;
 }
 
+option {
+  color: grey
+}
+
 select:focus {
   outline: none;
 }
