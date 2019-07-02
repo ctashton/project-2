@@ -1,11 +1,16 @@
 body{
   font-family: 'Roboto Slab', serif;
   min-height: 100vh;
-  max-height: 100%;
   position: relative;
-  /* padding-bottom: 220px; */
+  clear: both;
 }
 
+#main{
+  padding-bottom: 150px;
+}
+.card-signin{
+  margin-bottom: 200px;
+}
 h5{
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
@@ -15,15 +20,17 @@ h5.splashmsg{
   color: 191919;
 }
 nav{
+  color: white;
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
   background-color: #191919
 }
 footer{
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
-  margin-top: 80px;
+  margin-top: -200px;
   background-color: #191919;
+  /* padding-top: 100px; */
 }
 #customDrink{
   padding-top: 80px;
@@ -59,6 +66,12 @@ p{
 a{
   color: white;
 }
+#customDrink{
+  margin-bottom: 60px;
+}
+a#cheers{
+  color: #191919;
+}
 .title{
   float: left;
   margin-right: 0;
@@ -66,6 +79,8 @@ a{
 
 #results {
   text-align: center;
+  margin-bottom: 20px;
+  clear: both;
 }
 
 #result-card {
@@ -75,10 +90,13 @@ a{
 #login{
   background-color: rgb(255, 197, 5);
   border: none;
-  color: #fff;
+  color: #191919;
 }
 #logout {
-  color: #fff;
+  color: #191919;
+}
+#logout:hover {
+  color: white;
 }
 #signup{
   background-color: rgb(255, 197, 5);
@@ -90,6 +108,35 @@ a{
 }
 #profpage{
   padding-top: 40px;
+}
+div.titlehero{
+  background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35);
+  align-content: center; 
+  text-align: center;
+  padding: 60px;
+  height: 200px; 
+  overflow: auto;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+div.splash{
+  padding-bottom: 200px;
+}
+#profpage{
+  padding-bottom: 300px;
+}
+#customdrinks{
+  padding-bottom: 600px;
+}
+.herotext{
+  color: white;
+  padding-top: 70px;
 }
 div.search-banner{
   line-height: 40px;
@@ -118,6 +165,7 @@ select:focus{
 .btn-dark{
   background-color: rgb(255, 197, 5);
   border: none;
+  color: #191919
 }
 .btn-dark:hover{
   background-color: rgb(212, 170, 29);
@@ -159,6 +207,11 @@ input#ing-name:focus {
   position: absolute;
   bottom: 0;
 }
+.card-title.profile{
+  color: #191919;
+  top: 0;
+  padding-bottom: 10px;
+}
 .card{
   border: white;
 }
@@ -170,9 +223,12 @@ input#ing-name:focus {
 } */
 #fav-button, #fav-button-extra{
   position: absolute;
-  top: 5%;
-  width: 20%;
+  bottom: 3%;
+  width: 18%;
   left: 75%;
+  color: #191919;
+}
+#fav-button:focus{
   color: white;
 }
 .star{
@@ -189,16 +245,17 @@ input#ing-name:focus {
   position: relative;
 }
 .card-img-overlay{
-  box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.3)
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.35)
 }
 .card-img-overlay:hover{
   transition: box-shadow 0.3s ease-in-out;
-  box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0);
-  cursor: pointer;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0)
 }
 
 #results{
-  align-content: center
+  align-content: center;
+  /* padding-bottom: 20em; */
+  margin-bottom: 2em;
 }
 input:focus{
   outline: none;
@@ -213,14 +270,27 @@ p.searchtext {
 h1.searchtext{
   color: white;
 }
+h1.card-title{
+  color: #191919;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
 #results a:hover {
   cursor: pointer;
 }
-
+.wrapper{
+  padding-bottom: 100px;
+}
+#customform{
+  padding-bottom: 360px;
+}
 div.respop{
   text-align: center;
-  /* padding: 60px; */
-  padding: 1em;
+  padding: 40px;
+  /* margin-bottom: 10px; */
+  /* padding: 1em; */
   background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
   box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
   background-attachment: fixed;
@@ -230,14 +300,16 @@ div.respop{
 }
 
 
-
+a:hover{
+  color: rgb(212, 170, 29);
+}
 .fav-list span {
   margin-left: 1em;
 }
 
 .search-banner {
   padding: 3em 0em;
-
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5)
 }
 
 .search-item {
@@ -252,9 +324,18 @@ div.respop{
 }
 
 #cheers {
-  color: white;
+  color: #191919;
+  font-weight: 700;
+  padding: 10px;
 }
 
 #cheers:hover {
   cursor: pointer;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+  color: rgb(255, 197, 5)
 }

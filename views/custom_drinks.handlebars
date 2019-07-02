@@ -1,11 +1,14 @@
-{{!-- custom_drinks for profile --}}
-<div class="container">
-    
-    <a href="/profile" class="btn btn-info float-right">My Favorite Drinks</a>
 
-    <h1 class="text-center mt-5 mb-5">Custom Drinks: </h1>
-    
-    {{#each custom}}
+ <div class="row">
+    <div class="container-fluid text-center titlehero" style="padding: 0px;">
+      <div class="col-md-12">
+        <h1 class="herotext">Custom Drinks:</h1>
+      </div>
+    </div>
+  </div>
+
+<div class="container" id="customdrinks">
+        {{#each custom}}
     <div class="card mb-3" style="max-width: 100%;">
           <div class="row no-gutters">
               <div class="col-md-4">
