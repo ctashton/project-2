@@ -105,7 +105,6 @@ app.get("/custom_page", function (req, res) {
           custom: custom,
           user: req.user
         })
-        location.reload()
       })           
      }  
   })
