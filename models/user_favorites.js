@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
 
     const user_favorites = sequelize.define("user_favorites", {
         name: {

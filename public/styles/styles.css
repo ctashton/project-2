@@ -1,65 +1,77 @@
-body{
+body {
   font-family: 'Roboto Slab', serif;
   min-height: 100vh;
   max-height: 100%;
   position: relative;
-  /* padding-bottom: 220px; */
+  padding-bottom: 220px;
 }
 
-h5{
+h5 {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
 }
-h5.splashmsg{
+
+h5.splashmsg {
   font-weight: 700;
   color: 191919;
 }
-nav{
+
+nav {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
   background-color: #191919
 }
-footer{
+
+footer {
   position: absolute;
   bottom: 0;
   margin-top: 80px;
   background-color: #191919;
 }
-#customDrink{
+
+#customDrink {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-.footer-copyright{
+
+.footer-copyright {
   color: white;
 }
-#footercontent{
+
+#footercontent {
   padding-top: 20px;
 }
+
 .list-group-item {
   line-height: 2.5;
 }
 
-
-p{
+p {
   font-family: 'Roboto Slab', serif;
   letter-spacing: .025em;
 }
+
 /* .search-banner{
   margin: 20px;
 } */
-.cheers{
+
+.cheers {
   color: white;
 }
-#about, #team, #repoinfo, .abouttext{
+
+#about, #team, #repoinfo, .abouttext {
   color: white;
 }
-#id{
+
+#id {
   color: white;
 }
-a{
+
+a {
   color: white;
 }
-.title{
+
+.title {
   float: left;
   margin-right: 0;
 }
@@ -72,34 +84,39 @@ a{
   display: inline-block;
   margin: 2.5em;
 }
-#login{
+
+#login {
   background-color: rgb(255, 197, 5);
   border: none;
   color: #fff;
 }
+
 #logout {
   color: #fff;
 }
-#signup{
+
+#signup {
   background-color: rgb(255, 197, 5);
   border: none;
 }
-.msgtitle{
+
+.msgtitle {
   color: white;
   padding-bottom: 20px;
 }
-#profpage{
+
+#profpage {
   padding-top: 40px;
 }
-div.search-banner{
+
+div.search-banner {
   line-height: 40px;
   background-image: url("../assets/sanah-suvarna-m8crKH1iN_8-unsplash.jpg");
   text-align: center;
-  align-content: center; 
+  align-content: center;
   padding: 60px;
-  height: 200px; 
+  height: 200px;
   overflow: auto;
-
   /* Create the parallax scrolling effect */
   /* background-attachment: fixed; */
   background-position: center;
@@ -107,117 +124,140 @@ div.search-banner{
   background-size: cover;
 }
 
-select{
+select {
   background: none;
   color: white;
   border: none;
 }
-select:focus{
+
+select:focus {
   outline: none;
 }
-.btn-dark{
+
+.btn-dark {
   background-color: rgb(255, 197, 5);
   border: none;
 }
-.btn-dark:hover{
+
+.btn-dark:hover {
   background-color: rgb(212, 170, 29);
   border: none;
 }
-.btn-dark:focus{
+
+.btn-dark:focus {
   outline: none;
   border: none;
 }
-input#drink-name{
+
+input#drink-name {
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
-}
-input#drink-name:focus{
-outline: none;
 }
 
-input#ing-name{
+input#drink-name:focus {
+  outline: none;
+}
+
+input#ing-name {
   background: none;
   color: white;
   border: none;
   border-bottom: 1px solid;
 }
+
 input#ing-name:focus {
- outline: none;
+  outline: none;
 }
-.modal-image{
+
+.modal-image {
   padding-top: 20px;
   position: relative;
 }
-.modal-title{
+
+.modal-title {
   position: absolute;
   top: 0;
 }
-.card-title{
+
+.card-title {
   color: white;
   position: absolute;
   bottom: 0;
 }
-.card{
+
+.card {
   border: white;
 }
+
 /* #more-info, #more-info-extra{
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
 } */
-#fav-button, #fav-button-extra, #fav-button-main{
+
+#fav-button, #fav-button-extra, #fav-button-main {
   position: absolute;
   top: 5%;
   width: 20%;
   left: 75%;
   color: white;
 }
-.star{
+
+.star {
   position: absolute;
   top: 5%;
   width: 20%;
   right: 0;
   color: white;
 }
+
 /* .drink-card{
   position: relative;
 } */
-.card-img{
+
+.card-img {
   position: relative;
 }
-.card-img-overlay{
+
+.card-img-overlay {
   box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.3)
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0);
   cursor: pointer;
 }
 
-#results{
+#results {
   align-content: center
 }
-input:focus{
+
+input:focus {
   outline: none;
 }
-::placeholder{
+
+::placeholder {
   color: whitesmoke;
   opacity: .9;
 }
+
 p.searchtext {
   color: white;
 }
-h1.searchtext{
+
+h1.searchtext {
   color: white;
 }
+
 #results a:hover {
   cursor: pointer;
 }
 
-div.respop{
+div.respop {
   text-align: center;
   /* padding: 60px; */
   padding: 1em;
@@ -229,15 +269,12 @@ div.respop{
   background-size: cover;
 }
 
-
-
 .fav-list span {
   margin-left: 1em;
 }
 
 .search-banner {
   padding: 3em 0em;
-
 }
 
 .search-item {

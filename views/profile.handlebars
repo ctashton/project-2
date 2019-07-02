@@ -3,7 +3,7 @@
     <a href="/custom_page" class="btn btn-info float-right">My Custom Drinks</a>
 
     <h1 class="text-center mt-5 mb-5">Favorites: </h1>
-    
+
     {{#each favorites}}
 
         {{!-- bootstrap card: horizontal --}}
@@ -27,7 +27,8 @@
                                 <p class="card-text"><strong>Category:</strong> <br><span>{{category}}</span></p>
                             </div>
                             <div class="col-md-4">
-                                <p class="card-text"><strong>Alcohol Content:</strong> <br><span>{{alcoholic}}</span></p>
+                                <p class="card-text"><strong>Alcohol Content:</strong> <br><span>{{alcoholic}}</span>
+                                </p>
                             </div>
                             <div class="col-md-4">
                                 <p class="card-text"><strong>Glass:</strong> <br><span>{{glass}}</span></p>
@@ -39,7 +40,7 @@
 
                         {{#each ingr}}
                             <p class="card-text"> <span>{{this}}</span></p>
-                        {{/each}}  
+                        {{/each}}
                     </div>
                 </div>
 
