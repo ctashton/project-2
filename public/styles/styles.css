@@ -6,9 +6,11 @@ body{
 }
 
 #main{
-  padding-bottom: 200px;
+  padding-bottom: 150px;
 }
-
+.card-signin{
+  margin-bottom: 200px;
+}
 h5{
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
@@ -24,11 +26,11 @@ nav{
   background-color: #191919
 }
 footer{
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   margin-top: -200px;
   background-color: #191919;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 #customDrink{
   padding-top: 80px;
@@ -123,9 +125,11 @@ div.titlehero{
   background-size: cover;
 
 }
-
+div.splash{
+  padding-bottom: 200px;
+}
 #profpage{
-  padding-bottom: 600px;
+  padding-bottom: 300px;
 }
 #customdrinks{
   padding-bottom: 600px;
@@ -250,7 +254,7 @@ input#ing-name:focus {
 
 #results{
   align-content: center;
-  padding-bottom: 20em;
+  /* padding-bottom: 20em; */
   margin-bottom: 2em;
 }
 input:focus{
@@ -285,7 +289,7 @@ h1.card-title{
 div.respop{
   text-align: center;
   padding: 40px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   /* padding: 1em; */
   background-image: url("../assets/jon-moore-5fIoyoKlz7A-unsplash.jpg");
   box-shadow: inset 0 0 0 1000px rgba(18, 18, 18, 0.6);
