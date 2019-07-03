@@ -28,7 +28,7 @@ Are you open for new tastes? Do you like gambling? Randomize function is for you
 
 If client click one of the drink the modal pop up the page as modal. And client can see what are inside of the cocktail and how to make it. Also, Clients maybe want to add it as them favorite or create new one with insprired from this cocktail! It is easy with **NEAT UP**.
 
-![Image of Modal](./public/assets/modal.png)
+![Image of Modal](./public/assets/Modal.png)
 
 Every client is precious for us. We want to keep them favorities and custom drinks. If clients wants to add one drink as favorite or create one, web page ask to log in. If user haven't sign in yet, they have to sign in first. 
 
