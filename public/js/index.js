@@ -92,14 +92,14 @@ $(document).on("click", "#result-card", function() {
   
   if (category) {
     let name = $(this).find("#fav-button").attr("data-name")
-    let pic = $(this).find("#fav-button").attr("data-pic")
+    // let pic = $(this).find("#fav-button").attr("data-pic")
     let category = $(this).find("#fav-button").attr("data-category")
     let alcoholic = $(this).find("#fav-button").attr("data-alcoholic")
     let glass = $(this).find("#fav-button").attr("data-glass")
     let instructions = $(this).find("#fav-button").attr("data-instructions")
     let ingredients = ($(this).find("#fav-button").attr("data-ingredients")).split(',')
     let measurements = ($(this).find("#fav-button").attr("data-measurements")).split(',')
-    $("#info-pic").attr("src", pic)
+    // $("#info-pic").attr("src", pic)
     $("#info-name").html(`<strong>${name}</strong>`)
     $("#info-category").html(`<strong>Category: </strong>${category}`)
     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
