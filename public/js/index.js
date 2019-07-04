@@ -188,7 +188,9 @@ $(document).on("click", "#result-card", function() {
 // })
 
 // add a drink to favorites
-$(document).on("click", "#fav-button", function () {
+$(document).on("click", "#fav-button", function (e) {
+
+  e.stopPropagation()
 
   $.post("/favorite", {
     name: $(this).attr('data-name'),
@@ -207,7 +209,10 @@ $(document).on("click", "#fav-button", function () {
 })
 
 // search by ingredient and category do not return full results, so we must search by id
-$(document).on("click", "#fav-button-extra", function () {
+$(document).on("click", "#fav-button-extra", function (e) {
+
+  e.stopPropagation()
+
   let id = $(this).attr('data-id')
 
   $.post("/search", {
