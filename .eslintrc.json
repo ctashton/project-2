@@ -9,9 +9,7 @@
     "plugins": [
         "prettier"
       ],
-    "validate": [
-        "javascript", "html", "css"
-    ],
+    
     "rules": {
         "no-duplicate-case":"error",
         "no-empty":"error",

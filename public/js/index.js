@@ -78,57 +78,34 @@ $(document).on("click", "#logout", function () {
   );
 });
 
+
+// ************************************************************************************************************
+
+// WE ARE CHANGING THIS FUNCTION
+// IT WAS ORIGINALLY: $(document).on("click", "#more-info", function()
+
 // get more info about a drink
-$(document).on("click", "#more-info", function() {
+$(document).on("click", "#result-card", function() {
 
-  let name = $(this).siblings("#fav-button").attr("data-name")
-  let pic = $(this).siblings("#fav-button").attr("data-pic")
-  let category = $(this).siblings("#fav-button").attr("data-category")
-  let alcoholic = $(this).siblings("#fav-button").attr("data-alcoholic")
-  let glass = $(this).siblings("#fav-button").attr("data-glass")
-  let instructions = $(this).siblings("#fav-button").attr("data-instructions")
-  let ingredients = ($(this).siblings("#fav-button").attr("data-ingredients")).split(',')
-  let measurements = ($(this).siblings("#fav-button").attr("data-measurements")).split(',')
-  $("#info-pic").attr("src", pic)
-  $("#info-name").html(`<strong>${name}</strong>`)
-  $("#info-category").html(`<strong>Category: </strong>${category}`)
-  $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
-  $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
-  $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-
-  // format ingredients and measurements
-  $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
-  for (let i = 0; i < ingredients.length; i++) {
-    document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
-  }
-
-  $("#moreInfoModal").modal("show")
-})
-
-$(document).on("click", "#more-info-extra", function() {
-  let id = $(this).siblings("#fav-button-extra").attr("data-id")
-
-  $.post("/search", {
-    method: "id",
-    data: id
-  })
-  .then(data => {
-    let name = data.name
-    let pic = data.pic
-    let category = data.category
-    let alcoholic = data.alcoholic
-    let glass = data.glass
-    let instructions = data.instructions
-    let ingredients = data.ingredients
-    let measurements = data.measurements
-
+  // if category is undefined, we will have to run a search by id to get additional drink data
+  let category = $(this).find("#fav-button").attr("data-category")
+  
+  if (category) {
+    let name = $(this).find("#fav-button").attr("data-name")
+    let pic = $(this).find("#fav-button").attr("data-pic")
+    let category = $(this).find("#fav-button").attr("data-category")
+    let alcoholic = $(this).find("#fav-button").attr("data-alcoholic")
+    let glass = $(this).find("#fav-button").attr("data-glass")
+    let instructions = $(this).find("#fav-button").attr("data-instructions")
+    let ingredients = ($(this).find("#fav-button").attr("data-ingredients")).split(',')
+    let measurements = ($(this).find("#fav-button").attr("data-measurements")).split(',')
+    $("#info-pic").attr("src", pic)
     $("#info-name").html(`<strong>${name}</strong>`)
     $("#info-category").html(`<strong>Category: </strong>${category}`)
-    $("#info-pic").attr("src", pic)
     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
     $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
     $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
-    
+
     // format ingredients and measurements
     $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
     for (let i = 0; i < ingredients.length; i++) {
@@ -136,8 +113,79 @@ $(document).on("click", "#more-info-extra", function() {
     }
 
     $("#moreInfoModal").modal("show")
-  })
+  } else {
+    let id = $(this).find("#fav-button-extra").attr("data-id")
+
+    $.post("/search", {
+        method: "id",
+        data: id
+      })
+      .then(data => {
+        let name = data.name
+        let pic = data.pic
+        let category = data.category
+        let alcoholic = data.alcoholic
+        let glass = data.glass
+        let instructions = data.instructions
+        let ingredients = data.ingredients
+        let measurements = data.measurements
+
+        $("#info-name").html(`<strong>${name}</strong>`)
+        $("#info-category").html(`<strong>Category: </strong>${category}`)
+        $("#info-pic").attr("src", pic)
+        $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
+        $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
+        $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
+
+        // format ingredients and measurements
+        $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+        for (let i = 0; i < ingredients.length; i++) {
+          document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+        }
+
+        $("#moreInfoModal").modal("show")
+      })
+  }
 })
+
+// ************************************************************************************************************
+
+
+
+
+// $(document).on("click", "#more-info-extra", function() {
+//   let id = $(this).siblings("#fav-button-extra").attr("data-id")
+
+//   $.post("/search", {
+//     method: "id",
+//     data: id
+//   })
+//   .then(data => {
+//     let name = data.name
+//     let pic = data.pic
+//     let category = data.category
+//     let alcoholic = data.alcoholic
+//     let glass = data.glass
+//     let instructions = data.instructions
+//     let ingredients = data.ingredients
+//     let measurements = data.measurements
+
+//     $("#info-name").html(`<strong>${name}</strong>`)
+//     $("#info-category").html(`<strong>Category: </strong>${category}`)
+//     $("#info-pic").attr("src", pic)
+//     $("#info-alcoholic").html(`<strong>Alcohol Content: </strong>${alcoholic}`)
+//     $("#info-glass").html(`<strong>Glass: </strong>${glass}`)
+//     $("#info-instructions").html(`<strong>Instructions: </strong>${instructions}`)
+    
+//     // format ingredients and measurements
+//     $("#info-ingredients").html(`<strong>Ingredients: </strong>`)
+//     for (let i = 0; i < ingredients.length; i++) {
+//       document.getElementById('info-ingredients').innerHTML += `<br>${ingredients[i]}: ${measurements[i]}`
+//     }
+
+//     $("#moreInfoModal").modal("show")
+//   })
+// })
 
 // add a drink to favorites
 $(document).on("click", "#fav-button", function () {
