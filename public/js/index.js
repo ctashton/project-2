@@ -270,7 +270,7 @@ $("#name-search").on("click", function () {
       console.log('item: ' + item)
       let drinkResult = $(
         `
-          <div id="result-card" class="card" style="width: 18rem;">
+          <div id="result-card" class="card clickable" style="width: 18rem;">
             <img class="card-img" src="${item.pic}">
             <div class="card-img-overlay">
               <h5 class="card-title text-center">${item.name}</h5>
@@ -302,7 +302,7 @@ $("#drink-name").keyup(function(event) {
         console.log('item: ' + item)
         let drinkResult = $(
           `
-            <div id="result-card" class="card bg-dark" style="width: 18rem;">
+            <div id="result-card" class="card bg-dark clickable" style="width: 18rem;">
               <img class="card-img" src="${item.pic}">
               <div class="card-img-overlay" id="more-info">
                 <h5 class="card-title text-left">${item.name}</h5>
@@ -334,7 +334,7 @@ $("#ing-search").on("click", function () {
     data.forEach(item => {
       let drinkResult = $(
         `
-          <div id="result-card" class="card" style="width: 18rem;">
+          <div id="result-card" class="card clickable" style="width: 18rem;">
             <img class="card-img-top" src="${item.pic}">
             <div class="card-body">
               <h5 class="card-title text-left">${item.name}</h5>
@@ -364,7 +364,7 @@ $("#ing-name").keyup(function(event) {
       data.forEach(item => {
         let drinkResult = $(
           `
-            <div id="result-card" class="card" style="width: 18rem;">
+            <div id="result-card" class="card clickable" style="width: 18rem;">
               <img class="card-img" src="${item.pic}">
               <div class="card-img-overlay" id="more-info-extra">
                 <h5 class="card-title text-left">${item.name}</h5>
@@ -405,7 +405,7 @@ $("#most-pop").on("click", function () {
     data.forEach(item => {
       let drinkResult = $(
         `
-          <div id="result-card" class="card" style="width: 18rem;">
+          <div id="result-card" class="card clickable" style="width: 18rem;">
             <img class="card-img" src="${item.pic}">
             <div class="card-img-overlay" id="more-info">
               <h5 class="card-title text-left">${item.name}</h5>
@@ -431,7 +431,7 @@ $("#random").on('click', function () {
     $("#results").empty()
     let drinkResult = $(
       `
-        <div id="result-card" class="card" style="width: 18rem;">
+        <div id="result-card" class="card clickable" style="width: 18rem;">
           <img class="card-img"src="${data.pic}">
           <div class="card-img-overlay"  id="more-info" >
             <h5 class="card-title text-left">${data.name}</h5>
@@ -460,7 +460,7 @@ $("#cat-dropdown-banner").on("change", function () {
     data.forEach(item => {
       let catResult = $(
         `
-        <div id="result-card" class="card" style="width: 18rem;">
+        <div id="result-card" class="card clickable" style="width: 18rem;">
         <img class="card-img" src="${item.pic}">
         <div class="card-img-overlay" id="more-info-extra">
           <h5 class="card-title text-left">${item.name}</h5>
@@ -489,7 +489,7 @@ $("#cat-search").on("click", function () {
     data.forEach(item => {
       let catResult = $(
         `
-          <div id="result-card" class="card" style="width: 18rem;">
+          <div id="result-card" class="card clickable" style="width: 18rem;">
             <img class="card-img-top" src="${item.pic}">
             <div class="card-body">
               <h5 class="card-title text-center">${item.name}</h5>
